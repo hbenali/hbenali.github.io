@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://hbenali.github.io/al-folio/sitemap.xml
+Sitemap: https://about.hbenali.ovh/sitemap.xml
