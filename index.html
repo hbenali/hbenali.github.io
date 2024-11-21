@@ -1,72 +1,181 @@
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f9f9f9;
-        color: #333;
-        line-height: 1.6;
-    }
-    header {
-        background-color: #333;
-        color: #fff;
-        padding: 1rem 2rem;
-        text-align: center;
-    }
-    header h1 {
-        margin: 0;
-    }
-    .container {
-        max-width: 900px;
-        margin: 2rem auto;
-        padding: 1rem;
-        background: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-        color: #444;
-        margin-bottom: 0.5rem;
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    ul li {
-        margin: 0.5rem 0;
-    }
-    .lang-button {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        border-radius: 5px;
-        z-index: 1000;
-        font-size: 1rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-    @media (max-width: 768px) {
-        .lang-button {
-            font-size: 0.9rem;
-            padding: 0.4rem 0.8rem;
-            top: 0.5rem;
-            right: 0.5rem;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houssem Ben Ali - About Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
         }
-    }
-    footer {
-        text-align: center;
-        margin: 2rem 0;
-        font-size: 0.9rem;
-        color: #666;
-    }
-    img {
-        display: block;
-        margin: 0 auto 1rem auto;
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
-    }
-</style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #444;
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 0.5rem 0;
+        }
+        .lang-button {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1000;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            .lang-button {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+        }
+        footer {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        img {
+            display: block;
+            margin: 0 auto 1rem auto;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <button class="lang-button" id="toggle-lang">Français</button>
+    <header>
+        <h1 id="name">Houssem Ben Ali</h1>
+    </header>
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/27370604" alt="Profile Picture">
+        <h2 id="about-title">About Me</h2>
+        <p id="about-text">
+            Experienced DevOps Engineer specializing in software factory automation, cloud hosting, and security operations.
+        </p>
+        <h2 id="experience-title">Experience</h2>
+        <ul id="experience-list">
+            <li><strong>eXo Platform</strong> (2020 – Present): DevOps Engineer with expertise in CI/CD pipelines, cloud hosting, and security enhancements.</li>
+            <li><strong>SW Consulting</strong> (2018): Frontend Developer working on Angular-based projects.</li>
+        </ul>
+        <h2 id="projects-title">Publications & Projects</h2>
+        <ul id="projects-list">
+            <li>Administration of Support Tickets (J2EE/VueJs/AngularJs)</li>
+            <li>Shell Commands for Support Team (Bash)</li>
+        </ul>
+        <h2 id="skills-title">Skills</h2>
+        <p id="skills-text">
+            Proficient in Python, JavaScript (React.js), HTML/CSS, and SQL. Experienced with Git, Jenkins, and Docker.
+        </p>
+        <h2 id="education-title">Education</h2>
+        <ul id="education-list">
+            <li><strong>ENISo</strong>: Master's in Telecommunications Engineering</li>
+            <li><strong>ISIMM</strong>: Bachelor's in Computer Science</li>
+        </ul>
+    </div>
+    <footer>
+        &copy; 2024 Houssem Ben Ali. All rights reserved. | <a href="mailto:contact@hbenali.ovh">contact@hbenali.ovh</a>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('toggle-lang');
+        const elements = {
+            "en": {
+                "name": "Houssem Ben Ali",
+                "about-title": "About Me",
+                "about-text": "Experienced DevOps Engineer specializing in software factory automation, cloud hosting, and security operations.",
+                "experience-title": "Experience",
+                "experience-list": `
+                    <li><strong>eXo Platform</strong> (2020 – Present): DevOps Engineer with expertise in CI/CD pipelines, cloud hosting, and security enhancements.</li>
+                    <li><strong>SW Consulting</strong> (2018): Frontend Developer working on Angular-based projects.</li>
+                `,
+                "projects-title": "Publications & Projects",
+                "projects-list": `
+                    <li>Administration of Support Tickets (J2EE/VueJs/AngularJs)</li>
+                    <li>Shell Commands for Support Team (Bash)</li>
+                `,
+                "skills-title": "Skills",
+                "skills-text": "Proficient in Python, JavaScript (React.js), HTML/CSS, and SQL. Experienced with Git, Jenkins, and Docker.",
+                "education-title": "Education",
+                "education-list": `
+                    <li><strong>ENISo</strong>: Master's in Telecommunications Engineering</li>
+                    <li><strong>ISIMM</strong>: Bachelor's in Computer Science</li>
+                `
+            },
+            "fr": {
+                "name": "Houssem Ben Ali",
+                "about-title": "À propos de moi",
+                "about-text": "Ingénieur DevOps expérimenté spécialisé dans l'automatisation des usines logicielles, l'hébergement cloud et les opérations de sécurité.",
+                "experience-title": "Expérience",
+                "experience-list": `
+                    <li><strong>eXo Platform</strong> (2020 – Présent): Ingénieur DevOps spécialisé dans les pipelines CI/CD, l'hébergement cloud et les améliorations de sécurité.</li>
+                    <li><strong>SW Consulting</strong> (2018): Développeur Frontend travaillant sur des projets basés sur Angular.</li>
+                `,
+                "projects-title": "Publications & Projets",
+                "projects-list": `
+                    <li>Administration des tickets support (J2EE/VueJs/AngularJs)</li>
+                    <li>Commandes Shell pour l'équipe de support (Bash)</li>
+                `,
+                "skills-title": "Compétences",
+                "skills-text": "Maîtrise de Python, JavaScript (React.js), HTML/CSS et SQL. Expérimenté avec Git, Jenkins et Docker.",
+                "education-title": "Éducation",
+                "education-list": `
+                    <li><strong>ENISo</strong>: Master en Génie des Télécommunications</li>
+                    <li><strong>ISIMM</strong>: Licence en Informatique</li>
+                `
+            }
+        };
+
+        let currentLang = "en";
+        toggleButton.addEventListener('click', () => {
+            currentLang = currentLang === "en" ? "fr" : "en";
+            toggleButton.textContent = currentLang === "en" ? "Français" : "English";
+
+            for (const [id, text] of Object.entries(elements[currentLang])) {
+                document.getElementById(id).innerHTML = text;
+            }
+        });
+    </script>
+</body>
+</html>
