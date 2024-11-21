@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Houssem Ben Ali - About Me</title>
+    <title>Houssem Ben Ali - Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -120,6 +120,24 @@
                 </ul>
             </li>
         </ul>
+        <h2 id="projects-title">Projects & Publications</h2>
+        <ul id="projects-list">
+            <li><strong>Port Forwarding for Android Devices (Bash):</strong> Automated port forwarding to enable development on physical Android devices.</li>
+            <li><strong>Developer Toolkits:</strong> Authored Bash scripts for containerized environments to simplify developer workflows.</li>
+        </ul>
+        <h2 id="education-title">Education</h2>
+        <ul id="education-list">
+            <li>
+                <strong>Bachelor of Science in Computer Science</strong> - National Institute of Applied Science and Technology, Tunisia
+            </li>
+        </ul>
+        <h2 id="skills-title">Skills</h2>
+        <ul id="skills-list">
+            <li>DevOps Tools: Jenkins, Docker, Kubernetes, Puppet</li>
+            <li>Programming Languages: Bash, Python, Java</li>
+            <li>Cloud Platforms: GCP, OVH</li>
+            <li>Version Control: Git, GitHub, GitLab</li>
+        </ul>
     </div>
     <footer>
         &copy; 2024 Houssem Ben Ali. All rights reserved. | <a href="mailto:contact@hbenali.ovh">contact@hbenali.ovh</a>
@@ -132,60 +150,18 @@
                 "about-title": "About Me",
                 "about-text": "Experienced DevOps Engineer specializing in software factory automation, cloud hosting, and security operations.",
                 "experience-title": "Experience",
-                "experience-list": `
-                    <li>
-                        <strong>eXo Platform</strong> (Mar. 2020 – Present):
-                        <ul>
-                            <li><strong>Software Factory:</strong> Managed Jenkins (seed jobs using Groovy DSL, pipelines, workspace cleanup), upgraded tools like Nexus, Grafana, and SonarQube, and built CI/CD integrations with GitHub Actions.</li>
-                            <li><strong>Hosting:</strong> Provisioned instances on GCP and OVH using Puppet, resolved incidents (disk, memory, Docker daemon), and optimized application and system configurations.</li>
-                            <li><strong>Release Management:</strong> Conducted product releases, improved staging processes in Nexus, and deployed signed Docker images to DockerHub and GitHub.</li>
-                            <li><strong>Translation Management:</strong> Integrated i18n Crowdin projects using Maven plugins, enhancing translation workflows.</li>
-                            <li><strong>Technical Support:</strong> Assisted developers with Docker image creation, Git conflict resolution, and repository management.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>eXo Platform</strong> (Dec. 2018 – Feb. 2020):
-                        <ul>
-                            <li><strong>Technical Support Engineer:</strong> Resolved client technical issues, including Tomcat configuration and encoding problems, and built CLI tools to streamline team workflows.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>SW Consulting</strong> (Jan. 2018 – Dec. 2018):
-                        <ul>
-                            <li><strong>Frontend Developer:</strong> Developed Angular 4 components for a forum application, utilizing CSS, SCSS, and GitLab for SCM.</li>
-                        </ul>
-                    </li>
-                `
+                "projects-title": "Projects & Publications",
+                "education-title": "Education",
+                "skills-title": "Skills"
             },
             "fr": {
                 "name": "Houssem Ben Ali",
                 "about-title": "À propos de moi",
                 "about-text": "Ingénieur DevOps expérimenté spécialisé dans l'automatisation des usines logicielles, l'hébergement cloud et les opérations de sécurité.",
                 "experience-title": "Expérience",
-                "experience-list": `
-                    <li>
-                        <strong>eXo Platform</strong> (Mars 2020 – Présent):
-                        <ul>
-                            <li><strong>Usine Logicielle :</strong> Géré Jenkins (jobs seed via Groovy DSL, pipelines, nettoyage d’espaces de travail), mis à niveau Nexus, Grafana, SonarQube, et intégré CI/CD avec GitHub Actions.</li>
-                            <li><strong>Hébergement :</strong> Provisionné des instances sur GCP et OVH via Puppet, résolu des incidents (disque, mémoire, Docker daemon) et optimisé configurations système.</li>
-                            <li><strong>Gestion des Versions :</strong> Effectué les releases produits, amélioré les processus de staging Nexus et déployé des images Docker signées sur DockerHub et GitHub.</li>
-                            <li><strong>Gestion des Traductions :</strong> Intégré Crowdin i18n via Maven, optimisant les flux de travail de traduction.</li>
-                            <li><strong>Support Technique :</strong> Aidé au développement d’images Docker, résolution de conflits Git et gestion des dépôts.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>eXo Platform</strong> (Déc. 2018 – Fév. 2020):
-                        <ul>
-                            <li><strong>Ingénieur Support Technique :</strong> Résolution des problèmes clients (configuration Tomcat, problèmes d'encodage) et création d’outils CLI pour optimiser les workflows.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>SW Consulting</strong> (Jan. 2018 – Déc. 2018):
-                        <ul>
-                            <li><strong>Développeur Frontend :</strong> Développement de composants Angular 4 pour une application forum, avec CSS, SCSS et GitLab.</li>
-                        </ul>
-                    </li>
-                `
+                "projects-title": "Projets et Publications",
+                "education-title": "Éducation",
+                "skills-title": "Compétences"
             }
         };
 
@@ -195,7 +171,7 @@
             toggleButton.textContent = currentLang === "en" ? "Français" : "English";
 
             for (const [id, content] of Object.entries(elements[currentLang])) {
-                document.getElementById(id).innerHTML = content;
+                document.getElementById(id).textContent = content;
             }
         });
     </script>
