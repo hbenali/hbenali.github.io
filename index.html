@@ -1,140 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Houssem Ben Ali - About Me</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem 2rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #444;
-            margin-bottom: 0.5rem;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            margin: 0.5rem 0;
-        }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+    }
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+    header h1 {
+        margin: 0;
+    }
+    .container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #444;
+        margin-bottom: 0.5rem;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    ul li {
+        margin: 0.5rem 0;
+    }
+    .lang-button {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        z-index: 1000;
+        font-size: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 768px) {
         .lang-button {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-        }
-        footer {
-            text-align: center;
-            margin: 2rem 0;
             font-size: 0.9rem;
-            color: #666;
+            padding: 0.4rem 0.8rem;
+            top: 0.5rem;
+            right: 0.5rem;
         }
-        img {
-            display: block;
-            margin: 0 auto 1rem auto;
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-        }
-    </style>
-</head>
-<body>
-    <button class="lang-button">Français</button>
-
-    <header>
-        <h1>Houssem Ben Ali</h1>
-        <img src="https://avatars.githubusercontent.com/u/27370604" alt="Profile Picture">
-    </header>
-
-    <div class="container">
-        <p id="about-me">Experienced DevOps engineer and technical consultant with a strong background in cloud computing, CI/CD pipelines, and infrastructure automation. Passionate about delivering high-quality solutions, improving processes, and solving complex technical challenges.</p>
-
-        <h2 id="experience-title">Experience</h2>
-        <ul id="experience">
-            <li><strong>eXo Platform (2020 – Present):</strong> DevOps Engineer & Consultant. Managed CI/CD pipelines, cloud infrastructures, and advanced automation. Worked on hosting, software factory management, and security enhancements.</li>
-            <li><strong>eXo Platform (2018 – 2020):</strong> Technical Support Engineer. Resolved complex customer issues, developed CLI tools for internal teams, and enhanced server configurations.</li>
-            <li><strong>SW Consulting (2018):</strong> Frontend Developer. Built Angular-based applications and managed collaborative tools.</li>
-        </ul>
-
-        <h2 id="education-title">Education</h2>
-        <ul id="education">
-            <li><strong>ENISo (2015 – 2017):</strong> Master’s in Telecommunications Engineering. Specialized in IoT, security, and network administration.</li>
-            <li><strong>ISIMM (2012 – 2015):</strong> Bachelor’s in Computer Science. Focused on Java, J2EE, and clustering technologies.</li>
-        </ul>
-
-        <h2 id="skills-title">Skills</h2>
-        <ul id="skills">
-            <li><strong>Programming Languages:</strong> Python, JavaScript, Java, Bash, Ruby, Go, PHP, C++.</li>
-            <li><strong>Tools:</strong> Jenkins, Docker, Ansible, SonarQube, Grafana, Nginx, OpenSSL.</li>
-            <li><strong>Languages:</strong> Arabic (Native), French (Proficient), English (Proficient).</li>
-        </ul>
-
-        <h2 id="projects-title">Publications and Projects</h2>
-        <ul id="projects">
-            <li>Support Ticket Administration (J2EE/VueJS/AngularJS) - 2019</li>
-            <li>Basic Shell Commands for Support Team (Bash) - 2019</li>
-            <li>Android Device Port Forwarding (Bash) - 2017</li>
-            <li>3D Human Skeleton Visualization in Augmented Reality (Matlab) - 2017</li>
-            <li>Car Rental Management Application (Java/VB) - 2014</li>
-        </ul>
-    </div>
-
-    <footer>
-        &copy; 2024 Houssem Ben Ali. All rights reserved.
-    </footer>
-
-    <script>
-        const toggleLangButton = document.querySelector('.lang-button');
-        const textElements = {
-            aboutMe: {
-                en: "Experienced DevOps engineer and technical consultant with a strong background in cloud computing, CI/CD pipelines, and infrastructure automation. Passionate about delivering high-quality solutions, improving processes, and solving complex technical challenges.",
-                fr: "Ingénieur DevOps expérimenté et consultant technique avec une solide expérience en informatique en nuage, pipelines CI/CD et automatisation de l'infrastructure. Passionné par la livraison de solutions de haute qualité, l'amélioration des processus et la résolution de défis techniques complexes."
-            },
-            experienceTitle: { en: "Experience", fr: "Expérience" },
-            educationTitle: { en: "Education", fr: "Éducation" },
-            skillsTitle: { en: "Skills", fr: "Compétences" },
-            projectsTitle: { en: "Publications and Projects", fr: "Publications et Projets" },
-            buttonLabel: { en: "Français", fr: "English" }
-        };
-
-        let currentLang = "en";
-
-        toggleLangButton.addEventListener("click", () => {
-            currentLang = currentLang === "en" ? "fr" : "en";
-            document.getElementById('about-me').innerText = textElements.aboutMe[currentLang];
-            document.getElementById('experience-title').innerText = textElements.experienceTitle[currentLang];
-            document.getElementById('education-title').innerText = textElements.educationTitle[currentLang];
-            document.getElementById('skills-title').innerText = textElements.skillsTitle[currentLang];
-            document.getElementById('projects-title').innerText = textElements.projectsTitle[currentLang];
-            toggleLangButton.innerText = textElements.buttonLabel[currentLang];
-        });
-    </script>
-</body>
-</html>
+    }
+    footer {
+        text-align: center;
+        margin: 2rem 0;
+        font-size: 0.9rem;
+        color: #666;
+    }
+    img {
+        display: block;
+        margin: 0 auto 1rem auto;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+    }
+</style>
