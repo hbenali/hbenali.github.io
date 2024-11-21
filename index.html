@@ -3,189 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Houssem Ben Ali</title>
+    <title>Houssem Ben Ali - About Me</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
         }
         header {
             background-color: #333;
-            color: white;
-            padding: 20px;
+            color: #fff;
+            padding: 1rem 2rem;
             text-align: center;
         }
         header h1 {
             margin: 0;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .profile-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        .profile-info img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-        .profile-info div {
-            max-width: 800px;
-        }
-        .profile-info h2 {
-            margin: 0;
-        }
-        .section-title {
-            font-size: 1.5em;
-            color: #333;
-            margin-top: 20px;
-        }
-        .content {
-            margin-bottom: 20px;
+        h2 {
+            color: #444;
+            margin-bottom: 0.5rem;
         }
         ul {
-            list-style: none;
+            list-style-type: none;
             padding: 0;
         }
         ul li {
-            background-color: #fff;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        a {
-            color: #1e90ff;
-            text-decoration: none;
+            margin: 0.5rem 0;
         }
         .lang-button {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 1rem;
+            right: 1rem;
             background-color: #333;
-            color: white;
-            padding: 10px 20px;
+            color: #fff;
             border: none;
+            padding: 0.5rem 1rem;
             cursor: pointer;
         }
-        .lang-button:hover {
-            background-color: #555;
+        footer {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        img {
+            display: block;
+            margin: 0 auto 1rem auto;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
         }
     </style>
 </head>
 <body>
-
-    <button class="lang-button" onclick="toggleLanguage()">Français</button>
+    <button class="lang-button">Français</button>
 
     <header>
-        <h1 id="header-title">About Me</h1>
+        <h1>Houssem Ben Ali</h1>
+        <img src="https://avatars.githubusercontent.com/u/27370604" alt="Profile Picture">
     </header>
 
     <div class="container">
-        <section class="profile-info">
-            <img src="https://avatars.githubusercontent.com/u/27370604" alt="Profile Picture">
-            <div>
-                <h2 id="name-title">Houssem Ben Ali</h2>
-                <p><strong id="location-title">Location:</strong> France | <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/houssembali" target="_blank">houssembali</a> | <strong>GitHub:</strong> <a href="https://github.com/hbenali" target="_blank">hbenali</a></p>
-            </div>
-        </section>
+        <p id="about-me">Experienced DevOps engineer and technical consultant with a strong background in cloud computing, CI/CD pipelines, and infrastructure automation. Passionate about delivering high-quality solutions, improving processes, and solving complex technical challenges.</p>
 
-        <section class="about">
-            <div class="section-title" id="about-title">About Me</div>
-            <p id="about-text">Experienced DevOps engineer and technical consultant with a strong background in cloud computing, CI/CD pipelines, and infrastructure automation. Passionate about delivering high-quality solutions, improving processes, and solving complex technical challenges.</p>
-        </section>
+        <h2 id="experience-title">Experience</h2>
+        <ul id="experience">
+            <li><strong>eXo Platform (2020 – Present):</strong> DevOps Engineer & Consultant. Managed CI/CD pipelines, cloud infrastructures, and advanced automation. Worked on hosting, software factory management, and security enhancements.</li>
+            <li><strong>eXo Platform (2018 – 2020):</strong> Technical Support Engineer. Resolved complex customer issues, developed CLI tools for internal teams, and enhanced server configurations.</li>
+            <li><strong>SW Consulting (2018):</strong> Frontend Developer. Built Angular-based applications and managed collaborative tools.</li>
+        </ul>
 
-        <section class="experience">
-            <div class="section-title" id="experience-title">Experience</div>
-            <ul>
-                <li>
-                    <strong>DevOps Engineer</strong> - eXo Platform (Mar 2020 – Present)  
-                    <p>Lead the management of Jenkins CI/CD pipelines, cloud infrastructure, and software factory. Integrated GitHub Actions, Docker, and Nexus for seamless automation. Addressed security and system vulnerabilities using CodeQL, SonarCloud, and Fortify. Designed custom Docker images and optimized CI/CD workflows for mobile apps. Configured and maintained cloud infrastructure across multiple providers (Google Cloud, OVH), and supported continuous delivery.</p>
-                </li>
-                <li>
-                    <strong>Technical Support Engineer</strong> - eXo Platform (Dec 2018 – Feb 2020)  
-                    <p>Provided comprehensive technical support to clients, troubleshooting issues with Tomcat, JBoss, MySQL, and other key systems. Developed custom tools to speed up problem resolution and worked with clients to configure systems according to their needs.</p>
-                </li>
-                <li>
-                    <strong>Frontend Developer</strong> - SW Consulting (Jan 2018 – Dec 2018)  
-                    <p>Created Angular-based frontend components for a forum application, implementing various design patterns and working closely with the backend to ensure smooth functionality. Managed code through GitLab and followed best practices in version control.</p>
-                </li>
-                <li>
-                    <strong>Software Engineer Intern</strong> - Various Projects (2014 – 2017)  
-                    <p>Worked on various academic and professional projects, including a car rental management system and a 3D human skeleton representation using augmented reality. Contributed to mobile application development (IBM MobileFirst) and validated clustering algorithms for data exploration.</p>
-                </li>
-            </ul>
-        </section>
+        <h2 id="education-title">Education</h2>
+        <ul id="education">
+            <li><strong>ENISo (2015 – 2017):</strong> Master’s in Telecommunications Engineering. Specialized in IoT, security, and network administration.</li>
+            <li><strong>ISIMM (2012 – 2015):</strong> Bachelor’s in Computer Science. Focused on Java, J2EE, and clustering technologies.</li>
+        </ul>
 
-        <section class="education">
-            <div class="section-title" id="education-title">Education</div>
-            <ul>
-                <li>
-                    <strong>Master in Telecommunications Engineering</strong> - Ecole Nationale d’Ingénieurs de Sousse (Oct 2015 – Oct 2017)  
-                    <p>Focused on IoT, algorithms, database systems, and network security. Research: 3D human body skeleton representation using augmented reality.</p>
-                </li>
-                <li>
-                    <strong>Bachelor's in Computer Science</strong> - Institut Supérieur d’Informatique et de Mathématiques de Monastir (Sept 2012 – May 2015)  
-                    <p>Studied IoT, algorithms, network administration, and security. Research: Hierarchical clustering validation for data exploration applications.</p>
-                </li>
-            </ul>
-        </section>
+        <h2 id="skills-title">Skills</h2>
+        <ul id="skills">
+            <li><strong>Programming Languages:</strong> Python, JavaScript, Java, Bash, Ruby, Go, PHP, C++.</li>
+            <li><strong>Tools:</strong> Jenkins, Docker, Ansible, SonarQube, Grafana, Nginx, OpenSSL.</li>
+            <li><strong>Languages:</strong> Arabic (Native), French (Proficient), English (Proficient).</li>
+        </ul>
 
-        <section class="skills">
-            <div class="section-title" id="skills-title">Skills</div>
-            <ul>
-                <li><strong>Programming Languages:</strong> Python, JavaScript (React.js), HTML/CSS, SQL, Ruby, Go, PHP, Java, Bash, Groovy, C++</li>
-                <li><strong>Tools:</strong> Jenkins, GitHub, GitLab, Grafana, Docker, SonarQube, Nexus, Fastlane, JIRA, Tomcat, Elasticsearch, MongoDB, Keycloak, OpenSSL, Wireguard, etc.</li>
-                <li><strong>Languages:</strong> Arabic (Bilingual), French (Good), English (Good)</li>
-            </ul>
-        </section>
-
-        <section class="projects">
-            <div class="section-title" id="projects-title">Publications et Projets</div>
-            <ul>
-                <li>Administration of support tickets (J2EE/VueJs/AngularJs) - 2019</li>
-                <li>Port Forwarding for Android Devices (Bash) - 2017</li>
-                <li>Tourism Mobile App (IBM MobileFirst) - 2017</li>
-                <li>3D Human Body Skeleton Representation (Augmented Reality) - 2017</li>
-            </ul>
-        </section>
-
+        <h2 id="projects-title">Publications and Projects</h2>
+        <ul id="projects">
+            <li>Support Ticket Administration (J2EE/VueJS/AngularJS) - 2019</li>
+            <li>Basic Shell Commands for Support Team (Bash) - 2019</li>
+            <li>Android Device Port Forwarding (Bash) - 2017</li>
+            <li>3D Human Skeleton Visualization in Augmented Reality (Matlab) - 2017</li>
+            <li>Car Rental Management Application (Java/VB) - 2014</li>
+        </ul>
     </div>
 
     <footer>
-        <p>&copy; 2024 Houssem Ben Ali. All rights reserved.</p>
+        &copy; 2024 Houssem Ben Ali. All rights reserved.
     </footer>
 
     <script>
-        function toggleLanguage() {
-            var lang = document.documentElement.lang;
-            if (lang === 'en') {
-                document.documentElement.lang = 'fr';
-                document.getElementById('header-title').innerText = 'À propos de moi';
-                document.getElementById('about-title').innerText = 'À propos de moi';
-                document.getElementById('about-text').innerText = "Ingénieur DevOps expérimenté et consultant technique avec une solide expérience en informatique en nuage, pipelines CI/CD et automatisation de l'infrastructure. Passionné par la fourniture de solutions de haute qualité, l'amélioration des processus et la résolution de défis techniques complexes.";
-                document.getElementById('experience-title').innerText = 'Expérience';
-                document.getElementById('education-title').innerText = 'Éducation';
-                document.getElementById('skills-title').innerText = 'Compétences';
-                document.getElementById('projects-title').innerText = 'Publications et Projets';
-                document.querySelector('.lang-button').innerText = 'English';
-            } else {
-                document.documentElement.lang = 'en';
-                document.getElementById('header-title').innerText = 'About Me';
-                document
+        const toggleLangButton = document.querySelector('.lang-button');
+        const textElements = {
+            aboutMe: {
+                en: "Experienced DevOps engineer and technical consultant with a strong background in cloud computing, CI/CD pipelines, and infrastructure automation. Passionate about delivering high-quality solutions, improving processes, and solving complex technical challenges.",
+                fr: "Ingénieur DevOps expérimenté et consultant technique avec une solide expérience en informatique en nuage, pipelines CI/CD et automatisation de l'infrastructure. Passionné par la livraison de solutions de haute qualité, l'amélioration des processus et la résolution de défis techniques complexes."
+            },
+            experienceTitle: { en: "Experience", fr: "Expérience" },
+            educationTitle: { en: "Education", fr: "Éducation" },
+            skillsTitle: { en: "Skills", fr: "Compétences" },
+            projectsTitle: { en: "Publications and Projects", fr: "Publications et Projets" },
+            buttonLabel: { en: "Français", fr: "English" }
+        };
+
+        let currentLang = "en";
+
+        toggleLangButton.addEventListener("click", () => {
+            currentLang = currentLang === "en" ? "fr" : "en";
+            document.getElementById('about-me').innerText = textElements.aboutMe[currentLang];
+            document.getElementById('experience-title').innerText = textElements.experienceTitle[currentLang];
+            document.getElementById('education-title').innerText = textElements.educationTitle[currentLang];
+            document.getElementById('skills-title').innerText = textElements.skillsTitle[currentLang];
+            document.getElementById('projects-title').innerText = textElements.projectsTitle[currentLang];
+            toggleLangButton.innerText = textElements.buttonLabel[currentLang];
+        });
+    </script>
+</body>
+</html>
