@@ -3,177 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Houssem Ben Ali - Portfolio</title>
+    <title>Houssem Ben Ali - CV</title>
     <style>
+        /* General Styling */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #333;
+            font-family: 'Roboto', sans-serif;
             color: #fff;
-            padding: 1rem 2rem;
+            background-color: #121212;
+        }
+        a {
+            color: #03a9f4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        /* Header */
+        header {
             text-align: center;
+            margin-bottom: 40px;
+        }
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #03a9f4;
         }
         header h1 {
-            margin: 0;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 20px 0 10px;
         }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        header p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #bbb;
         }
-        h2 {
-            color: #444;
-            margin-bottom: 0.5rem;
+        /* Sections */
+        section {
+            margin-bottom: 40px;
         }
-        ul {
+        section h2 {
+            font-size: 24px;
+            border-bottom: 2px solid #03a9f4;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        section ul {
             list-style-type: none;
             padding: 0;
         }
-        ul li {
-            margin: 0.5rem 0;
+        section ul li {
+            margin-bottom: 15px;
         }
-        .lang-button {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-            z-index: 1000;
-            font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        @media (max-width: 768px) {
-            .lang-button {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-                top: 0.5rem;
-                right: 0.5rem;
-            }
-        }
-        footer {
-            text-align: center;
-            margin: 2rem 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        img {
-            display: block;
-            margin: 0 auto 1rem auto;
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
+        section ul li strong {
+            color: #03a9f4;
         }
     </style>
 </head>
 <body>
-    <button class="lang-button" id="toggle-lang">Français</button>
-    <header>
-        <h1 id="name">Houssem Ben Ali</h1>
-    </header>
     <div class="container">
-        <img src="https://avatars.githubusercontent.com/u/27370604" alt="Profile Picture">
-        <h2 id="about-title">About Me</h2>
-        <p id="about-text">
-            Experienced DevOps Engineer specializing in software factory automation, cloud hosting, and security operations.
-        </p>
-        <h2 id="experience-title">Experience</h2>
-        <ul id="experience-list">
-            <li>
-                <strong>eXo Platform</strong> (Mar. 2020 – Present):
-                <ul>
-                    <li><strong>Software Factory:</strong> Managed Jenkins (seed jobs using Groovy DSL, pipelines, workspace cleanup), upgraded tools like Nexus, Grafana, and SonarQube, and built CI/CD integrations with GitHub Actions.</li>
-                    <li><strong>Hosting:</strong> Provisioned instances on GCP and OVH using Puppet, resolved incidents (disk, memory, Docker daemon), and optimized application and system configurations.</li>
-                    <li><strong>Release Management:</strong> Conducted product releases, improved staging processes in Nexus, and deployed signed Docker images to DockerHub and GitHub.</li>
-                    <li><strong>Translation Management:</strong> Integrated i18n Crowdin projects using Maven plugins, enhancing translation workflows.</li>
-                    <li><strong>Technical Support:</strong> Assisted developers with Docker image creation, Git conflict resolution, and repository management.</li>
-                </ul>
-            </li>
-            <li>
-                <strong>eXo Platform</strong> (Dec. 2018 – Feb. 2020):
-                <ul>
-                    <li><strong>Technical Support Engineer:</strong> Resolved client technical issues, including Tomcat configuration and encoding problems, and built CLI tools to streamline team workflows.</li>
-                </ul>
-            </li>
-            <li>
-                <strong>SW Consulting</strong> (Jan. 2018 – Dec. 2018):
-                <ul>
-                    <li><strong>Frontend Developer:</strong> Developed Angular 4 components for a forum application, utilizing CSS, SCSS, and GitLab for SCM.</li>
-                </ul>
-            </li>
-        </ul>
-        <h2 id="projects-title">Projects & Publications</h2>
-        <ul id="projects-list">
-            <li><strong>Port Forwarding for Android Devices (Bash):</strong> Automated port forwarding to enable development on physical Android devices.</li>
-            <li><strong>Developer Toolkits:</strong> Authored Bash scripts for containerized environments to simplify developer workflows.</li>
-        </ul>
-        <h2 id="education-title">Education</h2>
-        <ul id="education-list">
-            <li>
-                <strong>Bachelor of Science in Computer Science</strong> - National Institute of Applied Science and Technology, Tunisia
-            </li>
-        </ul>
-        <h2 id="skills-title">Skills</h2>
-        <ul id="skills-list">
-            <li>DevOps Tools: Jenkins, Docker, Kubernetes, Puppet</li>
-            <li>Programming Languages: Bash, Python, Java</li>
-            <li>Cloud Platforms: GCP, OVH</li>
-            <li>Version Control: Git, GitHub, GitLab</li>
-        </ul>
+        <header>
+            <img src="https://avatars.githubusercontent.com/u/27370604?v=4" alt="Houssem Ben Ali">
+            <h1>Houssem Ben Ali</h1>
+            <p>Email: <a href="mailto:contact@hbenali.ovh">contact@hbenali.ovh</a> | 
+               <a href="https://linkedin.com/in/houssembali" target="_blank">LinkedIn</a> | 
+               <a href="https://github.com/hbenali" target="_blank">GitHub</a><br>France</p>
+        </header>
+
+        <section>
+            <h2>Experience</h2>
+            <ul>
+                <li><strong>DevOps Engineer - eXo Platform (2020 – Present):</strong> Managed CI/CD pipelines, integrated security tools, customized Docker images, optimized cloud infrastructure.</li>
+                <li><strong>Support Engineer - eXo Platform (2018 – 2020):</strong> Resolved client issues, enhanced automation tools, and contributed to product development.</li>
+                <li><strong>Frontend Developer - SW Consulting (2018):</strong> Built Angular-based web interfaces and collaborated on software delivery pipelines.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Projects & Publications</h2>
+            <ul>
+                <li>Support Ticket Management App (J2EE/VueJS/AngularJS)</li>
+                <li>Mobile Tourism Application (IBM MobileFirst)</li>
+                <li>3D Human Body Representation in Augmented Reality (Matlab)</li>
+                <li>Collaborative Website with vBulletin Integration (PHP)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <ul>
+                <li><strong>IBM MobileFirst:</strong> Mobile Application Developer - 2017</li>
+                <li><strong>ENISo:</strong> IPv6 Certification - 2015</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <ul>
+                <li><strong>Master in Telecommunications Engineering</strong> (ENISo, Tunisia, 2015–2017)</li>
+                <li><strong>Bachelor's in Computer Science</strong> (ISIMM, Tunisia, 2012–2015)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li><strong>Languages:</strong> Python, JavaScript, Java, Bash, Groovy</li>
+                <li><strong>Frameworks:</strong> Angular, Vue.js, React</li>
+                <li><strong>Tools:</strong> Jenkins, GitHub Actions, Docker, Ansible, Grafana</li>
+                <li><strong>Languages Spoken:</strong> Arabic (Fluent), French (Proficient), English (Proficient)</li>
+            </ul>
+        </section>
     </div>
-    <footer>
-        &copy; 2024 Houssem Ben Ali. All rights reserved. | <a href="mailto:contact@hbenali.ovh">contact@hbenali.ovh</a>
-    </footer>
-    <script>
-        const toggleButton = document.getElementById('toggle-lang');
-        const elements = {
-            "en": {
-                "name": "Houssem Ben Ali",
-                "about-title": "About Me",
-                "about-text": "Experienced DevOps Engineer specializing in software factory automation, cloud hosting, and security operations.",
-                "experience-title": "Experience",
-                "projects-title": "Projects & Publications",
-                "education-title": "Education",
-                "skills-title": "Skills"
-            },
-            "fr": {
-                "name": "Houssem Ben Ali",
-                "about-title": "À propos de moi",
-                "about-text": "Ingénieur DevOps expérimenté spécialisé dans l'automatisation des usines logicielles, l'hébergement cloud et les opérations de sécurité.",
-                "experience-title": "Expérience",
-                "projects-title": "Projets et Publications",
-                "education-title": "Éducation",
-                "skills-title": "Compétences"
-            }
-        };
-
-        let currentLang = "en";
-        toggleButton.addEventListener('click', () => {
-            currentLang = currentLang === "en" ? "fr" : "en";
-            toggleButton.textContent = currentLang === "en" ? "Français" : "English";
-
-            for (const [id, content] of Object.entries(elements[currentLang])) {
-                document.getElementById(id).textContent = content;
-            }
-        });
-    </script>
 </body>
 </html>
