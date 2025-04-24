@@ -246,6 +246,29 @@
             margin-bottom: 1rem;
             font-size: 1.1rem;
         }
+
+        .github-chart {
+            width: 100%;
+            max-width: 800px;
+            margin: 1.5rem auto;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .github-chart img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .github-chart p {
+            text-align: center;
+            margin-top: 0.5rem;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -290,6 +313,19 @@
                 </a>
             </div>
         </header>
+
+        <section id="github-chart-banner-en">
+            <div class="github-chart">
+                <img src="https://ghchart.rshah.org/hbenali" alt="Houssem's GitHub Contributions" />
+                <p>My GitHub contributions over the last year</p>
+            </div>
+        </section>
+        <section id="github-chart-banner-fr" class="hidden">
+            <div class="github-chart">
+                <img src="https://ghchart.rshah.org/hbenali" alt="Contributions GitHub de Houssem" />
+                <p>Mes contributions GitHub au cours de la dernière année</p>
+            </div>
+        </section>
 
         <section id="experience-en">
             <h2>Experience</h2>
