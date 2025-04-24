@@ -255,20 +255,26 @@
             margin-bottom: 1rem;
             font-size: 1.1rem;
         }
-
-        .github-chart {
+        .github-chart-container {
             width: 100%;
-            max-width: 800px;
-            margin: 1.5rem auto;
-            padding: 1rem;
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            padding: 0.5rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .github-chart {
+            min-width: 660px; /* Minimum width of the chart image */
+            width: 100%;
+            text-align: center;
         }
         
         .github-chart img {
-            width: 100%;
-            height: auto;
+            height: 128px; /* Fixed height for better consistency */
+            width: auto;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
             border-radius: 4px;
         }
         
@@ -278,6 +284,13 @@
             color: var(--secondary);
             font-size: 0.9rem;
         }
+        
+        /* Hide horizontal scrollbar while keeping functionality */
+        .github-chart-container::-webkit-scrollbar {
+            height: 0;
+            background: transparent;
+        }
+
     </style>
 </head>
 
@@ -324,15 +337,21 @@
         </header>
 
         <section id="github-chart-banner-en">
-            <div class="github-chart">
-                <img src="https://ghchart.rshah.org/hbenali" alt="Houssem's GitHub Contributions" />
-                <p>My GitHub contributions over the last year</p>
+            <div class="github-chart-container">
+                <div class="github-chart">
+                    <img src="https://ghchart.rshah.org/hbenali" alt="Hbenali's GitHub Contributions" 
+                         onerror="this.onerror=null; this.src='https://ghchart.rshah.org/4082C6/hbenali'" />
+                    <p>My GitHub contributions over the last year</p>
+                </div>
             </div>
         </section>
         <section id="github-chart-banner-fr" class="hidden">
-            <div class="github-chart">
-                <img src="https://ghchart.rshah.org/hbenali" alt="Contributions GitHub de Houssem" />
-                <p>Mes contributions GitHub au cours de la dernière année</p>
+            <div class="github-chart-container">
+                <div class="github-chart">
+                    <img src="https://ghchart.rshah.org/hbenali" alt="Hbenali's GitHub Contributions" 
+                         onerror="this.onerror=null; this.src='https://ghchart.rshah.org/4082C6/hbenali'" />
+                    <p>Mes contributions GitHub au cours de l'année dernière</p>
+                </div>
             </div>
         </section>
 
