@@ -1,128 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Houssem Ben Ali - CV</title>
+    <title>Houssem Ben Ali - DevOps Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* General Styling */
+        :root {
+            --primary: #2d3748;
+            --secondary: #4a5568;
+            --accent: #4299e1;
+            --light: #f7fafc;
+            --dark: #1a202c;
+            --gray: #e2e8f0;
+            --bg: white;
+            --text: var(--dark);
+            --card-bg: white;
+        }
+
+        [data-theme="dark"] {
+            --primary: #ebf4ff;
+            --secondary: #cbd5e0;
+            --accent: #63b3ed;
+            --light: #1a202c;
+            --dark: #f7fafc;
+            --gray: #4a5568;
+            --bg: #1a202c;
+            --text: #f7fafc;
+            --card-bg: #2d3748;
+        }
+
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
             margin: 0;
-            font-family: 'Roboto', sans-serif;
-            color: #fff;
-            background-color: #121212;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
         }
-        a {
-            color: #03a9f4;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        /* Container */
+
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 2rem;
+            background: var(--card-bg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
-        /* Header */
+
         header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray);
         }
-        header img {
+
+        .profile {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: 3px solid #03a9f4;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            margin-bottom: 1rem;
         }
-        header h1 {
-            font-size: 36px;
-            font-weight: 700;
-            margin: 20px 0 10px;
+
+        h1 {
+            color: var(--primary);
+            margin: 0.5rem 0;
+            font-size: 2.5rem;
         }
-        header p {
-            font-size: 18px;
-            line-height: 1.5;
-            color: #bbb;
+
+        .title {
+            color: var(--secondary);
+            font-weight: 400;
+            margin-bottom: 1rem;
         }
-        /* Sections */
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
         section {
-            margin-bottom: 40px;
+            margin-bottom: 2rem;
         }
-        section h2 {
-            font-size: 24px;
-            border-bottom: 2px solid #03a9f4;
-            display: inline-block;
-            margin-bottom: 20px;
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .job {
+            margin-bottom: 2rem;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
             font-weight: 600;
+            color: var(--primary);
         }
-        section ul {
-            list-style-type: none;
+
+        .job-date {
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .skills-list {
+            list-style: none;
             padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
-        section ul li {
-            margin-bottom: 15px;
+
+        .skill-tag {
+            background-color: var(--gray);
+            color: var(--text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
-        section ul li strong {
-            color: #03a9f4;
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
+
+            .job-date {
+                margin-top: 0.3rem;
+            }
+
+            .theme-toggle,
+            .lang-switcher {
+                top: 10px;
+            }
+
+            .lang-switcher {
+                top: 60px;
+            }
         }
     </style>
 </head>
+
 <body>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <button class="lang-switcher" aria-label="Switch language">FR</button>
+
     <div class="container">
         <header>
-            <img src="https://avatars.githubusercontent.com/u/27370604?v=4" alt="Houssem Ben Ali">
+            <img src="https://github.com/hbenali.png" alt="Houssem Ben Ali" class="profile">
             <h1>Houssem Ben Ali</h1>
-            <p>Email: <a href="mailto:contact@hbenali.ovh">contact@hbenali.ovh</a> | 
-               <a href="https://linkedin.com/in/houssembali" target="_blank">LinkedIn</a> | 
-               <a href="https://github.com/hbenali" target="_blank">GitHub</a><br>France</p>
+            <p class="title">DevOps Engineer</p>
+            <div class="social-links">
+                <a href="https://github.com/hbenali" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
         </header>
 
-        <section>
+        <section id="experience-en">
             <h2>Experience</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>eXo Platform</h3>
+                </div>
+                <p class="job-title">DevOps Engineer</p>
+                <ul>
+                    <li>Managed Jenkins (DSL/Groovy), Nexus, Grafana, Sonarqube; implemented CI/CD pipelines</li>
+                    <li>Security scanning with CodeQL/SonarCloud/Fortify; mobile app CI/CD with Fastlane/GitHub Actions
+                    </li>
+                    <li>Cloud instance management (Google Cloud, OVH) with Puppet; troubleshooting; system improvements
+                    </li>
+                    <li>Product release coordination; Maven dependency management; Docker image publishing</li>
+                    <li>Bare-metal server configuration; LVM partitioning; security hardening (SSL/DNS/SMTP)</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>eXo Platform</h3>
+                </div>
+                <p class="job-title">Support Engineer</p>
+                <ul>
+                    <li>Technical issue resolution for clients (Tomcat/JBoss configuration, JMX, databases)</li>
+                    <li>Support tool development (CLI tools, REST APIs)</li>
+                    <li>Security testing with Acunetix, Nessus</li>
+                    <li>J2EE development for support ticket system</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>SW Consulting</h3>
+                </div>
+                <p class="job-title">Frontend Developer</p>
+                <ul>
+                    <li>Angular 4 forum application development</li>
+                    <li>Component creation with Angular, CSS/SCSS</li>
+                    <li>GitLab for project management</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="experience-fr" class="hidden">
+            <h2>Expérience Professionnelle</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>eXo Platform</h3>
+                </div>
+                <p class="job-title">Ingénieur DevOps</p>
+                <ul>
+                    <li>Gestion de Jenkins (DSL/Groovy), Nexus, Grafana, Sonarqube ; mise en place de pipelines CI/CD
+                    </li>
+                    <li>Analyse de sécurité avec CodeQL/SonarCloud/Fortify ; CI/CD pour applications mobiles avec
+                        Fastlane/GitHub Actions</li>
+                    <li>Gestion d'instances cloud (Google Cloud, OVH) avec Puppet ; dépannage ; améliorations système
+                    </li>
+                    <li>Coordination des releases produits ; gestion des dépendances Maven ; publication d'images Docker
+                    </li>
+                    <li>Configuration de serveurs bare-metal ; partitionnement LVM ; renforcement de sécurité
+                        (SSL/DNS/SMTP)</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>eXo Platform</h3>
+                </div>
+                <p class="job-title">Ingénieur Support</p>
+                <ul>
+                    <li>Résolution de problèmes techniques pour clients (configuration Tomcat/JBoss, JMX, bases de
+                        données)</li>
+                    <li>Développement d'outils de support (outils CLI, APIs REST)</li>
+                    <li>Tests de sécurité avec Acunetix, Nessus</li>
+                    <li>Développement J2EE pour le système de tickets de support</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>SW Consulting</h3>
+                </div>
+                <p class="job-title">Développeur Frontend</p>
+                <ul>
+                    <li>Développement d'une application forum en Angular 4</li>
+                    <li>Création de composants avec Angular, CSS/SCSS</li>
+                    <li>Gestion de projet avec GitLab</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects-en">
+            <h2>Projects</h2>
             <ul>
-                <li><strong>DevOps Engineer - eXo Platform (2020 – Present):</strong> Managed CI/CD pipelines, integrated security tools, customized Docker images, optimized cloud infrastructure.</li>
-                <li><strong>Support Engineer - eXo Platform (2018 – 2020):</strong> Resolved client issues, enhanced automation tools, and contributed to product development.</li>
-                <li><strong>Frontend Developer - SW Consulting (2018):</strong> Built Angular-based web interfaces and collaborated on software delivery pipelines.</li>
+                <li>Android port forwarding tool (Bash) - 2017</li>
+                <li>Tourism mobile app (IBM MobileFirst) - 2017</li>
+                <li>3D human skeleton AR representation (Matlab) - 2017</li>
+                <li>Data mining clustering validation (Java/R) - 2015</li>
+                <li>Car rental management system (Java/VB) - 2014</li>
             </ul>
         </section>
 
-        <section>
-            <h2>Projects & Publications</h2>
+        <section id="projects-fr" class="hidden">
+            <h2>Projets</h2>
             <ul>
-                <li>Support Ticket Management App (J2EE/VueJS/AngularJS)</li>
-                <li>Mobile Tourism Application (IBM MobileFirst)</li>
-                <li>3D Human Body Representation in Augmented Reality (Matlab)</li>
-                <li>Collaborative Website with vBulletin Integration (PHP)</li>
+                <li>Outil de redirection de ports Android (Bash) - 2017</li>
+                <li>Application mobile de tourisme (IBM MobileFirst) - 2017</li>
+                <li>Représentation 3D de squelette humain en RA (Matlab) - 2017</li>
+                <li>Validation de clustering pour data mining (Java/R) - 2015</li>
+                <li>Système de gestion de location de voitures (Java/VB) - 2014</li>
             </ul>
         </section>
 
-        <section>
-            <h2>Certifications</h2>
-            <ul>
-                <li><strong>IBM MobileFirst:</strong> Mobile Application Developer - 2017</li>
-                <li><strong>ENISo:</strong> IPv6 Certification - 2015</li>
-            </ul>
-        </section>
-
-        <section>
+        <section id="education-en">
             <h2>Education</h2>
-            <ul>
-                <li><strong>Master in Telecommunications Engineering</strong> (ENISo, Tunisia, 2015–2017)</li>
-                <li><strong>Bachelor's in Computer Science</strong> (ISIMM, Tunisia, 2012–2015)</li>
-            </ul>
+            <div class="job">
+                <div class="job-header">
+                    <h3>National Engineering School of Sousse (ENISO)</h3>
+                </div>
+                <p class="job-title">Masters in Telecommunications Engineering</p>
+                <ul>
+                    <li>Courses: IoT, Algorithms, Databases, Network Security, Linux Administration</li>
+                    <li>Research: 3D human skeleton representation using AR</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Higher Institute of Computer Science and Mathematics of Monastir (ISIMM)</h3>
+                </div>
+                <p class="job-title">Bachelor's in Computer Science</p>
+                <ul>
+                    <li>Courses: Java/J2EE, Network Administration, Oracle, Linux</li>
+                    <li>Research: Hierarchical clustering validation for data mining</li>
+                </ul>
+            </div>
         </section>
 
-        <section>
+        <section id="education-fr" class="hidden">
+            <h2>Formation</h2>
+            <div class="job">
+                <div class="job-header">
+                    <h3>École Nationale d'Ingénieurs de Sousse (ENISO)</h3>
+                </div>
+                <p class="job-title">Master en Génie des Télécommunications</p>
+                <ul>
+                    <li>Cours : IoT, Algorithmes, Bases de données, Sécurité réseau, Administration Linux</li>
+                    <li>Recherche : Représentation 3D de squelette humain en réalité augmentée</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Institut Supérieur d'Informatique et de Mathématiques de Monastir (ISIMM)</h3>
+                </div>
+                <p class="job-title">Licence en Informatique</p>
+                <ul>
+                    <li>Cours : Java/J2EE, Administration réseau, Oracle, Linux</li>
+                    <li>Recherche : Validation de clustering hiérarchique pour data mining</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills-en">
             <h2>Skills</h2>
-            <ul>
-                <li><strong>Languages:</strong> Python, JavaScript, Java, Bash, Groovy</li>
-                <li><strong>Frameworks:</strong> Angular, Vue.js, React</li>
-                <li><strong>Tools:</strong> Jenkins, GitHub Actions, Docker, Ansible, Grafana</li>
-                <li><strong>Languages Spoken:</strong> Arabic (Fluent), French (Proficient), English (Proficient)</li>
-            </ul>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Arabic (Native)</li>
+                        <li class="skill-tag">French (Fluent)</li>
+                        <li class="skill-tag">English (Fluent)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Python</li>
+                        <li class="skill-tag">JavaScript</li>
+                        <li class="skill-tag">Java</li>
+                        <li class="skill-tag">Bash</li>
+                        <li class="skill-tag">Groovy</li>
+                        <li class="skill-tag">Go</li>
+                        <li class="skill-tag">SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Docker</li>
+                        <li class="skill-tag">Kubernetes</li>
+                        <li class="skill-tag">Jenkins</li>
+                        <li class="skill-tag">Git</li>
+                        <li class="skill-tag">Ansible</li>
+                        <li class="skill-tag">Puppet</li>
+                        <li class="skill-tag">Terraform</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">AWS</li>
+                        <li class="skill-tag">Google Cloud</li>
+                        <li class="skill-tag">CI/CD</li>
+                        <li class="skill-tag">Infrastructure as Code</li>
+                        <li class="skill-tag">Monitoring</li>
+                        <li class="skill-tag">Security</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills-fr" class="hidden">
+            <h2>Compétences</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Langues</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Arabe (Langue maternelle)</li>
+                        <li class="skill-tag">Français (Courant)</li>
+                        <li class="skill-tag">Anglais (Courant)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programmation</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Python</li>
+                        <li class="skill-tag">JavaScript</li>
+                        <li class="skill-tag">Java</li>
+                        <li class="skill-tag">Bash</li>
+                        <li class="skill-tag">Groovy</li>
+                        <li class="skill-tag">Go</li>
+                        <li class="skill-tag">SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Outils & Technologies</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Docker</li>
+                        <li class="skill-tag">Kubernetes</li>
+                        <li class="skill-tag">Jenkins</li>
+                        <li class="skill-tag">Git</li>
+                        <li class="skill-tag">Ansible</li>
+                        <li class="skill-tag">Puppet</li>
+                        <li class="skill-tag">Terraform</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">AWS</li>
+                        <li class="skill-tag">Google Cloud</li>
+                        <li class="skill-tag">CI/CD</li>
+                        <li class="skill-tag">Infrastructure as Code</li>
+                        <li class="skill-tag">Monitoring</li>
+                        <li class="skill-tag">Sécurité</li>
+                    </ul>
+                </div>
+            </div>
         </section>
     </div>
+
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+
+            if (isDark) {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // Language switcher
+        const langSwitcher = document.querySelector('.lang-switcher');
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+
+            // Hide all language sections
+            document.querySelectorAll('[id$="-en"], [id$="-fr"]').forEach(el => {
+                el.classList.add('hidden');
+            });
+
+            // Show current language sections
+            document.querySelectorAll(`[id$="-${lang}"]`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+
+            // Update button text
+            langSwitcher.textContent = lang === 'en' ? 'FR' : 'EN';
+        }
+
+        // Initialize language
+        setLanguage(currentLang);
+
+        langSwitcher.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'fr' : 'en';
+            setLanguage(newLang);
+        });
+    </script>
 </body>
+
 </html>
