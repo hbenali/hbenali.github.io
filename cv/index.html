@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const lang = params.get('lang');
+            if (lang === 'en') {
+                window.location.href = 'https://drive.google.com/file/d/1RthO2dV3IECCtpD2VRrlRqJq57uIg6ct/view';
+            } else if (lang === 'fr') {
+                window.location.href = 'https://drive.google.com/file/d/1YajCVlwa7x15RBeFI2UAK61RhEy6ITZP/view';
+            } else {
+                window.location.href = '/';
+            }
+        })();
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
