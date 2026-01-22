@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Houssem Ben Ali - DevOps Engineer</title>
-    
+
     <!-- Favicon Section -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -15,12 +14,23 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Houssem Ben Ali - DevOps Engineer specializing in CI/CD, Cloud Infrastructure, Kubernetes, and Security. Based in Tunisia/France.">
+    <meta name="keywords" content="DevOps, Cloud, Kubernetes, Docker, Jenkins, CI/CD, Infrastructure, Security">
+    <meta name="author" content="Houssem Ben Ali">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Houssem Ben Ali - DevOps Engineer">
+    <meta property="og:description" content="DevOps Engineer specializing in CI/CD, Cloud Infrastructure, and Security">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hbenali.ovh">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --primary: #0f172a;
@@ -30,6 +40,9 @@
             --accent-dark: #2563eb;
             --success: #10b981;
             --warning: #f59e0b;
+            --danger: #ef4444;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
             --light: #f8fafc;
             --dark: #0f172a;
             --gray-50: #f8fafc;
@@ -179,18 +192,87 @@
             color: white;
         }
 
+        .scroll-top {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-secondary);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--card-border);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        [data-theme="dark"] .scroll-top {
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.1);
+            background: var(--accent);
+            color: white;
+        }
+
         /* Main Container */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-pill {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-pill:hover, .nav-pill.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .nav-pill i {
+            font-size: 0.75rem;
         }
 
         /* Header */
         header {
             text-align: center;
             padding: 4rem 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             background: var(--card-bg);
             border-radius: var(--radius-xl);
             border: 1px solid var(--card-border);
@@ -206,7 +288,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), var(--success));
         }
 
         .profile-container {
@@ -216,8 +298,8 @@
         }
 
         .profile {
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid transparent;
@@ -235,23 +317,23 @@
             position: absolute;
             bottom: 8px;
             right: 8px;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             background: var(--success);
-            border: 3px solid var(--card-bg);
+            border: 4px solid var(--card-bg);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--text), var(--text-secondary));
+            background: linear-gradient(135deg, var(--text), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -260,7 +342,7 @@
         }
 
         .title {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             color: var(--accent);
             font-weight: 600;
             margin-bottom: 1rem;
@@ -297,6 +379,33 @@
             height: 4px;
             background: var(--gray-400);
             border-radius: 50%;
+        }
+
+        /* Experience Stats */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         /* Contact Banner */
@@ -353,6 +462,10 @@
             transform: translateY(-4px);
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
+
+        .social-links a.github:hover { background: #333; }
+        .social-links a.linkedin:hover { background: #0077b5; }
+        .social-links a.email:hover { background: var(--success); }
 
         /* GitHub Chart */
         .github-chart-container {
@@ -426,7 +539,7 @@
         .job {
             position: relative;
             padding-left: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             border-left: 2px solid var(--gray-200);
         }
 
@@ -437,24 +550,126 @@
         .job::before {
             content: '';
             position: absolute;
-            left: -6px;
+            left: -7px;
             top: 0;
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             background: var(--accent);
             border-radius: 50%;
-            border: 2px solid var(--card-bg);
+            border: 3px solid var(--card-bg);
+            box-shadow: 0 0 0 2px var(--accent);
         }
 
         .job:last-child {
             margin-bottom: 0;
         }
 
+        .job-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .job-date {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+        }
+
+        .job-location {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
         .job-title {
             color: var(--accent);
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Role Sections */
+        .role-section {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .role-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .role-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             margin-bottom: 0.75rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .role-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .role-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            flex: 1;
+        }
+
+        .role-toggle {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .role-section.collapsed .role-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .role-section.collapsed .role-content {
+            display: none;
+        }
+
+        .role-content ul {
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .role-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .role-content li::marker {
+            color: var(--accent);
         }
 
         ul {
@@ -471,11 +686,35 @@
             color: var(--accent);
         }
 
+        /* Tech Tags in Experience */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.75rem;
+        }
+
+        .tech-tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            border-radius: 0.25rem;
+            border: 1px solid var(--card-border);
+        }
+
         /* Skills */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            border: 1px solid var(--card-border);
         }
 
         .skill-category h3 {
@@ -485,6 +724,13 @@
             letter-spacing: 0.05em;
             color: var(--text-secondary);
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--accent);
         }
 
         .skills-list {
@@ -497,13 +743,14 @@
 
         .skill-tag {
             padding: 0.5rem 1rem;
-            background: var(--bg-secondary);
+            background: var(--card-bg);
             color: var(--text);
             border-radius: 2rem;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             font-weight: 500;
             border: 1px solid var(--card-border);
             transition: all 0.3s ease;
+            cursor: default;
         }
 
         .skill-tag:hover {
@@ -511,6 +758,12 @@
             color: white;
             border-color: var(--accent);
             transform: translateY(-2px);
+        }
+
+        .skill-tag.highlight {
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            color: white;
+            border-color: transparent;
         }
 
         /* Projects */
@@ -523,7 +776,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem;
+            padding: 1.25rem;
             background: var(--bg-secondary);
             border-radius: var(--radius);
             border: 1px solid var(--card-border);
@@ -533,6 +786,7 @@
         .project-item:hover {
             border-color: var(--accent);
             transform: translateX(4px);
+            box-shadow: var(--shadow);
         }
 
         .project-year {
@@ -545,26 +799,162 @@
             white-space: nowrap;
         }
 
-        .project-name {
+        .project-content {
             flex: 1;
+        }
+
+        .project-name {
             color: var(--text);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
 
         .project-tech {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            background: var(--card-bg);
+            font-size: 0.75rem;
+            color: white;
+            background: var(--purple);
             padding: 0.25rem 0.75rem;
             border-radius: 1rem;
+            white-space: nowrap;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
             border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            border-color: var(--success);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .cert-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            color: white;
+            border-radius: var(--radius);
+            font-size: 1.25rem;
+        }
+
+        .cert-content {
+            flex: 1;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-issuer {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .cert-year {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--success);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Education */
+        .education-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .education-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            color: white;
+            border-radius: var(--radius);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .education-content {
+            flex: 1;
+        }
+
+        .education-dates {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-school {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .education-degree {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .education-details {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
             color: var(--text-secondary);
             font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
 
         /* Animations */
@@ -583,12 +973,6 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        header { animation-delay: 0.1s; }
-        section:nth-child(2) { animation-delay: 0.2s; }
-        section:nth-child(3) { animation-delay: 0.3s; }
-        section:nth-child(4) { animation-delay: 0.4s; }
-        section:nth-child(5) { animation-delay: 0.5s; }
-
         .hidden {
             display: none !important;
         }
@@ -604,7 +988,7 @@
             }
 
             h1 {
-                font-size: 1.875rem;
+                font-size: 2rem;
             }
 
             .controls {
@@ -633,13 +1017,38 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .nav-pills {
+                position: relative;
+                top: 0;
+            }
+
+            .stats-bar {
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .education-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
         /* Print Styles */
         @media print {
             .controls,
-            .bg-gradient {
-                display: none;
+            .bg-gradient,
+            .nav-pills,
+            .scroll-top {
+                display: none !important;
             }
 
             body {
@@ -650,11 +1059,15 @@
             header {
                 box-shadow: none;
                 border: 1px solid #e5e5e5;
+                break-inside: avoid;
+            }
+
+            .role-section.collapsed .role-content {
+                display: block !important;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="bg-gradient"></div>
 
@@ -663,9 +1076,28 @@
             <i class="fas fa-moon"></i>
         </button>
         <button class="control-btn lang-switcher" aria-label="Switch language">FR</button>
+        <button class="control-btn scroll-top" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
     </div>
 
     <div class="container">
+        <!-- Navigation Pills -->
+        <nav id="nav-en" class="nav-pills animate-in">
+            <a href="#experience-en" class="nav-pill"><i class="fas fa-briefcase"></i> Experience</a>
+            <a href="#skills-en" class="nav-pill"><i class="fas fa-code"></i> Skills</a>
+            <a href="#projects-en" class="nav-pill"><i class="fas fa-rocket"></i> Projects</a>
+            <a href="#certifications-en" class="nav-pill"><i class="fas fa-certificate"></i> Certifications</a>
+            <a href="#education-en" class="nav-pill"><i class="fas fa-graduation-cap"></i> Education</a>
+        </nav>
+        <nav id="nav-fr" class="nav-pills animate-in hidden">
+            <a href="#experience-fr" class="nav-pill"><i class="fas fa-briefcase"></i> Expérience</a>
+            <a href="#skills-fr" class="nav-pill"><i class="fas fa-code"></i> Compétences</a>
+            <a href="#projects-fr" class="nav-pill"><i class="fas fa-rocket"></i> Projets</a>
+            <a href="#certifications-fr" class="nav-pill"><i class="fas fa-certificate"></i> Certifications</a>
+            <a href="#education-fr" class="nav-pill"><i class="fas fa-graduation-cap"></i> Formation</a>
+        </nav>
+
         <header class="animate-in">
             <div class="profile-container">
                 <img src="/logo.png" alt="Houssem Ben Ali" class="profile">
@@ -679,11 +1111,45 @@
                 <span>🇹🇳 Tunisia</span>
                 <span class="location-divider"></span>
                 <span>🇫🇷 France</span>
+                <span class="location-divider"></span>
+                <span>Remote</span>
             </div>
             <div id="location-fr" class="location hidden">
                 <span>🇹🇳 Tunisie</span>
                 <span class="location-divider"></span>
                 <span>🇫🇷 France</span>
+                <span class="location-divider"></span>
+                <span>Télétravail</span>
+            </div>
+
+            <!-- Stats -->
+            <div id="stats-en" class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Tools & Technologies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Languages</span>
+                </div>
+            </div>
+            <div id="stats-fr" class="stats-bar hidden">
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Ans d'expérience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Outils & Technologies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Langues</span>
+                </div>
             </div>
 
             <div id="contact-banner-en" class="contact-banner">
@@ -696,11 +1162,14 @@
             </div>
 
             <div class="social-links">
-                <a href="https://github.com/hbenali" target="_blank" rel="noopener" aria-label="GitHub">
+                <a href="https://github.com/hbenali" target="_blank" rel="noopener" aria-label="GitHub" class="github">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://linkedin.com/in/houssembali" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <a href="https://linkedin.com/in/houssembali" target="_blank" rel="noopener" aria-label="LinkedIn" class="linkedin">
                     <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:contact@hbenali.ovh" aria-label="Email" class="email">
+                    <i class="fas fa-envelope"></i>
                 </a>
             </div>
         </header>
@@ -720,200 +1189,390 @@
             </div>
         </div>
 
+        <!-- ENGLISH SECTIONS -->
         <section id="experience-en" class="animate-in">
-            <h2><i class="fas fa-briefcase" style="color: var(--accent);"></i> Experience</h2>
+            <h2><i class="fas fa-briefcase" style="color: var(--accent);"></i> Professional Experience</h2>
 
             <div class="job">
-                <h3>eXo Platform</h3>
+                <div class="job-header">
+                    <span class="job-company">eXo Platform</span>
+                    <span class="job-date">Mar. 2020 – Present</span>
+                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Tunis / Remote / Nantes, France</span>
+                </div>
                 <p class="job-title">DevOps Engineer</p>
-                <ul>
-                    <li>Managed Jenkins (DSL/Groovy), Nexus, Grafana, Sonarqube; implemented CI/CD pipelines</li>
-                    <li>Security scanning with CodeQL/SonarCloud/Fortify; mobile app CI/CD with Fastlane/GitHub Actions</li>
-                    <li>Cloud instance management (Google Cloud, OVH) with Puppet; troubleshooting; system improvements</li>
-                    <li>Product release coordination; Maven dependency management; Docker image publishing</li>
-                    <li>Bare-metal server configuration; LVM partitioning; security hardening (SSL/DNS/SMTP)</li>
-                </ul>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-cogs"></i></span>
+                        <span class="role-title">Software Factory</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Manage Jenkins with Seed jobs using DSL/Groovy, create pipelines, prepare and integrate Jenkins agents</li>
+                            <li>Ensure upgrades for Sonatype Nexus, Grafana, Sonarqube, SquashTM</li>
+                            <li>Implement CI/CD for mobile applications (Android/iOS) with Fastlane, GitHub Actions, Appaloosa Store</li>
+                            <li>Add code security checks using CodeQL, SonarCloud, and Fortify</li>
+                            <li>Build custom Docker images (Nginx + HTTP3 with QUIC: quicTLS and boringSSL)</li>
+                            <li>Update Selenium stack with Serenity and integrate with Jenkins</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Groovy</span>
+                            <span class="tech-tag">Nexus</span>
+                            <span class="tech-tag">Grafana</span>
+                            <span class="tech-tag">SonarQube</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">Fastlane</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-cloud"></i></span>
+                        <span class="role-title">Hosting & Cloud</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Create and manage instances using Google Cloud (gcloud CLI) and OVH (Python CLI)</li>
+                            <li>Configuration management with Puppet 7, 6, and 3.7</li>
+                            <li>Resolve incidents: disk saturation, memory shortage, Docker daemon issues</li>
+                            <li>Add third-party integrations: SAML2, OpenID, LDAP/AD</li>
+                            <li>Prepare Vagrant images using Packer (VirtualBox)</li>
+                            <li>Adjust and monitor Tomcat server application caches</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Google Cloud</span>
+                            <span class="tech-tag">OVH</span>
+                            <span class="tech-tag">Puppet</span>
+                            <span class="tech-tag">Vagrant</span>
+                            <span class="tech-tag">Packer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-rocket"></i></span>
+                        <span class="role-title">Release Manager</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Perform product version releases (GA, RC, CI/CD) and improve release process with Nexus Staging</li>
+                            <li>Update projects and Maven dependencies using custom Bash scripts</li>
+                            <li>Deploy signed Docker images (DCT + Cosign) to DockerHub and GitHub Container Registry</li>
+                            <li>Administer Nexus: manage hosted repos, proxies, certificates, staging rules</li>
+                            <li>Configure Maven release plugins and Jenkins agents for releases</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Maven</span>
+                            <span class="tech-tag">Nexus</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Cosign</span>
+                            <span class="tech-tag">GitHub CLI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-server"></i></span>
+                        <span class="role-title">Infrastructure</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Configure bare-metal servers with LVM partitioning, resolve disk and RAID issues</li>
+                            <li>Configure services: Tomcat, Nginx, Apache2, Traefik with security headers (CSP, XFO, HSTS, OCSP)</li>
+                            <li>SSL configuration and verification with Qualys, DNS setup (CAA, DNSSEC with BIND)</li>
+                            <li>Secure SMTP: DMARC, DKIM (OpenDKIM + Postfix), SPF configuration</li>
+                            <li>Deploy and manage ELK, InfluxDB, HAProxy, Google Cloud Load Balancer</li>
+                            <li>Provision instances with Ansible, manage with OpenStack and OVH</li>
+                            <li>Automate OS image updates on Google Cloud with GitHub Actions</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Nginx</span>
+                            <span class="tech-tag">Traefik</span>
+                            <span class="tech-tag">HAProxy</span>
+                            <span class="tech-tag">Ansible</span>
+                            <span class="tech-tag">OpenStack</span>
+                            <span class="tech-tag">ELK</span>
+                            <span class="tech-tag">InfluxDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-shield-alt"></i></span>
+                        <span class="role-title">SecOps</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Secure Docker services with seccomp profiles</li>
+                            <li>Regular code scanning with CodeQL and SonarCloud</li>
+                            <li>Security testing with Acunetix and other tools</li>
+                            <li>Application filtering (HAProxy) and network filtering (VPN)</li>
+                            <li>Diagnose Linux kernel issues using OpenBSD recovery images</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">CodeQL</span>
+                            <span class="tech-tag">SonarCloud</span>
+                            <span class="tech-tag">Acunetix</span>
+                            <span class="tech-tag">VPN</span>
+                            <span class="tech-tag">seccomp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-users"></i></span>
+                        <span class="role-title">Technical Consulting & Support</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Prepare client instances: Tomcat, Elasticsearch, MongoDB, OnlyOffice, JMXTrans, Telegraf, Jitsi</li>
+                            <li>Create architecture documents, installation guides, acceptance checklists</li>
+                            <li>Prepare Ansible playbooks for client deployments</li>
+                            <li>Audit complex network issues, support Jitsi installation on secure infrastructures</li>
+                            <li>Support development team with Docker deployments and performance issues</li>
+                            <li>Contribute to product design with architects, review pull requests</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Elasticsearch</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Jitsi</span>
+                            <span class="tech-tag">Ansible</span>
+                            <span class="tech-tag">JMX</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="job">
-                <h3>eXo Platform</h3>
+                <div class="job-header">
+                    <span class="job-company">eXo Platform</span>
+                    <span class="job-date">Dec. 2018 – Feb. 2020</span>
+                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Tunis</span>
+                </div>
                 <p class="job-title">Support Engineer</p>
                 <ul>
-                    <li>Technical issue resolution for clients (Tomcat/JBoss configuration, JMX, databases)</li>
-                    <li>Support tool development (CLI tools, REST APIs)</li>
-                    <li>Security testing with Acunetix, Nessus</li>
-                    <li>J2EE development for support ticket system</li>
+                    <li>Resolve client technical issues: Tomcat/JBoss configuration, Logback, JMX RMI, Database connectors</li>
+                    <li>Create CLI tools for the support team to speed up environment setup (LDAP, user injectors)</li>
+                    <li>Create extensions for client needs (e.g., Remote JMX access via REST API)</li>
+                    <li>Perform security checks with Acunetix, Nessus, Netspark</li>
+                    <li>Debug Tomcat server and inject fixes with JRebel</li>
+                    <li>Contribute to J2EE/AngularJS support ticket management application</li>
                 </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">Tomcat</span>
+                    <span class="tech-tag">JBoss</span>
+                    <span class="tech-tag">J2EE</span>
+                    <span class="tech-tag">AngularJS</span>
+                    <span class="tech-tag">JRebel</span>
+                    <span class="tech-tag">Nessus</span>
+                </div>
             </div>
 
             <div class="job">
-                <h3>SW Consulting</h3>
+                <div class="job-header">
+                    <span class="job-company">SW Consulting</span>
+                    <span class="job-date">Jan. 2018 – Dec. 2018</span>
+                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Monastir</span>
+                </div>
                 <p class="job-title">Frontend Developer</p>
                 <ul>
-                    <li>Angular 4 forum application development</li>
-                    <li>Component creation with Angular, CSS/SCSS</li>
-                    <li>GitLab for project management</li>
+                    <li>Contribute to building a Forum application based on Angular 4</li>
+                    <li>Create components using Angular, CSS, SCSS, and SASS</li>
+                    <li>Use GitLab for project management and SCM</li>
                 </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">Angular 4</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">SCSS</span>
+                    <span class="tech-tag">GitLab</span>
+                </div>
             </div>
         </section>
 
+        <!-- FRENCH EXPERIENCE -->
         <section id="experience-fr" class="animate-in hidden">
             <h2><i class="fas fa-briefcase" style="color: var(--accent);"></i> Expérience Professionnelle</h2>
 
             <div class="job">
-                <h3>eXo Platform</h3>
+                <div class="job-header">
+                    <span class="job-company">eXo Platform</span>
+                    <span class="job-date">Mars 2020 – Présent</span>
+                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Tunis / Télétravail / Nantes, France</span>
+                </div>
                 <p class="job-title">Ingénieur DevOps</p>
-                <ul>
-                    <li>Gestion de Jenkins (DSL/Groovy), Nexus, Grafana, Sonarqube ; mise en place de pipelines CI/CD</li>
-                    <li>Analyse de sécurité avec CodeQL/SonarCloud/Fortify ; CI/CD pour applications mobiles avec Fastlane/GitHub Actions</li>
-                    <li>Gestion d'instances cloud (Google Cloud, OVH) avec Puppet ; dépannage ; améliorations système</li>
-                    <li>Coordination des releases produits ; gestion des dépendances Maven ; publication d'images Docker</li>
-                    <li>Configuration de serveurs bare-metal ; partitionnement LVM ; renforcement de sécurité (SSL/DNS/SMTP)</li>
-                </ul>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-cogs"></i></span>
+                        <span class="role-title">Software Factory</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Gestion de Jenkins avec Seed jobs en DSL/Groovy, création de pipelines, préparation et intégration d'agents Jenkins</li>
+                            <li>Mises à jour de Sonatype Nexus, Grafana, Sonarqube, SquashTM</li>
+                            <li>Implémentation CI/CD pour applications mobiles (Android/iOS) avec Fastlane, GitHub Actions, Appaloosa Store</li>
+                            <li>Ajout de vérifications de sécurité du code avec CodeQL, SonarCloud et Fortify</li>
+                            <li>Construction d'images Docker personnalisées (Nginx + HTTP3 avec QUIC)</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Groovy</span>
+                            <span class="tech-tag">Nexus</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-cloud"></i></span>
+                        <span class="role-title">Hébergement & Cloud</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Création et gestion d'instances avec Google Cloud et OVH</li>
+                            <li>Gestion de configuration avec Puppet 7, 6 et 3.7</li>
+                            <li>Résolution d'incidents : saturation disque, manque de mémoire, problèmes Docker</li>
+                            <li>Intégrations tierces : SAML2, OpenID, LDAP/AD</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Google Cloud</span>
+                            <span class="tech-tag">OVH</span>
+                            <span class="tech-tag">Puppet</span>
+                            <span class="tech-tag">Vagrant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-rocket"></i></span>
+                        <span class="role-title">Gestionnaire de Releases</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Releases de versions produit (GA, RC, CI/CD) et amélioration du processus avec Nexus Staging</li>
+                            <li>Déploiement d'images Docker signées (DCT + Cosign) vers DockerHub et GitHub Container Registry</li>
+                            <li>Administration Nexus : gestion des repos, proxies, certificats, règles de staging</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Maven</span>
+                            <span class="tech-tag">Nexus</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Cosign</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-server"></i></span>
+                        <span class="role-title">Infrastructure</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Configuration serveurs bare-metal avec partitionnement LVM</li>
+                            <li>Configuration services : Tomcat, Nginx, Apache2, Traefik avec en-têtes de sécurité</li>
+                            <li>Configuration SSL et vérification avec Qualys, DNS (CAA, DNSSEC)</li>
+                            <li>SMTP sécurisé : DMARC, DKIM, SPF</li>
+                            <li>Déploiement ELK, InfluxDB, HAProxy</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Nginx</span>
+                            <span class="tech-tag">Traefik</span>
+                            <span class="tech-tag">HAProxy</span>
+                            <span class="tech-tag">Ansible</span>
+                            <span class="tech-tag">ELK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-section">
+                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                        <span class="role-icon"><i class="fas fa-shield-alt"></i></span>
+                        <span class="role-title">SecOps</span>
+                        <i class="fas fa-chevron-down role-toggle"></i>
+                    </div>
+                    <div class="role-content">
+                        <ul>
+                            <li>Sécurisation des services Docker avec profils seccomp</li>
+                            <li>Scan régulier du code avec CodeQL et SonarCloud</li>
+                            <li>Tests de sécurité avec Acunetix</li>
+                            <li>Filtrage applicatif (HAProxy) et réseau (VPN)</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">CodeQL</span>
+                            <span class="tech-tag">SonarCloud</span>
+                            <span class="tech-tag">VPN</span>
+                            <span class="tech-tag">seccomp</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="job">
-                <h3>eXo Platform</h3>
+                <div class="job-header">
+                    <span class="job-company">eXo Platform</span>
+                    <span class="job-date">Déc. 2018 – Fév. 2020</span>
+                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Tunis</span>
+                </div>
                 <p class="job-title">Ingénieur Support</p>
                 <ul>
-                    <li>Résolution de problèmes techniques pour clients (configuration Tomcat/JBoss, JMX, bases de données)</li>
-                    <li>Développement d'outils de support (outils CLI, APIs REST)</li>
-                    <li>Tests de sécurité avec Acunetix, Nessus</li>
-                    <li>Développement J2EE pour le système de tickets de support</li>
+                    <li>Résolution de problèmes techniques clients : configuration Tomcat/JBoss, JMX, connecteurs BDD</li>
+                    <li>Création d'outils CLI pour accélérer la mise en place d'environnements</li>
+                    <li>Tests de sécurité avec Acunetix, Nessus, Netspark</li>
+                    <li>Contribution à l'application de gestion de tickets J2EE/AngularJS</li>
                 </ul>
             </div>
 
             <div class="job">
-                <h3>SW Consulting</h3>
+                <div class="job-header">
+                    <span class="job-company">SW Consulting</span>
+                    <span class="job-date">Jan. 2018 – Déc. 2018</span>
+                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Monastir</span>
+                </div>
                 <p class="job-title">Développeur Frontend</p>
                 <ul>
-                    <li>Développement d'une application forum en Angular 4</li>
-                    <li>Création de composants avec Angular, CSS/SCSS</li>
-                    <li>Gestion de projet avec GitLab</li>
+                    <li>Développement d'une application Forum en Angular 4</li>
+                    <li>Création de composants avec Angular, CSS, SCSS</li>
+                    <li>Utilisation de GitLab pour la gestion de projet</li>
                 </ul>
             </div>
         </section>
 
-        <section id="projects-en" class="animate-in">
-            <h2><i class="fas fa-rocket" style="color: var(--accent);"></i> Projects</h2>
-            <div class="projects-grid">
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <span class="project-name">Android port forwarding tool</span>
-                    <span class="project-tech">Bash</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <span class="project-name">Tourism mobile app</span>
-                    <span class="project-tech">IBM MobileFirst</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <span class="project-name">3D human skeleton AR representation</span>
-                    <span class="project-tech">Matlab</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2015</span>
-                    <span class="project-name">Data mining clustering validation</span>
-                    <span class="project-tech">Java/R</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2014</span>
-                    <span class="project-name">Car rental management system</span>
-                    <span class="project-tech">Java/VB</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects-fr" class="animate-in hidden">
-            <h2><i class="fas fa-rocket" style="color: var(--accent);"></i> Projets</h2>
-            <div class="projects-grid">
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <span class="project-name">Outil de redirection de ports Android</span>
-                    <span class="project-tech">Bash</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <span class="project-name">Application mobile de tourisme</span>
-                    <span class="project-tech">IBM MobileFirst</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <span class="project-name">Représentation 3D de squelette humain en RA</span>
-                    <span class="project-tech">Matlab</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2015</span>
-                    <span class="project-name">Validation de clustering pour data mining</span>
-                    <span class="project-tech">Java/R</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2014</span>
-                    <span class="project-name">Système de gestion de location de voitures</span>
-                    <span class="project-tech">Java/VB</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="education-en" class="animate-in">
-            <h2><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Education</h2>
-            
-            <div class="job">
-                <h3>National Engineering School of Sousse (ENISO)</h3>
-                <p class="job-title">Masters in Telecommunications Engineering</p>
-                <ul>
-                    <li>Courses: IoT, Algorithms, Databases, Network Security, Linux Administration</li>
-                    <li>Research: 3D human skeleton representation using AR</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <h3>Higher Institute of Computer Science and Mathematics of Monastir (ISIMM)</h3>
-                <p class="job-title">Bachelor's in Computer Science</p>
-                <ul>
-                    <li>Courses: Java/J2EE, Network Administration, Oracle, Linux</li>
-                    <li>Research: Hierarchical clustering validation for data mining</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="education-fr" class="animate-in hidden">
-            <h2><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Formation</h2>
-            
-            <div class="job">
-                <h3>École Nationale d'Ingénieurs de Sousse (ENISO)</h3>
-                <p class="job-title">Master en Génie des Télécommunications</p>
-                <ul>
-                    <li>Cours : IoT, Algorithmes, Bases de données, Sécurité réseau, Administration Linux</li>
-                    <li>Recherche : Représentation 3D de squelette humain en réalité augmentée</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <h3>Institut Supérieur d'Informatique et de Mathématiques de Monastir (ISIMM)</h3>
-                <p class="job-title">Licence en Informatique</p>
-                <ul>
-                    <li>Cours : Java/J2EE, Administration réseau, Oracle, Linux</li>
-                    <li>Recherche : Validation de clustering hiérarchique pour data mining</li>
-                </ul>
-            </div>
-        </section>
-
+        <!-- SKILLS ENGLISH -->
         <section id="skills-en" class="animate-in">
             <h2><i class="fas fa-code" style="color: var(--accent);"></i> Skills</h2>
             <div class="skills-container">
                 <div class="skill-category">
                     <h3><i class="fas fa-language"></i> Languages</h3>
                     <ul class="skills-list">
-                        <li class="skill-tag">Arabic (Native)</li>
-                        <li class="skill-tag">French (Fluent)</li>
-                        <li class="skill-tag">English (Fluent)</li>
+                        <li class="skill-tag highlight">Arabic (Native)</li>
+                        <li class="skill-tag highlight">French (Fluent)</li>
+                        <li class="skill-tag highlight">English (Fluent)</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-terminal"></i> Programming</h3>
+                    <h3><i class="fas fa-terminal"></i> Programming Languages</h3>
                     <ul class="skills-list">
                         <li class="skill-tag">Python</li>
                         <li class="skill-tag">JavaScript</li>
@@ -922,50 +1581,158 @@
                         <li class="skill-tag">Groovy</li>
                         <li class="skill-tag">Go</li>
                         <li class="skill-tag">SQL</li>
+                        <li class="skill-tag">Ruby</li>
+                        <li class="skill-tag">PHP</li>
+                        <li class="skill-tag">C++</li>
+                        <li class="skill-tag">DSL</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                    <h3><i class="fab fa-react"></i> Frontend</h3>
                     <ul class="skills-list">
+                        <li class="skill-tag">React.js</li>
+                        <li class="skill-tag">Angular</li>
+                        <li class="skill-tag">AngularJS</li>
+                        <li class="skill-tag">VueJS</li>
+                        <li class="skill-tag">HTML/CSS</li>
+                        <li class="skill-tag">SCSS/SASS</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud & Infrastructure</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">AWS</li>
+                        <li class="skill-tag">Google Cloud</li>
+                        <li class="skill-tag">OVH</li>
+                        <li class="skill-tag">OpenStack</li>
                         <li class="skill-tag">Docker</li>
                         <li class="skill-tag">Kubernetes</li>
-                        <li class="skill-tag">Jenkins</li>
-                        <li class="skill-tag">Git</li>
-                        <li class="skill-tag">Ansible</li>
-                        <li class="skill-tag">Puppet</li>
                         <li class="skill-tag">Terraform</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                    <h3><i class="fas fa-cogs"></i> CI/CD & Automation</h3>
                     <ul class="skills-list">
-                        <li class="skill-tag">AWS</li>
-                        <li class="skill-tag">Google Cloud</li>
-                        <li class="skill-tag">CI/CD</li>
-                        <li class="skill-tag">IaC</li>
-                        <li class="skill-tag">Monitoring</li>
-                        <li class="skill-tag">Security</li>
+                        <li class="skill-tag">Jenkins</li>
+                        <li class="skill-tag">GitHub Actions</li>
+                        <li class="skill-tag">GitLab CI</li>
+                        <li class="skill-tag">Ansible</li>
+                        <li class="skill-tag">Puppet</li>
+                        <li class="skill-tag">Fastlane</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Monitoring & Observability</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Grafana</li>
+                        <li class="skill-tag">InfluxDB</li>
+                        <li class="skill-tag">ELK Stack</li>
+                        <li class="skill-tag">Zabbix</li>
+                        <li class="skill-tag">Uptime-Kuma</li>
+                        <li class="skill-tag">JMXTrans</li>
+                        <li class="skill-tag">Telegraf</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Servers & Services</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Tomcat</li>
+                        <li class="skill-tag">JBoss/WildFly</li>
+                        <li class="skill-tag">Nginx</li>
+                        <li class="skill-tag">Apache2</li>
+                        <li class="skill-tag">Traefik</li>
+                        <li class="skill-tag">HAProxy</li>
+                        <li class="skill-tag">Postfix</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">PostgreSQL</li>
+                        <li class="skill-tag">MySQL</li>
+                        <li class="skill-tag">MongoDB</li>
+                        <li class="skill-tag">Oracle</li>
+                        <li class="skill-tag">Elasticsearch</li>
+                        <li class="skill-tag">HSQLDB</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">CodeQL</li>
+                        <li class="skill-tag">SonarCloud</li>
+                        <li class="skill-tag">Fortify</li>
+                        <li class="skill-tag">Acunetix</li>
+                        <li class="skill-tag">Nessus</li>
+                        <li class="skill-tag">Burp Suite</li>
+                        <li class="skill-tag">Wireshark</li>
+                        <li class="skill-tag">OpenVPN</li>
+                        <li class="skill-tag">WireGuard</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-key"></i> Identity & Access</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Keycloak</li>
+                        <li class="skill-tag">SAML2</li>
+                        <li class="skill-tag">OpenID</li>
+                        <li class="skill-tag">LDAP/AD</li>
+                        <li class="skill-tag">phpLDAPadmin</li>
+                        <li class="skill-tag">2FAuth</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Development Tools</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Git</li>
+                        <li class="skill-tag">GitHub</li>
+                        <li class="skill-tag">GitLab</li>
+                        <li class="skill-tag">Jira</li>
+                        <li class="skill-tag">VSCode</li>
+                        <li class="skill-tag">IntelliJ</li>
+                        <li class="skill-tag">DBeaver</li>
+                        <li class="skill-tag">CodeSpaces</li>
+                        <li class="skill-tag">Gitpod</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-box"></i> Artifact Management</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Nexus</li>
+                        <li class="skill-tag">Maven</li>
+                        <li class="skill-tag">Docker Hub</li>
+                        <li class="skill-tag">GitHub Packages</li>
+                        <li class="skill-tag">Cosign</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <!-- SKILLS FRENCH -->
         <section id="skills-fr" class="animate-in hidden">
             <h2><i class="fas fa-code" style="color: var(--accent);"></i> Compétences</h2>
             <div class="skills-container">
                 <div class="skill-category">
                     <h3><i class="fas fa-language"></i> Langues</h3>
                     <ul class="skills-list">
-                        <li class="skill-tag">Arabe (Langue maternelle)</li>
-                        <li class="skill-tag">Français (Courant)</li>
-                        <li class="skill-tag">Anglais (Courant)</li>
+                        <li class="skill-tag highlight">Arabe (Langue maternelle)</li>
+                        <li class="skill-tag highlight">Français (Courant)</li>
+                        <li class="skill-tag highlight">Anglais (Courant)</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-terminal"></i> Programmation</h3>
+                    <h3><i class="fas fa-terminal"></i> Langages de Programmation</h3>
                     <ul class="skills-list">
                         <li class="skill-tag">Python</li>
                         <li class="skill-tag">JavaScript</li>
@@ -974,37 +1741,343 @@
                         <li class="skill-tag">Groovy</li>
                         <li class="skill-tag">Go</li>
                         <li class="skill-tag">SQL</li>
+                        <li class="skill-tag">Ruby</li>
+                        <li class="skill-tag">PHP</li>
+                        <li class="skill-tag">C++</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Outils & Technologies</h3>
+                    <h3><i class="fas fa-cloud"></i> Cloud & Infrastructure</h3>
                     <ul class="skills-list">
+                        <li class="skill-tag">AWS</li>
+                        <li class="skill-tag">Google Cloud</li>
+                        <li class="skill-tag">OVH</li>
+                        <li class="skill-tag">OpenStack</li>
                         <li class="skill-tag">Docker</li>
                         <li class="skill-tag">Kubernetes</li>
-                        <li class="skill-tag">Jenkins</li>
-                        <li class="skill-tag">Git</li>
-                        <li class="skill-tag">Ansible</li>
-                        <li class="skill-tag">Puppet</li>
                         <li class="skill-tag">Terraform</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                    <h3><i class="fas fa-cogs"></i> CI/CD & Automatisation</h3>
                     <ul class="skills-list">
-                        <li class="skill-tag">AWS</li>
-                        <li class="skill-tag">Google Cloud</li>
-                        <li class="skill-tag">CI/CD</li>
-                        <li class="skill-tag">IaC</li>
-                        <li class="skill-tag">Monitoring</li>
-                        <li class="skill-tag">Sécurité</li>
+                        <li class="skill-tag">Jenkins</li>
+                        <li class="skill-tag">GitHub Actions</li>
+                        <li class="skill-tag">GitLab CI</li>
+                        <li class="skill-tag">Ansible</li>
+                        <li class="skill-tag">Puppet</li>
+                        <li class="skill-tag">Fastlane</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-shield-alt"></i> Sécurité</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">CodeQL</li>
+                        <li class="skill-tag">SonarCloud</li>
+                        <li class="skill-tag">Fortify</li>
+                        <li class="skill-tag">Acunetix</li>
+                        <li class="skill-tag">Nessus</li>
+                        <li class="skill-tag">OpenVPN</li>
+                        <li class="skill-tag">WireGuard</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Monitoring</h3>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Grafana</li>
+                        <li class="skill-tag">InfluxDB</li>
+                        <li class="skill-tag">ELK Stack</li>
+                        <li class="skill-tag">Zabbix</li>
+                        <li class="skill-tag">Uptime-Kuma</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <!-- PROJECTS ENGLISH -->
+        <section id="projects-en" class="animate-in">
+            <h2><i class="fas fa-rocket" style="color: var(--accent);"></i> Projects & Publications</h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <span class="project-year">2019</span>
+                    <div class="project-content">
+                        <div class="project-name">Support Ticket Administration System</div>
+                        <div class="project-desc">Full-stack application for managing support tickets</div>
+                    </div>
+                    <span class="project-tech">J2EE/VueJS/AngularJS</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2019</span>
+                    <div class="project-content">
+                        <div class="project-name">Support Team CLI Tools</div>
+                        <div class="project-desc">Command-line tools to accelerate environment setup</div>
+                    </div>
+                    <span class="project-tech">Bash</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2017</span>
+                    <div class="project-content">
+                        <div class="project-name">Android Port Forwarding Tool</div>
+                        <div class="project-desc">Network utility for Android device port forwarding</div>
+                    </div>
+                    <span class="project-tech">Bash</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2017</span>
+                    <div class="project-content">
+                        <div class="project-name">Tourism Mobile Application</div>
+                        <div class="project-desc">Cross-platform tourism application</div>
+                    </div>
+                    <span class="project-tech">IBM MobileFirst</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2017</span>
+                    <div class="project-content">
+                        <div class="project-name">3D Human Skeleton AR Representation</div>
+                        <div class="project-desc">Augmented reality visualization of human skeleton</div>
+                    </div>
+                    <span class="project-tech">Matlab</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2015</span>
+                    <div class="project-content">
+                        <div class="project-name">Hierarchical Clustering Validation</div>
+                        <div class="project-desc">Data mining clustering algorithm validation tool</div>
+                    </div>
+                    <span class="project-tech">Java/R</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2014</span>
+                    <div class="project-content">
+                        <div class="project-name">Car Rental Management System</div>
+                        <div class="project-desc">Complete management application for car rentals</div>
+                    </div>
+                    <span class="project-tech">Java/VB</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2012</span>
+                    <div class="project-content">
+                        <div class="project-name">Collaborative Student Website</div>
+                        <div class="project-desc">Community platform with VBulletin integration</div>
+                    </div>
+                    <span class="project-tech">PHP</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS FRENCH -->
+        <section id="projects-fr" class="animate-in hidden">
+            <h2><i class="fas fa-rocket" style="color: var(--accent);"></i> Projets & Publications</h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <span class="project-year">2019</span>
+                    <div class="project-content">
+                        <div class="project-name">Système d'administration de tickets support</div>
+                        <div class="project-desc">Application full-stack de gestion de tickets</div>
+                    </div>
+                    <span class="project-tech">J2EE/VueJS/AngularJS</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2019</span>
+                    <div class="project-content">
+                        <div class="project-name">Outils CLI pour l'équipe support</div>
+                        <div class="project-desc">Outils en ligne de commande pour accélérer la mise en place d'environnements</div>
+                    </div>
+                    <span class="project-tech">Bash</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2017</span>
+                    <div class="project-content">
+                        <div class="project-name">Outil de redirection de ports Android</div>
+                        <div class="project-desc">Utilitaire réseau pour la redirection de ports</div>
+                    </div>
+                    <span class="project-tech">Bash</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2017</span>
+                    <div class="project-content">
+                        <div class="project-name">Application mobile de tourisme</div>
+                        <div class="project-desc">Application touristique multiplateforme</div>
+                    </div>
+                    <span class="project-tech">IBM MobileFirst</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2017</span>
+                    <div class="project-content">
+                        <div class="project-name">Représentation 3D de squelette humain en RA</div>
+                        <div class="project-desc">Visualisation en réalité augmentée du squelette humain</div>
+                    </div>
+                    <span class="project-tech">Matlab</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2015</span>
+                    <div class="project-content">
+                        <div class="project-name">Validation de clustering hiérarchique</div>
+                        <div class="project-desc">Outil de validation d'algorithmes de clustering pour data mining</div>
+                    </div>
+                    <span class="project-tech">Java/R</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2014</span>
+                    <div class="project-content">
+                        <div class="project-name">Système de gestion de location de voitures</div>
+                        <div class="project-desc">Application complète de gestion de locations</div>
+                    </div>
+                    <span class="project-tech">Java/VB</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-year">2012</span>
+                    <div class="project-content">
+                        <div class="project-name">Site web collaboratif étudiant</div>
+                        <div class="project-desc">Plateforme communautaire avec intégration VBulletin</div>
+                    </div>
+                    <span class="project-tech">PHP</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS ENGLISH -->
+        <section id="certifications-en" class="animate-in">
+            <h2><i class="fas fa-certificate" style="color: var(--accent);"></i> Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-name">Mobile Application Developer</div>
+                        <div class="cert-issuer">IBM MobileFirst - Mastery Award for Professionals</div>
+                    </div>
+                    <span class="cert-year">2017</span>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-name">IPv6 Certification</div>
+                        <div class="cert-issuer">ENISo - National School of Engineers of Sousse</div>
+                    </div>
+                    <span class="cert-year">2015</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS FRENCH -->
+        <section id="certifications-fr" class="animate-in hidden">
+            <h2><i class="fas fa-certificate" style="color: var(--accent);"></i> Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-name">Développeur d'Applications Mobiles</div>
+                        <div class="cert-issuer">IBM MobileFirst - Mastery Award for Professionals</div>
+                    </div>
+                    <span class="cert-year">2017</span>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-name">Certification IPv6</div>
+                        <div class="cert-issuer">ENISo - École Nationale d'Ingénieurs de Sousse</div>
+                    </div>
+                    <span class="cert-year">2015</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION ENGLISH -->
+        <section id="education-en" class="animate-in">
+            <h2><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Education</h2>
+            
+            <div class="job">
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-content">
+                        <div class="education-dates">Oct. 2015 – Oct. 2017</div>
+                        <div class="education-school">National School of Engineers of Sousse (ENISo)</div>
+                        <div class="education-degree">Master's in Telecommunications Engineering</div>
+                        <div class="education-details">
+                            <strong>Courses:</strong> IoT, Algorithms, Databases, Computer Systems, Telecom Systems, Network Administration & Auditing, Security, Encryption, Linux Administration<br>
+                            <strong>Research:</strong> 3D skeleton representation of the human body using augmented reality
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-content">
+                        <div class="education-dates">Sept. 2012 – May 2015</div>
+                        <div class="education-school">Higher Institute of Computer Science and Mathematics of Monastir (ISIMM)</div>
+                        <div class="education-degree">Bachelor's in Computer Science</div>
+                        <div class="education-details">
+                            <strong>Courses:</strong> Algorithms, Databases, Network & Computer System Administration, Security, Oracle Administration, Linux Administration, Java/J2EE, PHP, JavaScript<br>
+                            <strong>Research:</strong> Validation of hierarchical clustering for data mining applications (Hybrid: Java/R)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION FRENCH -->
+        <section id="education-fr" class="animate-in hidden">
+            <h2><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Formation</h2>
+            
+            <div class="job">
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-content">
+                        <div class="education-dates">Oct. 2015 – Oct. 2017</div>
+                        <div class="education-school">École Nationale d'Ingénieurs de Sousse (ENISo)</div>
+                        <div class="education-degree">Master en Génie des Télécommunications</div>
+                        <div class="education-details">
+                            <strong>Cours :</strong> IoT, Algorithmes, Bases de données, Systèmes informatiques, Systèmes de télécommunication, Administration & Audit réseau, Sécurité, Chiffrement, Administration Linux<br>
+                            <strong>Recherche :</strong> Représentation 3D du squelette humain en réalité augmentée
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-content">
+                        <div class="education-dates">Sept. 2012 – Mai 2015</div>
+                        <div class="education-school">Institut Supérieur d'Informatique et de Mathématiques de Monastir (ISIMM)</div>
+                        <div class="education-degree">Licence en Informatique</div>
+                        <div class="education-details">
+                            <strong>Cours :</strong> Algorithmes, Bases de données, Administration réseau & système, Sécurité, Administration Oracle, Administration Linux, Java/J2EE, PHP, JavaScript<br>
+                            <strong>Recherche :</strong> Validation du clustering hiérarchique pour applications de data mining (Hybride: Java/R)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer>
+            <div class="footer-links">
+                <a href="https://github.com/hbenali" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/houssembali" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="mailto:contact@hbenali.ovh"><i class="fas fa-envelope"></i> Email</a>
+            </div>
             <p>© 2026 Houssem Ben Ali. Built with ❤️</p>
         </footer>
     </div>
@@ -1014,7 +2087,6 @@
         const themeToggle = document.querySelector('.theme-toggle');
         const icon = themeToggle.querySelector('i');
 
-        // Check for saved theme preference or system preference
         const getPreferredTheme = () => {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) return savedTheme;
@@ -1030,7 +2102,6 @@
             );
         };
 
-        // Initialize theme
         setTheme(getPreferredTheme());
 
         themeToggle.addEventListener('click', () => {
@@ -1038,7 +2109,6 @@
             setTheme(currentTheme === 'dark' ? 'light' : 'dark');
         });
 
-        // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             if (!localStorage.getItem('theme')) {
                 setTheme(e.matches ? 'dark' : 'light');
@@ -1053,26 +2123,64 @@
             currentLang = lang;
             localStorage.setItem('lang', lang);
 
-            // Hide all language sections
             document.querySelectorAll('[id$="-en"], [id$="-fr"]').forEach(el => {
                 el.classList.add('hidden');
             });
 
-            // Show current language sections
             document.querySelectorAll(`[id$="-${lang}"]`).forEach(el => {
                 el.classList.remove('hidden');
             });
 
-            // Update button text
             langSwitcher.textContent = lang === 'en' ? 'FR' : 'EN';
         }
 
-        // Initialize language
         setLanguage(currentLang);
 
         langSwitcher.addEventListener('click', () => {
             const newLang = currentLang === 'en' ? 'fr' : 'en';
             setLanguage(newLang);
+        });
+
+        // Role section toggle
+        function toggleRole(element) {
+            element.classList.toggle('collapsed');
+        }
+
+        // Scroll to top button
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Active navigation pill
+        const navPills = document.querySelectorAll('.nav-pill');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navPills.forEach(pill => {
+                pill.classList.remove('active');
+                if (pill.getAttribute('href').slice(1) === current) {
+                    pill.classList.add('active');
+                }
+            });
         });
 
         // Intersection Observer for scroll animations
@@ -1090,14 +2198,31 @@
             });
         }, observerOptions);
 
-        // Observe all sections
-        document.querySelectorAll('section, header').forEach(el => {
+        document.querySelectorAll('section, header, .github-chart-container').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // Smooth scroll for navigation
+        navPills.forEach(pill => {
+            pill.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = pill.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
 </body>
-
 </html>
