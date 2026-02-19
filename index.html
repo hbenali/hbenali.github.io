@@ -19,12 +19,6 @@
     <meta name="keywords" content="DevOps, Cloud, Kubernetes, Docker, Jenkins, CI/CD, Infrastructure, Security">
     <meta name="author" content="Houssem Ben Ali">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Houssem Ben Ali - DevOps Engineer">
-    <meta property="og:description" content="DevOps Engineer specializing in CI/CD, Cloud Infrastructure, and Security">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hbenali.ovh">
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +65,12 @@
             --radius: 0.75rem;
             --radius-lg: 1rem;
             --radius-xl: 1.5rem;
-            --snow-color: rgba(255, 255, 255, 0.9);
+            
+            /* Season Colors */
+            --season-spring: #f472b6;
+            --season-summer: #fbbf24;
+            --season-autumn: #f97316;
+            --season-winter: #60a5fa;
         }
 
         [data-theme="dark"] {
@@ -92,7 +91,27 @@
             --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.4);
-            --snow-color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Season Theme Overrides */
+        [data-season="spring"] {
+            --gradient-start: #f472b6;
+            --gradient-end: #fb7185;
+        }
+
+        [data-season="summer"] {
+            --gradient-start: #fbbf24;
+            --gradient-end: #f97316;
+        }
+
+        [data-season="autumn"] {
+            --gradient-start: #f97316;
+            --gradient-end: #dc2626;
+        }
+
+        [data-season="winter"] {
+            --gradient-start: #60a5fa;
+            --gradient-end: #8b5cf6;
         }
 
         * {
@@ -114,8 +133,8 @@
             overflow-x: hidden;
         }
 
-        /* Snow Canvas */
-        #snow-canvas {
+        /* Season Canvas */
+        #season-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -138,6 +157,35 @@
                 radial-gradient(ellipse 50% 30% at 0% 100%, rgba(16, 185, 129, 0.1), transparent);
             pointer-events: none;
             z-index: -1;
+            transition: background 0.5s ease;
+        }
+
+        [data-season="spring"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(244, 114, 182, 0.2), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(251, 113, 133, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(167, 243, 208, 0.15), transparent);
+        }
+
+        [data-season="summer"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(251, 191, 36, 0.2), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(249, 115, 22, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(34, 197, 94, 0.1), transparent);
+        }
+
+        [data-season="autumn"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.2), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(220, 38, 38, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(161, 98, 7, 0.1), transparent);
+        }
+
+        [data-season="winter"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(96, 165, 250, 0.2), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(147, 197, 253, 0.1), transparent);
         }
 
         [data-theme="dark"] .bg-gradient {
@@ -145,6 +193,34 @@
                 radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.2), transparent),
                 radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.15), transparent),
                 radial-gradient(ellipse 50% 30% at 0% 100%, rgba(16, 185, 129, 0.1), transparent);
+        }
+
+        [data-theme="dark"][data-season="spring"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(244, 114, 182, 0.25), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(251, 113, 133, 0.2), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(167, 243, 208, 0.1), transparent);
+        }
+
+        [data-theme="dark"][data-season="summer"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(251, 191, 36, 0.25), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(249, 115, 22, 0.2), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(34, 197, 94, 0.1), transparent);
+        }
+
+        [data-theme="dark"][data-season="autumn"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.25), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(220, 38, 38, 0.2), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(161, 98, 7, 0.1), transparent);
+        }
+
+        [data-theme="dark"][data-season="winter"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(96, 165, 250, 0.25), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.2), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(147, 197, 253, 0.15), transparent);
         }
 
         /* Floating Controls */
@@ -184,25 +260,116 @@
             box-shadow: var(--shadow-xl), 0 0 30px rgba(59, 130, 246, 0.4);
         }
 
-        .snow-toggle {
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+        /* Season Toggle */
+        .season-toggle {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             box-shadow: var(--shadow-lg), 0 0 20px rgba(96, 165, 250, 0.3);
+            position: relative;
         }
 
-        .snow-toggle:hover {
+        .season-toggle:hover {
             transform: scale(1.1);
             box-shadow: var(--shadow-xl), 0 0 30px rgba(96, 165, 250, 0.4);
         }
 
-        .snow-toggle.active {
-            background: linear-gradient(135deg, #93c5fd, #60a5fa);
-            animation: snowGlow 2s ease-in-out infinite;
+        .season-toggle.active {
+            animation: seasonGlow 2s ease-in-out infinite;
         }
 
-        @keyframes snowGlow {
+        @keyframes seasonGlow {
             0%, 100% { box-shadow: var(--shadow-lg), 0 0 20px rgba(147, 197, 253, 0.4); }
             50% { box-shadow: var(--shadow-xl), 0 0 35px rgba(147, 197, 253, 0.6); }
+        }
+
+        /* Season Dropdown */
+        .season-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            min-width: 180px;
+            z-index: 1001;
+        }
+
+        .season-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .season-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text);
+            font-size: 0.9rem;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+        }
+
+        .season-option:hover {
+            background: var(--bg-secondary);
+        }
+
+        .season-option.active {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        .season-option .season-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.85rem;
+        }
+
+        .season-option[data-season="spring"] .season-icon {
+            background: linear-gradient(135deg, #f472b6, #fb7185);
+            color: white;
+        }
+
+        .season-option[data-season="summer"] .season-icon {
+            background: linear-gradient(135deg, #fbbf24, #f97316);
+            color: white;
+        }
+
+        .season-option[data-season="autumn"] .season-icon {
+            background: linear-gradient(135deg, #f97316, #dc2626);
+            color: white;
+        }
+
+        .season-option[data-season="winter"] .season-icon {
+            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+            color: white;
+        }
+
+        .season-option[data-season="none"] .season-icon {
+            background: var(--gray-400);
+            color: white;
+        }
+
+        .season-divider {
+            height: 1px;
+            background: var(--card-border);
+            margin: 0.25rem 0;
         }
 
         .lang-switcher {
@@ -292,9 +459,9 @@
         }
 
         .nav-pill:hover, .nav-pill.active {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
-            border-color: var(--accent);
+            border-color: transparent;
             transform: translateY(-2px);
         }
 
@@ -325,8 +492,8 @@
             background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), var(--success));
         }
 
-        /* Winter Banner */
-        .winter-banner {
+        /* Season Banner */
+        .season-banner {
             position: absolute;
             top: 1rem;
             left: 1rem;
@@ -334,20 +501,65 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, rgba(147, 197, 253, 0.2), rgba(191, 219, 254, 0.2));
             border-radius: 2rem;
             font-size: 0.75rem;
-            color: var(--accent);
-            border: 1px solid rgba(147, 197, 253, 0.3);
+            border: 1px solid;
+            transition: all 0.3s ease;
         }
 
-        .winter-banner i {
-            animation: snowflakeRotate 4s linear infinite;
+        .season-banner[data-season="spring"] {
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(251, 113, 133, 0.2));
+            color: #db2777;
+            border-color: rgba(244, 114, 182, 0.3);
         }
 
-        @keyframes snowflakeRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .season-banner[data-season="summer"] {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(249, 115, 22, 0.2));
+            color: #d97706;
+            border-color: rgba(251, 191, 36, 0.3);
+        }
+
+        .season-banner[data-season="autumn"] {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(220, 38, 38, 0.2));
+            color: #ea580c;
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+
+        .season-banner[data-season="winter"] {
+            background: linear-gradient(135deg, rgba(147, 197, 253, 0.2), rgba(191, 219, 254, 0.2));
+            color: #2563eb;
+            border-color: rgba(147, 197, 253, 0.3);
+        }
+
+        [data-theme="dark"] .season-banner[data-season="spring"] {
+            color: #f472b6;
+        }
+
+        [data-theme="dark"] .season-banner[data-season="summer"] {
+            color: #fbbf24;
+        }
+
+        [data-theme="dark"] .season-banner[data-season="autumn"] {
+            color: #fb923c;
+        }
+
+        [data-theme="dark"] .season-banner[data-season="winter"] {
+            color: #60a5fa;
+        }
+
+        .season-banner i {
+            animation: seasonIconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes seasonIconFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-2px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-2px) rotate(-5deg); }
+        }
+
+        .season-banner.hidden {
+            display: none;
         }
 
         .profile-container {
@@ -365,7 +577,7 @@
             background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
                         linear-gradient(135deg, var(--gradient-start), var(--gradient-end)) border-box;
             box-shadow: var(--shadow-xl);
-            transition: transform 0.4s ease;
+            transition: all 0.4s ease;
         }
 
         .profile:hover {
@@ -392,23 +604,25 @@
         h1 {
             font-size: 2.75rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--text), var(--accent));
+            background: linear-gradient(135deg, var(--text), var(--gradient-start));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 0.5rem;
             letter-spacing: -0.02em;
+            transition: all 0.3s ease;
         }
 
         .title {
             font-size: 1.35rem;
-            color: var(--accent);
+            color: var(--gradient-start);
             font-weight: 600;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            transition: color 0.3s ease;
         }
 
         .title::before {
@@ -456,8 +670,12 @@
         .stat-number {
             font-size: 1.75rem;
             font-weight: 800;
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
+            transition: all 0.3s ease;
         }
 
         .stat-label {
@@ -469,7 +687,7 @@
 
         /* Contact Banner */
         .contact-banner {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             padding: 1rem 1.5rem;
             border-radius: var(--radius);
@@ -480,6 +698,7 @@
             gap: 0.75rem;
             font-size: 0.95rem;
             box-shadow: var(--shadow), 0 0 20px rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
         }
 
         .contact-banner a {
@@ -516,8 +735,9 @@
         }
 
         .social-links a:hover {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
+            border-color: transparent;
             transform: translateY(-4px);
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
@@ -585,6 +805,12 @@
             height: 24px;
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+
+        h2 i {
+            color: var(--gradient-start);
+            transition: color 0.3s ease;
         }
 
         h3 {
@@ -613,10 +839,11 @@
             top: 0;
             width: 12px;
             height: 12px;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             border-radius: 50%;
             border: 3px solid var(--card-bg);
-            box-shadow: 0 0 0 2px var(--accent);
+            box-shadow: 0 0 0 2px var(--gradient-start);
+            transition: all 0.3s ease;
         }
 
         .job:last-child {
@@ -640,10 +867,11 @@
         .job-date {
             font-size: 0.8rem;
             font-weight: 500;
-            color: var(--accent);
-            background: rgba(59, 130, 246, 0.1);
+            color: white;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             padding: 0.25rem 0.75rem;
             border-radius: 1rem;
+            transition: all 0.3s ease;
         }
 
         .job-location {
@@ -655,10 +883,11 @@
         }
 
         .job-title {
-            color: var(--accent);
+            color: var(--gradient-start);
             font-weight: 500;
             font-size: 1rem;
             margin-bottom: 1rem;
+            transition: color 0.3s ease;
         }
 
         /* Role Sections */
@@ -689,10 +918,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             border-radius: 0.5rem;
             font-size: 0.75rem;
+            transition: all 0.3s ease;
         }
 
         .role-title {
@@ -728,7 +958,7 @@
         }
 
         .role-content li::marker {
-            color: var(--accent);
+            color: var(--gradient-start);
         }
 
         ul {
@@ -742,10 +972,10 @@
         }
 
         li::marker {
-            color: var(--accent);
+            color: var(--gradient-start);
         }
 
-        /* Tech Tags in Experience */
+        /* Tech Tags */
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
@@ -789,7 +1019,8 @@
         }
 
         .skill-category h3 i {
-            color: var(--accent);
+            color: var(--gradient-start);
+            transition: color 0.3s ease;
         }
 
         .skills-list {
@@ -813,14 +1044,14 @@
         }
 
         .skill-tag:hover {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
-            border-color: var(--accent);
+            border-color: transparent;
             transform: translateY(-2px);
         }
 
         .skill-tag.highlight {
-            background: linear-gradient(135deg, var(--accent), var(--purple));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             border-color: transparent;
         }
@@ -843,7 +1074,7 @@
         }
 
         .project-item:hover {
-            border-color: var(--accent);
+            border-color: var(--gradient-start);
             transform: translateX(4px);
             box-shadow: var(--shadow);
         }
@@ -851,8 +1082,8 @@
         .project-year {
             font-size: 0.8rem;
             font-weight: 600;
-            color: var(--accent);
-            background: rgba(59, 130, 246, 0.1);
+            color: white;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             padding: 0.25rem 0.75rem;
             border-radius: 1rem;
             white-space: nowrap;
@@ -912,7 +1143,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--success), var(--accent));
+            background: linear-gradient(135deg, var(--success), var(--gradient-start));
             color: white;
             border-radius: var(--radius);
             font-size: 1.25rem;
@@ -955,11 +1186,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             border-radius: var(--radius);
             font-size: 1.5rem;
             flex-shrink: 0;
+            transition: all 0.3s ease;
         }
 
         .education-content {
@@ -968,7 +1200,7 @@
 
         .education-dates {
             font-size: 0.8rem;
-            color: var(--accent);
+            color: var(--gradient-start);
             font-weight: 500;
             margin-bottom: 0.25rem;
         }
@@ -1013,7 +1245,13 @@
         }
 
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--gradient-start);
+        }
+
+        .footer-season {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
 
         /* Animations */
@@ -1100,11 +1338,16 @@
                 align-items: flex-start;
             }
 
-            .winter-banner {
+            .season-banner {
                 position: relative;
                 top: 0;
                 left: 0;
                 margin-bottom: 1rem;
+            }
+
+            .season-dropdown {
+                right: auto;
+                left: 0;
             }
         }
 
@@ -1114,8 +1357,8 @@
             .bg-gradient,
             .nav-pills,
             .scroll-top,
-            #snow-canvas,
-            .winter-banner {
+            #season-canvas,
+            .season-banner {
                 display: none !important;
             }
 
@@ -1136,9 +1379,9 @@
         }
     </style>
 </head>
-<body>
-    <!-- Snow Canvas -->
-    <canvas id="snow-canvas"></canvas>
+<body data-season="winter">
+    <!-- Season Canvas -->
+    <canvas id="season-canvas"></canvas>
     
     <div class="bg-gradient"></div>
 
@@ -1146,9 +1389,38 @@
         <button class="control-btn theme-toggle" aria-label="Toggle dark mode">
             <i class="fas fa-moon"></i>
         </button>
-        <button class="control-btn snow-toggle active" aria-label="Toggle snow effect" title="Toggle Snow">
-            <i class="fas fa-snowflake"></i>
-        </button>
+        <div style="position: relative;">
+            <button class="control-btn season-toggle active" aria-label="Toggle season effect" title="Season Effects">
+                <i class="fas fa-snowflake"></i>
+            </button>
+            <div class="season-dropdown" id="season-dropdown">
+                <button class="season-option" data-season="spring">
+                    <span class="season-icon"><i class="fas fa-leaf"></i></span>
+                    <span>Spring</span>
+                </button>
+                <button class="season-option" data-season="summer">
+                    <span class="season-icon"><i class="fas fa-sun"></i></span>
+                    <span>Summer</span>
+                </button>
+                <button class="season-option" data-season="autumn">
+                    <span class="season-icon"><i class="fas fa-canadian-maple-leaf"></i></span>
+                    <span>Autumn</span>
+                </button>
+                <button class="season-option active" data-season="winter">
+                    <span class="season-icon"><i class="fas fa-snowflake"></i></span>
+                    <span>Winter</span>
+                </button>
+                <div class="season-divider"></div>
+                <button class="season-option" data-season="none">
+                    <span class="season-icon"><i class="fas fa-ban"></i></span>
+                    <span>No Effect</span>
+                </button>
+                <button class="season-option" data-season="auto">
+                    <span class="season-icon"><i class="fas fa-magic"></i></span>
+                    <span>Auto (by date)</span>
+                </button>
+            </div>
+        </div>
         <button class="control-btn lang-switcher" aria-label="Switch language">FR</button>
         <button class="control-btn scroll-top" aria-label="Scroll to top">
             <i class="fas fa-arrow-up"></i>
@@ -1173,11 +1445,26 @@
         </nav>
 
         <header class="animate-in">
-            <!-- Winter Banner -->
-            <div class="winter-banner">
+            <!-- Season Banners -->
+            <div class="season-banner" data-season="spring" id="banner-spring">
+                <i class="fas fa-leaf"></i>
+                <span id="spring-text-en">Spring Mode 🌸</span>
+                <span id="spring-text-fr" class="hidden">Mode Printemps 🌸</span>
+            </div>
+            <div class="season-banner hidden" data-season="summer" id="banner-summer">
+                <i class="fas fa-sun"></i>
+                <span id="summer-text-en">Summer Mode ☀️</span>
+                <span id="summer-text-fr" class="hidden">Mode Été ☀️</span>
+            </div>
+            <div class="season-banner hidden" data-season="autumn" id="banner-autumn">
+                <i class="fas fa-canadian-maple-leaf"></i>
+                <span id="autumn-text-en">Autumn Mode 🍂</span>
+                <span id="autumn-text-fr" class="hidden">Mode Automne 🍂</span>
+            </div>
+            <div class="season-banner hidden" data-season="winter" id="banner-winter">
                 <i class="fas fa-snowflake"></i>
-                <span id="winter-text-en">Winter Mode Active</span>
-                <span id="winter-text-fr" class="hidden">Mode Hiver Actif</span>
+                <span id="winter-text-en">Winter Mode ❄️</span>
+                <span id="winter-text-fr" class="hidden">Mode Hiver ❄️</span>
             </div>
 
             <div class="profile-container">
@@ -1272,7 +1559,7 @@
 
         <!-- ENGLISH SECTIONS -->
         <section id="experience-en" class="animate-in">
-            <h2><i class="fas fa-briefcase" style="color: var(--accent);"></i> Professional Experience</h2>
+            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
 
             <div class="job">
                 <div class="job-header">
@@ -1294,17 +1581,13 @@
                             <li>Ensure upgrades for Sonatype Nexus, Grafana, Sonarqube, SquashTM</li>
                             <li>Implement CI/CD for mobile applications (Android/iOS) with Fastlane, GitHub Actions, Appaloosa Store</li>
                             <li>Add code security checks using CodeQL, SonarCloud, and Fortify</li>
-                            <li>Build custom Docker images (Nginx + HTTP3 with QUIC: quicTLS and boringSSL)</li>
-                            <li>Update Selenium stack with Serenity and integrate with Jenkins</li>
+                            <li>Build custom Docker images (Nginx + HTTP3 with QUIC)</li>
                         </ul>
                         <div class="tech-tags">
                             <span class="tech-tag">Jenkins</span>
                             <span class="tech-tag">Groovy</span>
                             <span class="tech-tag">Nexus</span>
-                            <span class="tech-tag">Grafana</span>
-                            <span class="tech-tag">SonarQube</span>
                             <span class="tech-tag">GitHub Actions</span>
-                            <span class="tech-tag">Fastlane</span>
                             <span class="tech-tag">Docker</span>
                         </div>
                     </div>
@@ -1318,43 +1601,16 @@
                     </div>
                     <div class="role-content">
                         <ul>
-                            <li>Create and manage instances using Google Cloud (gcloud CLI) and OVH (Python CLI)</li>
+                            <li>Create and manage instances using Google Cloud and OVH</li>
                             <li>Configuration management with Puppet 7, 6, and 3.7</li>
                             <li>Resolve incidents: disk saturation, memory shortage, Docker daemon issues</li>
                             <li>Add third-party integrations: SAML2, OpenID, LDAP/AD</li>
-                            <li>Prepare Vagrant images using Packer (VirtualBox)</li>
-                            <li>Adjust and monitor Tomcat server application caches</li>
                         </ul>
                         <div class="tech-tags">
                             <span class="tech-tag">Google Cloud</span>
                             <span class="tech-tag">OVH</span>
                             <span class="tech-tag">Puppet</span>
                             <span class="tech-tag">Vagrant</span>
-                            <span class="tech-tag">Packer</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
-                        <span class="role-icon"><i class="fas fa-rocket"></i></span>
-                        <span class="role-title">Release Manager</span>
-                        <i class="fas fa-chevron-down role-toggle"></i>
-                    </div>
-                    <div class="role-content">
-                        <ul>
-                            <li>Perform product version releases (GA, RC, CI/CD) and improve release process with Nexus Staging</li>
-                            <li>Update projects and Maven dependencies using custom Bash scripts</li>
-                            <li>Deploy signed Docker images (DCT + Cosign) to DockerHub and GitHub Container Registry</li>
-                            <li>Administer Nexus: manage hosted repos, proxies, certificates, staging rules</li>
-                            <li>Configure Maven release plugins and Jenkins agents for releases</li>
-                        </ul>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Maven</span>
-                            <span class="tech-tag">Nexus</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Cosign</span>
-                            <span class="tech-tag">GitHub CLI</span>
                         </div>
                     </div>
                 </div>
@@ -1362,76 +1618,22 @@
                 <div class="role-section">
                     <div class="role-header" onclick="toggleRole(this.parentElement)">
                         <span class="role-icon"><i class="fas fa-server"></i></span>
-                        <span class="role-title">Infrastructure</span>
+                        <span class="role-title">Infrastructure & SecOps</span>
                         <i class="fas fa-chevron-down role-toggle"></i>
                     </div>
                     <div class="role-content">
                         <ul>
-                            <li>Configure bare-metal servers with LVM partitioning, resolve disk and RAID issues</li>
-                            <li>Configure services: Tomcat, Nginx, Apache2, Traefik with security headers (CSP, XFO, HSTS, OCSP)</li>
-                            <li>SSL configuration and verification with Qualys, DNS setup (CAA, DNSSEC with BIND)</li>
-                            <li>Secure SMTP: DMARC, DKIM (OpenDKIM + Postfix), SPF configuration</li>
-                            <li>Deploy and manage ELK, InfluxDB, HAProxy, Google Cloud Load Balancer</li>
-                            <li>Provision instances with Ansible, manage with OpenStack and OVH</li>
-                            <li>Automate OS image updates on Google Cloud with GitHub Actions</li>
+                            <li>Configure bare-metal servers with LVM partitioning</li>
+                            <li>Configure services: Tomcat, Nginx, Apache2, Traefik with security headers</li>
+                            <li>SSL configuration, DNS setup (CAA, DNSSEC), secure SMTP</li>
+                            <li>Deploy ELK, InfluxDB, HAProxy, provision with Ansible</li>
+                            <li>Security scanning with CodeQL, SonarCloud, Acunetix</li>
                         </ul>
                         <div class="tech-tags">
                             <span class="tech-tag">Nginx</span>
-                            <span class="tech-tag">Traefik</span>
-                            <span class="tech-tag">HAProxy</span>
                             <span class="tech-tag">Ansible</span>
-                            <span class="tech-tag">OpenStack</span>
                             <span class="tech-tag">ELK</span>
-                            <span class="tech-tag">InfluxDB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
-                        <span class="role-icon"><i class="fas fa-shield-alt"></i></span>
-                        <span class="role-title">SecOps</span>
-                        <i class="fas fa-chevron-down role-toggle"></i>
-                    </div>
-                    <div class="role-content">
-                        <ul>
-                            <li>Secure Docker services with seccomp profiles</li>
-                            <li>Regular code scanning with CodeQL and SonarCloud</li>
-                            <li>Security testing with Acunetix and other tools</li>
-                            <li>Application filtering (HAProxy) and network filtering (VPN)</li>
-                            <li>Diagnose Linux kernel issues using OpenBSD recovery images</li>
-                        </ul>
-                        <div class="tech-tags">
                             <span class="tech-tag">CodeQL</span>
-                            <span class="tech-tag">SonarCloud</span>
-                            <span class="tech-tag">Acunetix</span>
-                            <span class="tech-tag">VPN</span>
-                            <span class="tech-tag">seccomp</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
-                        <span class="role-icon"><i class="fas fa-users"></i></span>
-                        <span class="role-title">Technical Consulting & Support</span>
-                        <i class="fas fa-chevron-down role-toggle"></i>
-                    </div>
-                    <div class="role-content">
-                        <ul>
-                            <li>Prepare client instances: Tomcat, Elasticsearch, MongoDB, OnlyOffice, JMXTrans, Telegraf, Jitsi</li>
-                            <li>Create architecture documents, installation guides, acceptance checklists</li>
-                            <li>Prepare Ansible playbooks for client deployments</li>
-                            <li>Audit complex network issues, support Jitsi installation on secure infrastructures</li>
-                            <li>Support development team with Docker deployments and performance issues</li>
-                            <li>Contribute to product design with architects, review pull requests</li>
-                        </ul>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Elasticsearch</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Jitsi</span>
-                            <span class="tech-tag">Ansible</span>
-                            <span class="tech-tag">JMX</span>
                         </div>
                     </div>
                 </div>
@@ -1445,21 +1647,10 @@
                 </div>
                 <p class="job-title">Support Engineer</p>
                 <ul>
-                    <li>Resolve client technical issues: Tomcat/JBoss configuration, Logback, JMX RMI, Database connectors</li>
-                    <li>Create CLI tools for the support team to speed up environment setup (LDAP, user injectors)</li>
-                    <li>Create extensions for client needs (e.g., Remote JMX access via REST API)</li>
-                    <li>Perform security checks with Acunetix, Nessus, Netspark</li>
-                    <li>Debug Tomcat server and inject fixes with JRebel</li>
+                    <li>Resolve client technical issues: Tomcat/JBoss configuration, JMX, Database connectors</li>
+                    <li>Create CLI tools for the support team, security checks with Acunetix, Nessus</li>
                     <li>Contribute to J2EE/AngularJS support ticket management application</li>
                 </ul>
-                <div class="tech-tags">
-                    <span class="tech-tag">Tomcat</span>
-                    <span class="tech-tag">JBoss</span>
-                    <span class="tech-tag">J2EE</span>
-                    <span class="tech-tag">AngularJS</span>
-                    <span class="tech-tag">JRebel</span>
-                    <span class="tech-tag">Nessus</span>
-                </div>
             </div>
 
             <div class="job">
@@ -1470,141 +1661,51 @@
                 </div>
                 <p class="job-title">Frontend Developer</p>
                 <ul>
-                    <li>Contribute to building a Forum application based on Angular 4</li>
-                    <li>Create components using Angular, CSS, SCSS, and SASS</li>
-                    <li>Use GitLab for project management and SCM</li>
+                    <li>Build Forum application with Angular 4, CSS, SCSS</li>
+                    <li>Project management with GitLab</li>
                 </ul>
-                <div class="tech-tags">
-                    <span class="tech-tag">Angular 4</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">SCSS</span>
-                    <span class="tech-tag">GitLab</span>
-                </div>
             </div>
         </section>
 
         <!-- FRENCH EXPERIENCE -->
         <section id="experience-fr" class="animate-in hidden">
-            <h2><i class="fas fa-briefcase" style="color: var(--accent);"></i> Expérience Professionnelle</h2>
+            <h2><i class="fas fa-briefcase"></i> Expérience Professionnelle</h2>
 
             <div class="job">
                 <div class="job-header">
                     <span class="job-company">eXo Platform</span>
                     <span class="job-date">Mars 2020 – Présent</span>
-                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Tunis / Télétravail / Nantes, France</span>
+                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Tunis / Télétravail / Nantes</span>
                 </div>
                 <p class="job-title">Ingénieur DevOps</p>
 
                 <div class="role-section">
                     <div class="role-header" onclick="toggleRole(this.parentElement)">
                         <span class="role-icon"><i class="fas fa-cogs"></i></span>
-                        <span class="role-title">Software Factory</span>
+                        <span class="role-title">Software Factory & CI/CD</span>
                         <i class="fas fa-chevron-down role-toggle"></i>
                     </div>
                     <div class="role-content">
                         <ul>
-                            <li>Gestion de Jenkins avec Seed jobs en DSL/Groovy, création de pipelines, préparation et intégration d'agents Jenkins</li>
-                            <li>Mises à jour de Sonatype Nexus, Grafana, Sonarqube, SquashTM</li>
-                            <li>Implémentation CI/CD pour applications mobiles (Android/iOS) avec Fastlane, GitHub Actions, Appaloosa Store</li>
-                            <li>Ajout de vérifications de sécurité du code avec CodeQL, SonarCloud et Fortify</li>
-                            <li>Construction d'images Docker personnalisées (Nginx + HTTP3 avec QUIC)</li>
+                            <li>Gestion de Jenkins avec Seed jobs en DSL/Groovy, création de pipelines</li>
+                            <li>CI/CD pour applications mobiles avec Fastlane, GitHub Actions</li>
+                            <li>Sécurité du code avec CodeQL, SonarCloud et Fortify</li>
                         </ul>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Jenkins</span>
-                            <span class="tech-tag">Groovy</span>
-                            <span class="tech-tag">Nexus</span>
-                            <span class="tech-tag">GitHub Actions</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
-                        <span class="role-icon"><i class="fas fa-cloud"></i></span>
-                        <span class="role-title">Hébergement & Cloud</span>
-                        <i class="fas fa-chevron-down role-toggle"></i>
-                    </div>
-                    <div class="role-content">
-                        <ul>
-                            <li>Création et gestion d'instances avec Google Cloud et OVH</li>
-                            <li>Gestion de configuration avec Puppet 7, 6 et 3.7</li>
-                            <li>Résolution d'incidents : saturation disque, manque de mémoire, problèmes Docker</li>
-                            <li>Intégrations tierces : SAML2, OpenID, LDAP/AD</li>
-                        </ul>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Google Cloud</span>
-                            <span class="tech-tag">OVH</span>
-                            <span class="tech-tag">Puppet</span>
-                            <span class="tech-tag">Vagrant</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
-                        <span class="role-icon"><i class="fas fa-rocket"></i></span>
-                        <span class="role-title">Gestionnaire de Releases</span>
-                        <i class="fas fa-chevron-down role-toggle"></i>
-                    </div>
-                    <div class="role-content">
-                        <ul>
-                            <li>Releases de versions produit (GA, RC, CI/CD) et amélioration du processus avec Nexus Staging</li>
-                            <li>Déploiement d'images Docker signées (DCT + Cosign) vers DockerHub et GitHub Container Registry</li>
-                            <li>Administration Nexus : gestion des repos, proxies, certificats, règles de staging</li>
-                        </ul>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Maven</span>
-                            <span class="tech-tag">Nexus</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Cosign</span>
-                        </div>
                     </div>
                 </div>
 
                 <div class="role-section">
                     <div class="role-header" onclick="toggleRole(this.parentElement)">
                         <span class="role-icon"><i class="fas fa-server"></i></span>
-                        <span class="role-title">Infrastructure</span>
+                        <span class="role-title">Infrastructure & Cloud</span>
                         <i class="fas fa-chevron-down role-toggle"></i>
                     </div>
                     <div class="role-content">
                         <ul>
-                            <li>Configuration serveurs bare-metal avec partitionnement LVM</li>
-                            <li>Configuration services : Tomcat, Nginx, Apache2, Traefik avec en-têtes de sécurité</li>
-                            <li>Configuration SSL et vérification avec Qualys, DNS (CAA, DNSSEC)</li>
-                            <li>SMTP sécurisé : DMARC, DKIM, SPF</li>
-                            <li>Déploiement ELK, InfluxDB, HAProxy</li>
+                            <li>Gestion d'instances Google Cloud et OVH avec Puppet</li>
+                            <li>Configuration serveurs, services Nginx, Traefik, ELK</li>
+                            <li>Provisionnement avec Ansible, sécurité réseau</li>
                         </ul>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Nginx</span>
-                            <span class="tech-tag">Traefik</span>
-                            <span class="tech-tag">HAProxy</span>
-                            <span class="tech-tag">Ansible</span>
-                            <span class="tech-tag">ELK</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
-                        <span class="role-icon"><i class="fas fa-shield-alt"></i></span>
-                        <span class="role-title">SecOps</span>
-                        <i class="fas fa-chevron-down role-toggle"></i>
-                    </div>
-                    <div class="role-content">
-                        <ul>
-                            <li>Sécurisation des services Docker avec profils seccomp</li>
-                            <li>Scan régulier du code avec CodeQL et SonarCloud</li>
-                            <li>Tests de sécurité avec Acunetix</li>
-                            <li>Filtrage applicatif (HAProxy) et réseau (VPN)</li>
-                        </ul>
-                        <div class="tech-tags">
-                            <span class="tech-tag">CodeQL</span>
-                            <span class="tech-tag">SonarCloud</span>
-                            <span class="tech-tag">VPN</span>
-                            <span class="tech-tag">seccomp</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1613,14 +1714,10 @@
                 <div class="job-header">
                     <span class="job-company">eXo Platform</span>
                     <span class="job-date">Déc. 2018 – Fév. 2020</span>
-                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Tunis</span>
                 </div>
                 <p class="job-title">Ingénieur Support</p>
                 <ul>
-                    <li>Résolution de problèmes techniques clients : configuration Tomcat/JBoss, JMX, connecteurs BDD</li>
-                    <li>Création d'outils CLI pour accélérer la mise en place d'environnements</li>
-                    <li>Tests de sécurité avec Acunetix, Nessus, Netspark</li>
-                    <li>Contribution à l'application de gestion de tickets J2EE/AngularJS</li>
+                    <li>Support technique clients, outils CLI, tests de sécurité</li>
                 </ul>
             </div>
 
@@ -1628,20 +1725,17 @@
                 <div class="job-header">
                     <span class="job-company">SW Consulting</span>
                     <span class="job-date">Jan. 2018 – Déc. 2018</span>
-                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> Monastir</span>
                 </div>
                 <p class="job-title">Développeur Frontend</p>
                 <ul>
-                    <li>Développement d'une application Forum en Angular 4</li>
-                    <li>Création de composants avec Angular, CSS, SCSS</li>
-                    <li>Utilisation de GitLab pour la gestion de projet</li>
+                    <li>Application Forum en Angular 4</li>
                 </ul>
             </div>
         </section>
 
-        <!-- SKILLS ENGLISH -->
+        <!-- SKILLS -->
         <section id="skills-en" class="animate-in">
-            <h2><i class="fas fa-code" style="color: var(--accent);"></i> Skills</h2>
+            <h2><i class="fas fa-code"></i> Skills</h2>
             <div class="skills-container">
                 <div class="skill-category">
                     <h3><i class="fas fa-language"></i> Languages</h3>
@@ -1653,7 +1747,7 @@
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-terminal"></i> Programming Languages</h3>
+                    <h3><i class="fas fa-terminal"></i> Programming</h3>
                     <ul class="skills-list">
                         <li class="skill-tag">Python</li>
                         <li class="skill-tag">JavaScript</li>
@@ -1662,492 +1756,198 @@
                         <li class="skill-tag">Groovy</li>
                         <li class="skill-tag">Go</li>
                         <li class="skill-tag">SQL</li>
-                        <li class="skill-tag">Ruby</li>
-                        <li class="skill-tag">PHP</li>
-                        <li class="skill-tag">C++</li>
-                        <li class="skill-tag">DSL</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fab fa-react"></i> Frontend</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">React.js</li>
-                        <li class="skill-tag">Angular</li>
-                        <li class="skill-tag">AngularJS</li>
-                        <li class="skill-tag">VueJS</li>
-                        <li class="skill-tag">HTML/CSS</li>
-                        <li class="skill-tag">SCSS/SASS</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud & Infrastructure</h3>
+                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
                     <ul class="skills-list">
                         <li class="skill-tag">AWS</li>
                         <li class="skill-tag">Google Cloud</li>
-                        <li class="skill-tag">OVH</li>
-                        <li class="skill-tag">OpenStack</li>
                         <li class="skill-tag">Docker</li>
                         <li class="skill-tag">Kubernetes</li>
+                        <li class="skill-tag">Jenkins</li>
+                        <li class="skill-tag">Ansible</li>
                         <li class="skill-tag">Terraform</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-cogs"></i> CI/CD & Automation</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Jenkins</li>
-                        <li class="skill-tag">GitHub Actions</li>
-                        <li class="skill-tag">GitLab CI</li>
-                        <li class="skill-tag">Ansible</li>
-                        <li class="skill-tag">Puppet</li>
-                        <li class="skill-tag">Fastlane</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Monitoring & Observability</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Grafana</li>
-                        <li class="skill-tag">InfluxDB</li>
-                        <li class="skill-tag">ELK Stack</li>
-                        <li class="skill-tag">Zabbix</li>
-                        <li class="skill-tag">Uptime-Kuma</li>
-                        <li class="skill-tag">JMXTrans</li>
-                        <li class="skill-tag">Telegraf</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-server"></i> Servers & Services</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Tomcat</li>
-                        <li class="skill-tag">JBoss/WildFly</li>
-                        <li class="skill-tag">Nginx</li>
-                        <li class="skill-tag">Apache2</li>
-                        <li class="skill-tag">Traefik</li>
-                        <li class="skill-tag">HAProxy</li>
-                        <li class="skill-tag">Postfix</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Databases</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">PostgreSQL</li>
-                        <li class="skill-tag">MySQL</li>
-                        <li class="skill-tag">MongoDB</li>
-                        <li class="skill-tag">Oracle</li>
-                        <li class="skill-tag">Elasticsearch</li>
-                        <li class="skill-tag">HSQLDB</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                    <h3><i class="fas fa-shield-alt"></i> Security & Monitoring</h3>
                     <ul class="skills-list">
                         <li class="skill-tag">CodeQL</li>
                         <li class="skill-tag">SonarCloud</li>
-                        <li class="skill-tag">Fortify</li>
+                        <li class="skill-tag">Grafana</li>
+                        <li class="skill-tag">ELK Stack</li>
                         <li class="skill-tag">Acunetix</li>
                         <li class="skill-tag">Nessus</li>
-                        <li class="skill-tag">Burp Suite</li>
-                        <li class="skill-tag">Wireshark</li>
-                        <li class="skill-tag">OpenVPN</li>
-                        <li class="skill-tag">WireGuard</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-key"></i> Identity & Access</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Keycloak</li>
-                        <li class="skill-tag">SAML2</li>
-                        <li class="skill-tag">OpenID</li>
-                        <li class="skill-tag">LDAP/AD</li>
-                        <li class="skill-tag">phpLDAPadmin</li>
-                        <li class="skill-tag">2FAuth</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Development Tools</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Git</li>
-                        <li class="skill-tag">GitHub</li>
-                        <li class="skill-tag">GitLab</li>
-                        <li class="skill-tag">Jira</li>
-                        <li class="skill-tag">VSCode</li>
-                        <li class="skill-tag">IntelliJ</li>
-                        <li class="skill-tag">DBeaver</li>
-                        <li class="skill-tag">CodeSpaces</li>
-                        <li class="skill-tag">Gitpod</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-box"></i> Artifact Management</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Nexus</li>
-                        <li class="skill-tag">Maven</li>
-                        <li class="skill-tag">Docker Hub</li>
-                        <li class="skill-tag">GitHub Packages</li>
-                        <li class="skill-tag">Cosign</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- SKILLS FRENCH -->
         <section id="skills-fr" class="animate-in hidden">
-            <h2><i class="fas fa-code" style="color: var(--accent);"></i> Compétences</h2>
+            <h2><i class="fas fa-code"></i> Compétences</h2>
             <div class="skills-container">
                 <div class="skill-category">
                     <h3><i class="fas fa-language"></i> Langues</h3>
                     <ul class="skills-list">
-                        <li class="skill-tag highlight">Arabe (Langue maternelle)</li>
+                        <li class="skill-tag highlight">Arabe (Natif)</li>
                         <li class="skill-tag highlight">Français (Courant)</li>
                         <li class="skill-tag highlight">Anglais (Courant)</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><i class="fas fa-terminal"></i> Langages de Programmation</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Python</li>
-                        <li class="skill-tag">JavaScript</li>
-                        <li class="skill-tag">Java</li>
-                        <li class="skill-tag">Bash</li>
-                        <li class="skill-tag">Groovy</li>
-                        <li class="skill-tag">Go</li>
-                        <li class="skill-tag">SQL</li>
-                        <li class="skill-tag">Ruby</li>
-                        <li class="skill-tag">PHP</li>
-                        <li class="skill-tag">C++</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud & Infrastructure</h3>
+                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
                     <ul class="skills-list">
                         <li class="skill-tag">AWS</li>
                         <li class="skill-tag">Google Cloud</li>
-                        <li class="skill-tag">OVH</li>
-                        <li class="skill-tag">OpenStack</li>
                         <li class="skill-tag">Docker</li>
                         <li class="skill-tag">Kubernetes</li>
-                        <li class="skill-tag">Terraform</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-cogs"></i> CI/CD & Automatisation</h3>
-                    <ul class="skills-list">
                         <li class="skill-tag">Jenkins</li>
-                        <li class="skill-tag">GitHub Actions</li>
-                        <li class="skill-tag">GitLab CI</li>
                         <li class="skill-tag">Ansible</li>
-                        <li class="skill-tag">Puppet</li>
-                        <li class="skill-tag">Fastlane</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-shield-alt"></i> Sécurité</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">CodeQL</li>
-                        <li class="skill-tag">SonarCloud</li>
-                        <li class="skill-tag">Fortify</li>
-                        <li class="skill-tag">Acunetix</li>
-                        <li class="skill-tag">Nessus</li>
-                        <li class="skill-tag">OpenVPN</li>
-                        <li class="skill-tag">WireGuard</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Monitoring</h3>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Grafana</li>
-                        <li class="skill-tag">InfluxDB</li>
-                        <li class="skill-tag">ELK Stack</li>
-                        <li class="skill-tag">Zabbix</li>
-                        <li class="skill-tag">Uptime-Kuma</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECTS ENGLISH -->
+        <!-- PROJECTS -->
         <section id="projects-en" class="animate-in">
-            <h2><i class="fas fa-rocket" style="color: var(--accent);"></i> Projects & Publications</h2>
+            <h2><i class="fas fa-rocket"></i> Projects</h2>
             <div class="projects-grid">
                 <div class="project-item">
                     <span class="project-year">2019</span>
                     <div class="project-content">
-                        <div class="project-name">Support Ticket Administration System</div>
-                        <div class="project-desc">Full-stack application for managing support tickets</div>
+                        <div class="project-name">Support Ticket System</div>
+                        <div class="project-desc">Full-stack application</div>
                     </div>
-                    <span class="project-tech">J2EE/VueJS/AngularJS</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2019</span>
-                    <div class="project-content">
-                        <div class="project-name">Support Team CLI Tools</div>
-                        <div class="project-desc">Command-line tools to accelerate environment setup</div>
-                    </div>
-                    <span class="project-tech">Bash</span>
+                    <span class="project-tech">J2EE/VueJS</span>
                 </div>
                 <div class="project-item">
                     <span class="project-year">2017</span>
                     <div class="project-content">
-                        <div class="project-name">Android Port Forwarding Tool</div>
-                        <div class="project-desc">Network utility for Android device port forwarding</div>
-                    </div>
-                    <span class="project-tech">Bash</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <div class="project-content">
-                        <div class="project-name">Tourism Mobile Application</div>
-                        <div class="project-desc">Cross-platform tourism application</div>
-                    </div>
-                    <span class="project-tech">IBM MobileFirst</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <div class="project-content">
-                        <div class="project-name">3D Human Skeleton AR Representation</div>
-                        <div class="project-desc">Augmented reality visualization of human skeleton</div>
+                        <div class="project-name">3D Human Skeleton AR</div>
+                        <div class="project-desc">Augmented reality visualization</div>
                     </div>
                     <span class="project-tech">Matlab</span>
                 </div>
                 <div class="project-item">
                     <span class="project-year">2015</span>
                     <div class="project-content">
-                        <div class="project-name">Hierarchical Clustering Validation</div>
-                        <div class="project-desc">Data mining clustering algorithm validation tool</div>
+                        <div class="project-name">Clustering Validation</div>
+                        <div class="project-desc">Data mining algorithm</div>
                     </div>
                     <span class="project-tech">Java/R</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2014</span>
-                    <div class="project-content">
-                        <div class="project-name">Car Rental Management System</div>
-                        <div class="project-desc">Complete management application for car rentals</div>
-                    </div>
-                    <span class="project-tech">Java/VB</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2012</span>
-                    <div class="project-content">
-                        <div class="project-name">Collaborative Student Website</div>
-                        <div class="project-desc">Community platform with VBulletin integration</div>
-                    </div>
-                    <span class="project-tech">PHP</span>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECTS FRENCH -->
         <section id="projects-fr" class="animate-in hidden">
-            <h2><i class="fas fa-rocket" style="color: var(--accent);"></i> Projets & Publications</h2>
+            <h2><i class="fas fa-rocket"></i> Projets</h2>
             <div class="projects-grid">
                 <div class="project-item">
                     <span class="project-year">2019</span>
                     <div class="project-content">
-                        <div class="project-name">Système d'administration de tickets support</div>
-                        <div class="project-desc">Application full-stack de gestion de tickets</div>
+                        <div class="project-name">Système de tickets</div>
                     </div>
-                    <span class="project-tech">J2EE/VueJS/AngularJS</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2019</span>
-                    <div class="project-content">
-                        <div class="project-name">Outils CLI pour l'équipe support</div>
-                        <div class="project-desc">Outils en ligne de commande pour accélérer la mise en place d'environnements</div>
-                    </div>
-                    <span class="project-tech">Bash</span>
+                    <span class="project-tech">J2EE/VueJS</span>
                 </div>
                 <div class="project-item">
                     <span class="project-year">2017</span>
                     <div class="project-content">
-                        <div class="project-name">Outil de redirection de ports Android</div>
-                        <div class="project-desc">Utilitaire réseau pour la redirection de ports</div>
-                    </div>
-                    <span class="project-tech">Bash</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <div class="project-content">
-                        <div class="project-name">Application mobile de tourisme</div>
-                        <div class="project-desc">Application touristique multiplateforme</div>
-                    </div>
-                    <span class="project-tech">IBM MobileFirst</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2017</span>
-                    <div class="project-content">
-                        <div class="project-name">Représentation 3D de squelette humain en RA</div>
-                        <div class="project-desc">Visualisation en réalité augmentée du squelette humain</div>
+                        <div class="project-name">Squelette 3D en RA</div>
                     </div>
                     <span class="project-tech">Matlab</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2015</span>
-                    <div class="project-content">
-                        <div class="project-name">Validation de clustering hiérarchique</div>
-                        <div class="project-desc">Outil de validation d'algorithmes de clustering pour data mining</div>
-                    </div>
-                    <span class="project-tech">Java/R</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2014</span>
-                    <div class="project-content">
-                        <div class="project-name">Système de gestion de location de voitures</div>
-                        <div class="project-desc">Application complète de gestion de locations</div>
-                    </div>
-                    <span class="project-tech">Java/VB</span>
-                </div>
-                <div class="project-item">
-                    <span class="project-year">2012</span>
-                    <div class="project-content">
-                        <div class="project-name">Site web collaboratif étudiant</div>
-                        <div class="project-desc">Plateforme communautaire avec intégration VBulletin</div>
-                    </div>
-                    <span class="project-tech">PHP</span>
                 </div>
             </div>
         </section>
 
-        <!-- CERTIFICATIONS ENGLISH -->
+        <!-- CERTIFICATIONS -->
         <section id="certifications-en" class="animate-in">
-            <h2><i class="fas fa-certificate" style="color: var(--accent);"></i> Certifications</h2>
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
             <div class="cert-grid">
                 <div class="cert-item">
-                    <div class="cert-icon">
-                        <i class="fab fa-apple"></i>
-                    </div>
+                    <div class="cert-icon"><i class="fab fa-apple"></i></div>
                     <div class="cert-content">
                         <div class="cert-name">Mobile Application Developer</div>
-                        <div class="cert-issuer">IBM MobileFirst - Mastery Award for Professionals</div>
+                        <div class="cert-issuer">IBM MobileFirst</div>
                     </div>
                     <span class="cert-year">2017</span>
                 </div>
                 <div class="cert-item">
-                    <div class="cert-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
+                    <div class="cert-icon"><i class="fas fa-network-wired"></i></div>
                     <div class="cert-content">
                         <div class="cert-name">IPv6 Certification</div>
-                        <div class="cert-issuer">ENISo - National School of Engineers of Sousse</div>
+                        <div class="cert-issuer">ENISo</div>
                     </div>
                     <span class="cert-year">2015</span>
                 </div>
             </div>
         </section>
 
-        <!-- CERTIFICATIONS FRENCH -->
         <section id="certifications-fr" class="animate-in hidden">
-            <h2><i class="fas fa-certificate" style="color: var(--accent);"></i> Certifications</h2>
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
             <div class="cert-grid">
                 <div class="cert-item">
-                    <div class="cert-icon">
-                        <i class="fab fa-apple"></i>
-                    </div>
+                    <div class="cert-icon"><i class="fab fa-apple"></i></div>
                     <div class="cert-content">
-                        <div class="cert-name">Développeur d'Applications Mobiles</div>
-                        <div class="cert-issuer">IBM MobileFirst - Mastery Award for Professionals</div>
+                        <div class="cert-name">Développeur Mobile</div>
+                        <div class="cert-issuer">IBM MobileFirst</div>
                     </div>
                     <span class="cert-year">2017</span>
                 </div>
-                <div class="cert-item">
-                    <div class="cert-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <div class="cert-content">
-                        <div class="cert-name">Certification IPv6</div>
-                        <div class="cert-issuer">ENISo - École Nationale d'Ingénieurs de Sousse</div>
-                    </div>
-                    <span class="cert-year">2015</span>
-                </div>
             </div>
         </section>
 
-        <!-- EDUCATION ENGLISH -->
+        <!-- EDUCATION -->
         <section id="education-en" class="animate-in">
-            <h2><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Education</h2>
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
             
             <div class="job">
                 <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
+                    <div class="education-icon"><i class="fas fa-university"></i></div>
                     <div class="education-content">
-                        <div class="education-dates">Oct. 2015 – Oct. 2017</div>
+                        <div class="education-dates">2015 – 2017</div>
                         <div class="education-school">National School of Engineers of Sousse (ENISo)</div>
                         <div class="education-degree">Master's in Telecommunications Engineering</div>
-                        <div class="education-details">
-                            <strong>Courses:</strong> IoT, Algorithms, Databases, Computer Systems, Telecom Systems, Network Administration & Auditing, Security, Encryption, Linux Administration<br>
-                            <strong>Research:</strong> 3D skeleton representation of the human body using augmented reality
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="job">
                 <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
+                    <div class="education-icon"><i class="fas fa-university"></i></div>
                     <div class="education-content">
-                        <div class="education-dates">Sept. 2012 – May 2015</div>
-                        <div class="education-school">Higher Institute of Computer Science and Mathematics of Monastir (ISIMM)</div>
+                        <div class="education-dates">2012 – 2015</div>
+                        <div class="education-school">ISIMM - Monastir</div>
                         <div class="education-degree">Bachelor's in Computer Science</div>
-                        <div class="education-details">
-                            <strong>Courses:</strong> Algorithms, Databases, Network & Computer System Administration, Security, Oracle Administration, Linux Administration, Java/J2EE, PHP, JavaScript<br>
-                            <strong>Research:</strong> Validation of hierarchical clustering for data mining applications (Hybrid: Java/R)
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- EDUCATION FRENCH -->
         <section id="education-fr" class="animate-in hidden">
-            <h2><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Formation</h2>
+            <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
             
             <div class="job">
                 <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
+                    <div class="education-icon"><i class="fas fa-university"></i></div>
                     <div class="education-content">
-                        <div class="education-dates">Oct. 2015 – Oct. 2017</div>
-                        <div class="education-school">École Nationale d'Ingénieurs de Sousse (ENISo)</div>
-                        <div class="education-degree">Master en Génie des Télécommunications</div>
-                        <div class="education-details">
-                            <strong>Cours :</strong> IoT, Algorithmes, Bases de données, Systèmes informatiques, Systèmes de télécommunication, Administration & Audit réseau, Sécurité, Chiffrement, Administration Linux<br>
-                            <strong>Recherche :</strong> Représentation 3D du squelette humain en réalité augmentée
-                        </div>
+                        <div class="education-dates">2015 – 2017</div>
+                        <div class="education-school">ENISo - Sousse</div>
+                        <div class="education-degree">Master en Télécommunications</div>
                     </div>
                 </div>
             </div>
 
             <div class="job">
                 <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
+                    <div class="education-icon"><i class="fas fa-university"></i></div>
                     <div class="education-content">
-                        <div class="education-dates">Sept. 2012 – Mai 2015</div>
-                        <div class="education-school">Institut Supérieur d'Informatique et de Mathématiques de Monastir (ISIMM)</div>
+                        <div class="education-dates">2012 – 2015</div>
+                        <div class="education-school">ISIMM - Monastir</div>
                         <div class="education-degree">Licence en Informatique</div>
-                        <div class="education-details">
-                            <strong>Cours :</strong> Algorithmes, Bases de données, Administration réseau & système, Sécurité, Administration Oracle, Administration Linux, Java/J2EE, PHP, JavaScript<br>
-                            <strong>Recherche :</strong> Validation du clustering hiérarchique pour applications de data mining (Hybride: Java/R)
-                        </div>
                     </div>
                 </div>
             </div>
@@ -2155,26 +1955,61 @@
 
         <footer>
             <div class="footer-links">
-                <a href="https://github.com/hbenali" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://linkedin.com/in/houssembali" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/hbenali" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/houssembali" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="mailto:contact@hbenali.ovh"><i class="fas fa-envelope"></i> Email</a>
             </div>
-            <p>© 2026 Houssem Ben Ali. Built with ❤️ and ❄️</p>
+            <p>© 2026 Houssem Ben Ali. Built with ❤️</p>
+            <p class="footer-season" id="footer-season">
+                <span id="footer-season-en">Enjoying <span id="season-name-en">Winter</span> vibes ❄️</span>
+                <span id="footer-season-fr" class="hidden">Ambiance <span id="season-name-fr">Hiver</span> ❄️</span>
+            </p>
         </footer>
     </div>
 
     <script>
         // ============================================
-        // SNOW ANIMATION
+        // SEASONAL EFFECTS ENGINE
         // ============================================
-        class SnowEffect {
+        class SeasonalEffects {
             constructor() {
-                this.canvas = document.getElementById('snow-canvas');
+                this.canvas = document.getElementById('season-canvas');
                 this.ctx = this.canvas.getContext('2d');
-                this.snowflakes = [];
+                this.particles = [];
+                this.currentSeason = 'winter';
                 this.isActive = true;
                 this.animationId = null;
-                this.maxSnowflakes = 150;
+                
+                this.seasonConfig = {
+                    spring: {
+                        particleCount: 60,
+                        icon: 'fa-leaf',
+                        name: { en: 'Spring', fr: 'Printemps' },
+                        emoji: '🌸',
+                        colors: ['#fce7f3', '#fbcfe8', '#f9a8d4', '#f472b6', '#ffffff']
+                    },
+                    summer: {
+                        particleCount: 40,
+                        icon: 'fa-sun',
+                        name: { en: 'Summer', fr: 'Été' },
+                        emoji: '☀️',
+                        colors: ['#fef3c7', '#fde68a', '#fcd34d', '#fbbf24', '#ffffff']
+                    },
+                    autumn: {
+                        particleCount: 80,
+                        icon: 'fa-canadian-maple-leaf',
+                        name: { en: 'Autumn', fr: 'Automne' },
+                        emoji: '🍂',
+                        colors: ['#fcd34d', '#f59e0b', '#ea580c', '#dc2626', '#92400e']
+                    },
+                    winter: {
+                        particleCount: 120,
+                        icon: 'fa-snowflake',
+                        name: { en: 'Winter', fr: 'Hiver' },
+                        emoji: '❄️',
+                        colors: ['#ffffff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#dbeafe']
+                    }
+                };
                 
                 this.init();
             }
@@ -2182,7 +2017,7 @@
             init() {
                 this.resize();
                 window.addEventListener('resize', () => this.resize());
-                this.createSnowflakes();
+                this.createParticles();
                 this.animate();
             }
 
@@ -2191,160 +2026,436 @@
                 this.canvas.height = window.innerHeight;
             }
 
-            createSnowflakes() {
-                this.snowflakes = [];
-                for (let i = 0; i < this.maxSnowflakes; i++) {
-                    this.snowflakes.push(this.createSnowflake());
+            getCurrentSeasonByDate() {
+                const month = new Date().getMonth();
+                if (month >= 2 && month <= 4) return 'spring';
+                if (month >= 5 && month <= 7) return 'summer';
+                if (month >= 8 && month <= 10) return 'autumn';
+                return 'winter';
+            }
+
+            setSeason(season) {
+                if (season === 'auto') {
+                    season = this.getCurrentSeasonByDate();
+                }
+                
+                if (season === 'none') {
+                    this.isActive = false;
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    this.updateUI(null);
+                    return;
+                }
+                
+                this.currentSeason = season;
+                this.isActive = true;
+                this.createParticles();
+                this.updateUI(season);
+                
+                if (!this.animationId) {
+                    this.animate();
                 }
             }
 
-            createSnowflake() {
-                return {
+            updateUI(season) {
+                // Update body data attribute
+                document.body.setAttribute('data-season', season || 'none');
+                
+                // Update season toggle icon
+                const toggleIcon = document.querySelector('.season-toggle i');
+                if (season && this.seasonConfig[season]) {
+                    toggleIcon.className = `fas ${this.seasonConfig[season].icon}`;
+                } else {
+                    toggleIcon.className = 'fas fa-ban';
+                }
+                
+                // Update dropdown active state
+                document.querySelectorAll('.season-option').forEach(opt => {
+                    opt.classList.remove('active');
+                    if (opt.dataset.season === season) {
+                        opt.classList.add('active');
+                    }
+                });
+                
+                // Update banners
+                document.querySelectorAll('.season-banner').forEach(banner => {
+                    banner.classList.add('hidden');
+                });
+                if (season) {
+                    const activeBanner = document.getElementById(`banner-${season}`);
+                    if (activeBanner) {
+                        activeBanner.classList.remove('hidden');
+                    }
+                }
+                
+                // Update footer
+                const footerSeason = document.getElementById('footer-season');
+                if (season && this.seasonConfig[season]) {
+                    footerSeason.style.display = 'block';
+                    document.getElementById('season-name-en').textContent = this.seasonConfig[season].name.en;
+                    document.getElementById('season-name-fr').textContent = this.seasonConfig[season].name.fr;
+                    
+                    // Update emoji in footer
+                    const footerEn = document.getElementById('footer-season-en');
+                    const footerFr = document.getElementById('footer-season-fr');
+                    footerEn.innerHTML = `Enjoying <span id="season-name-en">${this.seasonConfig[season].name.en}</span> vibes ${this.seasonConfig[season].emoji}`;
+                    footerFr.innerHTML = `Ambiance <span id="season-name-fr">${this.seasonConfig[season].name.fr}</span> ${this.seasonConfig[season].emoji}`;
+                } else {
+                    footerSeason.style.display = 'none';
+                }
+                
+                // Save preference
+                localStorage.setItem('selectedSeason', season || 'none');
+            }
+
+            createParticles() {
+                const config = this.seasonConfig[this.currentSeason];
+                this.particles = [];
+                
+                for (let i = 0; i < config.particleCount; i++) {
+                    this.particles.push(this.createParticle());
+                }
+            }
+
+            createParticle() {
+                const config = this.seasonConfig[this.currentSeason];
+                const colors = config.colors;
+                
+                const base = {
                     x: Math.random() * this.canvas.width,
                     y: Math.random() * this.canvas.height - this.canvas.height,
-                    radius: Math.random() * 4 + 1,
-                    speed: Math.random() * 2 + 0.5,
-                    wind: Math.random() * 0.5 - 0.25,
+                    color: colors[Math.floor(Math.random() * colors.length)],
                     opacity: Math.random() * 0.6 + 0.4,
-                    swing: Math.random() * 2 * Math.PI,
-                    swingSpeed: Math.random() * 0.02 + 0.01,
-                    swingAmplitude: Math.random() * 1 + 0.5
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 2
                 };
+
+                switch (this.currentSeason) {
+                    case 'spring':
+                        return {
+                            ...base,
+                            radius: Math.random() * 8 + 4,
+                            speed: Math.random() * 1.5 + 0.5,
+                            wind: Math.random() * 0.5 - 0.25,
+                            swing: Math.random() * Math.PI * 2,
+                            swingSpeed: Math.random() * 0.02 + 0.01,
+                            swingAmplitude: Math.random() * 2 + 1,
+                            petalShape: Math.floor(Math.random() * 3)
+                        };
+                    
+                    case 'summer':
+                        return {
+                            ...base,
+                            radius: Math.random() * 3 + 1,
+                            speed: Math.random() * 0.3 + 0.1,
+                            wind: Math.random() * 0.2 - 0.1,
+                            glow: Math.random() * 0.5 + 0.5,
+                            glowPhase: Math.random() * Math.PI * 2,
+                            glowSpeed: Math.random() * 0.05 + 0.02,
+                            isFirefly: Math.random() > 0.3
+                        };
+                    
+                    case 'autumn':
+                        return {
+                            ...base,
+                            radius: Math.random() * 12 + 6,
+                            speed: Math.random() * 2 + 1,
+                            wind: Math.random() * 1 - 0.3,
+                            swing: Math.random() * Math.PI * 2,
+                            swingSpeed: Math.random() * 0.03 + 0.01,
+                            swingAmplitude: Math.random() * 3 + 2,
+                            leafType: Math.floor(Math.random() * 3)
+                        };
+                    
+                    case 'winter':
+                    default:
+                        return {
+                            ...base,
+                            radius: Math.random() * 4 + 1,
+                            speed: Math.random() * 2 + 0.5,
+                            wind: Math.random() * 0.5 - 0.25,
+                            swing: Math.random() * Math.PI * 2,
+                            swingSpeed: Math.random() * 0.02 + 0.01,
+                            swingAmplitude: Math.random() * 1 + 0.5
+                        };
+                }
             }
 
-            drawSnowflake(flake) {
-                const isDark = document.body.getAttribute('data-theme') === 'dark';
-                
-                // Draw main snowflake
+            drawParticle(p) {
+                this.ctx.save();
+                this.ctx.translate(p.x, p.y);
+                this.ctx.rotate(p.rotation * Math.PI / 180);
+                this.ctx.globalAlpha = p.opacity;
+
+                switch (this.currentSeason) {
+                    case 'spring':
+                        this.drawPetal(p);
+                        break;
+                    case 'summer':
+                        this.drawFirefly(p);
+                        break;
+                    case 'autumn':
+                        this.drawLeaf(p);
+                        break;
+                    case 'winter':
+                    default:
+                        this.drawSnowflake(p);
+                        break;
+                }
+
+                this.ctx.restore();
+            }
+
+            drawPetal(p) {
                 this.ctx.beginPath();
-                this.ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
                 
-                // Create gradient for 3D effect
-                const gradient = this.ctx.createRadialGradient(
-                    flake.x - flake.radius * 0.3,
-                    flake.y - flake.radius * 0.3,
-                    0,
-                    flake.x,
-                    flake.y,
-                    flake.radius
+                // Cherry blossom petal shape
+                this.ctx.moveTo(0, -p.radius);
+                this.ctx.bezierCurveTo(
+                    p.radius * 0.5, -p.radius * 0.5,
+                    p.radius * 0.5, p.radius * 0.5,
+                    0, p.radius * 0.3
+                );
+                this.ctx.bezierCurveTo(
+                    -p.radius * 0.5, p.radius * 0.5,
+                    -p.radius * 0.5, -p.radius * 0.5,
+                    0, -p.radius
                 );
                 
-                if (isDark) {
-                    gradient.addColorStop(0, `rgba(255, 255, 255, ${flake.opacity})`);
-                    gradient.addColorStop(0.5, `rgba(200, 220, 255, ${flake.opacity * 0.8})`);
-                    gradient.addColorStop(1, `rgba(150, 180, 220, ${flake.opacity * 0.4})`);
-                } else {
-                    gradient.addColorStop(0, `rgba(255, 255, 255, ${flake.opacity})`);
-                    gradient.addColorStop(0.5, `rgba(220, 230, 255, ${flake.opacity * 0.7})`);
-                    gradient.addColorStop(1, `rgba(180, 200, 230, ${flake.opacity * 0.3})`);
-                }
+                const gradient = this.ctx.createRadialGradient(0, 0, 0, 0, 0, p.radius);
+                gradient.addColorStop(0, '#fce7f3');
+                gradient.addColorStop(0.5, p.color);
+                gradient.addColorStop(1, '#f9a8d4');
                 
                 this.ctx.fillStyle = gradient;
                 this.ctx.fill();
+            }
 
-                // Add sparkle effect for larger snowflakes
-                if (flake.radius > 2.5) {
+            drawFirefly(p) {
+                if (p.isFirefly) {
+                    // Glowing firefly effect
+                    const glowIntensity = (Math.sin(p.glowPhase) + 1) / 2;
+                    
+                    // Outer glow
+                    const gradient = this.ctx.createRadialGradient(0, 0, 0, 0, 0, p.radius * 4);
+                    gradient.addColorStop(0, `rgba(251, 191, 36, ${glowIntensity * 0.8})`);
+                    gradient.addColorStop(0.5, `rgba(251, 191, 36, ${glowIntensity * 0.3})`);
+                    gradient.addColorStop(1, 'rgba(251, 191, 36, 0)');
+                    
                     this.ctx.beginPath();
-                    this.ctx.arc(
-                        flake.x - flake.radius * 0.3,
-                        flake.y - flake.radius * 0.3,
-                        flake.radius * 0.2,
-                        0,
-                        Math.PI * 2
-                    );
-                    this.ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+                    this.ctx.arc(0, 0, p.radius * 4, 0, Math.PI * 2);
+                    this.ctx.fillStyle = gradient;
+                    this.ctx.fill();
+                    
+                    // Core
+                    this.ctx.beginPath();
+                    this.ctx.arc(0, 0, p.radius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, 255, 255, ${glowIntensity})`;
+                    this.ctx.fill();
+                } else {
+                    // Sun ray particle
+                    this.ctx.beginPath();
+                    this.ctx.arc(0, 0, p.radius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = p.color;
                     this.ctx.fill();
                 }
             }
 
-            updateSnowflake(flake) {
-                // Swing motion
-                flake.swing += flake.swingSpeed;
-                const swingOffset = Math.sin(flake.swing) * flake.swingAmplitude;
+            drawLeaf(p) {
+                this.ctx.beginPath();
                 
-                // Update position
-                flake.y += flake.speed;
-                flake.x += flake.wind + swingOffset;
+                // Maple leaf simplified shape
+                const size = p.radius;
+                
+                // Draw leaf shape
+                this.ctx.moveTo(0, -size);
+                this.ctx.quadraticCurveTo(size * 0.5, -size * 0.5, size * 0.8, -size * 0.3);
+                this.ctx.quadraticCurveTo(size * 0.6, 0, size, size * 0.5);
+                this.ctx.quadraticCurveTo(size * 0.3, size * 0.3, 0, size);
+                this.ctx.quadraticCurveTo(-size * 0.3, size * 0.3, -size, size * 0.5);
+                this.ctx.quadraticCurveTo(-size * 0.6, 0, -size * 0.8, -size * 0.3);
+                this.ctx.quadraticCurveTo(-size * 0.5, -size * 0.5, 0, -size);
+                
+                const gradient = this.ctx.createLinearGradient(-size, -size, size, size);
+                gradient.addColorStop(0, p.color);
+                gradient.addColorStop(1, this.darkenColor(p.color, 20));
+                
+                this.ctx.fillStyle = gradient;
+                this.ctx.fill();
+                
+                // Leaf vein
+                this.ctx.beginPath();
+                this.ctx.moveTo(0, -size * 0.8);
+                this.ctx.lineTo(0, size * 0.8);
+                this.ctx.strokeStyle = this.darkenColor(p.color, 30);
+                this.ctx.lineWidth = 0.5;
+                this.ctx.stroke();
+            }
 
-                // Reset if out of bounds
-                if (flake.y > this.canvas.height + flake.radius) {
-                    flake.y = -flake.radius;
-                    flake.x = Math.random() * this.canvas.width;
+            drawSnowflake(p) {
+                // Main snowflake body with gradient
+                const gradient = this.ctx.createRadialGradient(
+                    -p.radius * 0.3, -p.radius * 0.3, 0,
+                    0, 0, p.radius
+                );
+                
+                const isDark = document.body.getAttribute('data-theme') === 'dark';
+                
+                if (isDark) {
+                    gradient.addColorStop(0, `rgba(255, 255, 255, ${p.opacity})`);
+                    gradient.addColorStop(0.5, `rgba(200, 220, 255, ${p.opacity * 0.8})`);
+                    gradient.addColorStop(1, `rgba(150, 180, 220, ${p.opacity * 0.4})`);
+                } else {
+                    gradient.addColorStop(0, `rgba(255, 255, 255, ${p.opacity})`);
+                    gradient.addColorStop(0.5, `rgba(220, 230, 255, ${p.opacity * 0.7})`);
+                    gradient.addColorStop(1, `rgba(180, 200, 230, ${p.opacity * 0.3})`);
+                }
+                
+                this.ctx.beginPath();
+                this.ctx.arc(0, 0, p.radius, 0, Math.PI * 2);
+                this.ctx.fillStyle = gradient;
+                this.ctx.fill();
+
+                // Sparkle for larger snowflakes
+                if (p.radius > 2.5) {
+                    this.ctx.beginPath();
+                    this.ctx.arc(-p.radius * 0.3, -p.radius * 0.3, p.radius * 0.2, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+                    this.ctx.fill();
+                }
+            }
+
+            darkenColor(color, percent) {
+                const num = parseInt(color.replace('#', ''), 16);
+                const amt = Math.round(2.55 * percent);
+                const R = Math.max((num >> 16) - amt, 0);
+                const G = Math.max((num >> 8 & 0x00FF) - amt, 0);
+                const B = Math.max((num & 0x0000FF) - amt, 0);
+                return `rgb(${R}, ${G}, ${B})`;
+            }
+
+            updateParticle(p) {
+                switch (this.currentSeason) {
+                    case 'spring':
+                        p.swing += p.swingSpeed;
+                        p.y += p.speed;
+                        p.x += p.wind + Math.sin(p.swing) * p.swingAmplitude;
+                        p.rotation += p.rotationSpeed;
+                        break;
+                    
+                    case 'summer':
+                        if (p.isFirefly) {
+                            p.glowPhase += p.glowSpeed;
+                            p.x += Math.sin(p.glowPhase * 2) * 0.5;
+                            p.y += Math.cos(p.glowPhase * 1.5) * 0.3;
+                            
+                            // Keep fireflies in bounds with gentle movement
+                            if (p.x < 0) p.x = this.canvas.width;
+                            if (p.x > this.canvas.width) p.x = 0;
+                            if (p.y < 0) p.y = this.canvas.height;
+                            if (p.y > this.canvas.height) p.y = 0;
+                            return; // Don't reset fireflies
+                        } else {
+                            p.y += p.speed;
+                            p.x += p.wind;
+                        }
+                        break;
+                    
+                    case 'autumn':
+                        p.swing += p.swingSpeed;
+                        p.y += p.speed;
+                        p.x += p.wind + Math.sin(p.swing) * p.swingAmplitude;
+                        p.rotation += p.rotationSpeed * 2;
+                        break;
+                    
+                    case 'winter':
+                    default:
+                        p.swing += p.swingSpeed;
+                        p.y += p.speed;
+                        p.x += p.wind + Math.sin(p.swing) * p.swingAmplitude;
+                        break;
                 }
 
-                if (flake.x > this.canvas.width + flake.radius) {
-                    flake.x = -flake.radius;
+                // Reset particles that go off screen
+                if (p.y > this.canvas.height + p.radius * 2) {
+                    p.y = -p.radius * 2;
+                    p.x = Math.random() * this.canvas.width;
                 }
-
-                if (flake.x < -flake.radius) {
-                    flake.x = this.canvas.width + flake.radius;
+                
+                if (p.x > this.canvas.width + p.radius * 2) {
+                    p.x = -p.radius * 2;
+                }
+                
+                if (p.x < -p.radius * 2) {
+                    p.x = this.canvas.width + p.radius * 2;
                 }
             }
 
             animate() {
                 if (!this.isActive) {
                     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    this.animationId = null;
                     return;
                 }
 
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-                for (const flake of this.snowflakes) {
-                    this.updateSnowflake(flake);
-                    this.drawSnowflake(flake);
+                for (const particle of this.particles) {
+                    this.updateParticle(particle);
+                    this.drawParticle(particle);
                 }
 
                 this.animationId = requestAnimationFrame(() => this.animate());
             }
-
-            toggle() {
-                this.isActive = !this.isActive;
-                if (this.isActive) {
-                    this.animate();
-                } else {
-                    cancelAnimationFrame(this.animationId);
-                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                }
-                return this.isActive;
-            }
-
-            setActive(active) {
-                if (active !== this.isActive) {
-                    this.toggle();
-                }
-            }
         }
 
-        // Initialize snow effect
-        const snowEffect = new SnowEffect();
+        // Initialize seasonal effects
+        const seasonalEffects = new SeasonalEffects();
 
-        // Snow toggle button
-        const snowToggle = document.querySelector('.snow-toggle');
-        const winterBanner = document.querySelector('.winter-banner');
+        // Season dropdown toggle
+        const seasonToggle = document.querySelector('.season-toggle');
+        const seasonDropdown = document.getElementById('season-dropdown');
 
-        // Check for saved snow preference
-        const savedSnowState = localStorage.getItem('snowActive');
-        if (savedSnowState === 'false') {
-            snowEffect.setActive(false);
-            snowToggle.classList.remove('active');
-            if (winterBanner) winterBanner.style.display = 'none';
-        }
-
-        snowToggle.addEventListener('click', () => {
-            const isActive = snowEffect.toggle();
-            snowToggle.classList.toggle('active', isActive);
-            localStorage.setItem('snowActive', isActive);
-            
-            if (winterBanner) {
-                winterBanner.style.display = isActive ? 'flex' : 'none';
-            }
+        seasonToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            seasonDropdown.classList.toggle('open');
         });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            seasonDropdown.classList.remove('open');
+        });
+
+        seasonDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Season option selection
+        document.querySelectorAll('.season-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const season = option.dataset.season;
+                seasonalEffects.setSeason(season);
+                seasonDropdown.classList.remove('open');
+                
+                // Update toggle button active state
+                seasonToggle.classList.toggle('active', season !== 'none');
+            });
+        });
+
+        // Load saved season preference
+        const savedSeason = localStorage.getItem('selectedSeason');
+        if (savedSeason) {
+            seasonalEffects.setSeason(savedSeason);
+            seasonToggle.classList.toggle('active', savedSeason !== 'none');
+        } else {
+            // Default to auto (current season by date)
+            seasonalEffects.setSeason('auto');
+        }
 
         // ============================================
         // DARK MODE TOGGLE
         // ============================================
         const themeToggle = document.querySelector('.theme-toggle');
-        const icon = themeToggle.querySelector('i');
+        const themeIcon = themeToggle.querySelector('i');
 
         const getPreferredTheme = () => {
             const savedTheme = localStorage.getItem('theme');
@@ -2355,7 +2466,7 @@
         const setTheme = (theme) => {
             document.body.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            icon.classList.replace(
+            themeIcon.classList.replace(
                 theme === 'dark' ? 'fa-moon' : 'fa-sun',
                 theme === 'dark' ? 'fa-sun' : 'fa-moon'
             );
@@ -2366,12 +2477,6 @@
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.body.getAttribute('data-theme');
             setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-        });
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) {
-                setTheme(e.matches ? 'dark' : 'light');
-            }
         });
 
         // ============================================
@@ -2398,66 +2503,45 @@
         setLanguage(currentLang);
 
         langSwitcher.addEventListener('click', () => {
-            const newLang = currentLang === 'en' ? 'fr' : 'en';
-            setLanguage(newLang);
+            setLanguage(currentLang === 'en' ? 'fr' : 'en');
         });
 
         // ============================================
-        // ROLE SECTION TOGGLE
+        // UTILITY FUNCTIONS
         // ============================================
         function toggleRole(element) {
             element.classList.toggle('collapsed');
         }
 
-        // ============================================
-        // SCROLL TO TOP BUTTON
-        // ============================================
+        // Scroll to top
         const scrollTopBtn = document.querySelector('.scroll-top');
         
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
         });
 
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ============================================
-        // ACTIVE NAVIGATION PILL
-        // ============================================
+        // Navigation pills active state
         const navPills = document.querySelectorAll('.nav-pill');
         const sections = document.querySelectorAll('section');
 
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
+                if (scrollY >= section.offsetTop - 200) {
                     current = section.getAttribute('id');
                 }
             });
 
             navPills.forEach(pill => {
-                pill.classList.remove('active');
-                if (pill.getAttribute('href').slice(1) === current) {
-                    pill.classList.add('active');
-                }
+                pill.classList.toggle('active', pill.getAttribute('href').slice(1) === current);
             });
         });
 
-        // ============================================
-        // INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
-        // ============================================
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Intersection Observer for animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2465,7 +2549,7 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('section, header, .github-chart-container').forEach(el => {
             el.style.opacity = '0';
@@ -2474,21 +2558,14 @@
             observer.observe(el);
         });
 
-        // ============================================
-        // SMOOTH SCROLL FOR NAVIGATION
-        // ============================================
+        // Smooth scroll for navigation
         navPills.forEach(pill => {
             pill.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = pill.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const offset = 100;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    
+                const target = document.querySelector(pill.getAttribute('href'));
+                if (target) {
                     window.scrollTo({
-                        top: offsetPosition,
+                        top: target.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
