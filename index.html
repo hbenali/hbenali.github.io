@@ -71,6 +71,7 @@
             --radius: 0.75rem;
             --radius-lg: 1rem;
             --radius-xl: 1.5rem;
+            --snow-color: rgba(255, 255, 255, 0.9);
         }
 
         [data-theme="dark"] {
@@ -91,6 +92,7 @@
             --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+            --snow-color: rgba(255, 255, 255, 0.95);
         }
 
         * {
@@ -110,6 +112,17 @@
             background: var(--bg);
             transition: background-color 0.4s ease, color 0.4s ease;
             overflow-x: hidden;
+        }
+
+        /* Snow Canvas */
+        #snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
         }
 
         /* Animated Background */
@@ -169,6 +182,27 @@
         .theme-toggle:hover {
             transform: scale(1.1) rotate(15deg);
             box-shadow: var(--shadow-xl), 0 0 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .snow-toggle {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(96, 165, 250, 0.3);
+        }
+
+        .snow-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(96, 165, 250, 0.4);
+        }
+
+        .snow-toggle.active {
+            background: linear-gradient(135deg, #93c5fd, #60a5fa);
+            animation: snowGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes snowGlow {
+            0%, 100% { box-shadow: var(--shadow-lg), 0 0 20px rgba(147, 197, 253, 0.4); }
+            50% { box-shadow: var(--shadow-xl), 0 0 35px rgba(147, 197, 253, 0.6); }
         }
 
         .lang-switcher {
@@ -289,6 +323,31 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), var(--success));
+        }
+
+        /* Winter Banner */
+        .winter-banner {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(147, 197, 253, 0.2), rgba(191, 219, 254, 0.2));
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+            border: 1px solid rgba(147, 197, 253, 0.3);
+        }
+
+        .winter-banner i {
+            animation: snowflakeRotate 4s linear infinite;
+        }
+
+        @keyframes snowflakeRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .profile-container {
@@ -1040,6 +1099,13 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .winter-banner {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 1rem;
+            }
         }
 
         /* Print Styles */
@@ -1047,7 +1113,9 @@
             .controls,
             .bg-gradient,
             .nav-pills,
-            .scroll-top {
+            .scroll-top,
+            #snow-canvas,
+            .winter-banner {
                 display: none !important;
             }
 
@@ -1069,11 +1137,17 @@
     </style>
 </head>
 <body>
+    <!-- Snow Canvas -->
+    <canvas id="snow-canvas"></canvas>
+    
     <div class="bg-gradient"></div>
 
     <div class="controls">
         <button class="control-btn theme-toggle" aria-label="Toggle dark mode">
             <i class="fas fa-moon"></i>
+        </button>
+        <button class="control-btn snow-toggle active" aria-label="Toggle snow effect" title="Toggle Snow">
+            <i class="fas fa-snowflake"></i>
         </button>
         <button class="control-btn lang-switcher" aria-label="Switch language">FR</button>
         <button class="control-btn scroll-top" aria-label="Scroll to top">
@@ -1099,6 +1173,13 @@
         </nav>
 
         <header class="animate-in">
+            <!-- Winter Banner -->
+            <div class="winter-banner">
+                <i class="fas fa-snowflake"></i>
+                <span id="winter-text-en">Winter Mode Active</span>
+                <span id="winter-text-fr" class="hidden">Mode Hiver Actif</span>
+            </div>
+
             <div class="profile-container">
                 <img src="/logo.png" alt="Houssem Ben Ali" class="profile">
                 <span class="status-badge" title="Available for opportunities"></span>
@@ -2078,12 +2159,190 @@
                 <a href="https://linkedin.com/in/houssembali" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="mailto:contact@hbenali.ovh"><i class="fas fa-envelope"></i> Email</a>
             </div>
-            <p>© 2026 Houssem Ben Ali. Built with ❤️</p>
+            <p>© 2026 Houssem Ben Ali. Built with ❤️ and ❄️</p>
         </footer>
     </div>
 
     <script>
-        // Dark mode toggle
+        // ============================================
+        // SNOW ANIMATION
+        // ============================================
+        class SnowEffect {
+            constructor() {
+                this.canvas = document.getElementById('snow-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.snowflakes = [];
+                this.isActive = true;
+                this.animationId = null;
+                this.maxSnowflakes = 150;
+                
+                this.init();
+            }
+
+            init() {
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.createSnowflakes();
+                this.animate();
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+
+            createSnowflakes() {
+                this.snowflakes = [];
+                for (let i = 0; i < this.maxSnowflakes; i++) {
+                    this.snowflakes.push(this.createSnowflake());
+                }
+            }
+
+            createSnowflake() {
+                return {
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height - this.canvas.height,
+                    radius: Math.random() * 4 + 1,
+                    speed: Math.random() * 2 + 0.5,
+                    wind: Math.random() * 0.5 - 0.25,
+                    opacity: Math.random() * 0.6 + 0.4,
+                    swing: Math.random() * 2 * Math.PI,
+                    swingSpeed: Math.random() * 0.02 + 0.01,
+                    swingAmplitude: Math.random() * 1 + 0.5
+                };
+            }
+
+            drawSnowflake(flake) {
+                const isDark = document.body.getAttribute('data-theme') === 'dark';
+                
+                // Draw main snowflake
+                this.ctx.beginPath();
+                this.ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+                
+                // Create gradient for 3D effect
+                const gradient = this.ctx.createRadialGradient(
+                    flake.x - flake.radius * 0.3,
+                    flake.y - flake.radius * 0.3,
+                    0,
+                    flake.x,
+                    flake.y,
+                    flake.radius
+                );
+                
+                if (isDark) {
+                    gradient.addColorStop(0, `rgba(255, 255, 255, ${flake.opacity})`);
+                    gradient.addColorStop(0.5, `rgba(200, 220, 255, ${flake.opacity * 0.8})`);
+                    gradient.addColorStop(1, `rgba(150, 180, 220, ${flake.opacity * 0.4})`);
+                } else {
+                    gradient.addColorStop(0, `rgba(255, 255, 255, ${flake.opacity})`);
+                    gradient.addColorStop(0.5, `rgba(220, 230, 255, ${flake.opacity * 0.7})`);
+                    gradient.addColorStop(1, `rgba(180, 200, 230, ${flake.opacity * 0.3})`);
+                }
+                
+                this.ctx.fillStyle = gradient;
+                this.ctx.fill();
+
+                // Add sparkle effect for larger snowflakes
+                if (flake.radius > 2.5) {
+                    this.ctx.beginPath();
+                    this.ctx.arc(
+                        flake.x - flake.radius * 0.3,
+                        flake.y - flake.radius * 0.3,
+                        flake.radius * 0.2,
+                        0,
+                        Math.PI * 2
+                    );
+                    this.ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+                    this.ctx.fill();
+                }
+            }
+
+            updateSnowflake(flake) {
+                // Swing motion
+                flake.swing += flake.swingSpeed;
+                const swingOffset = Math.sin(flake.swing) * flake.swingAmplitude;
+                
+                // Update position
+                flake.y += flake.speed;
+                flake.x += flake.wind + swingOffset;
+
+                // Reset if out of bounds
+                if (flake.y > this.canvas.height + flake.radius) {
+                    flake.y = -flake.radius;
+                    flake.x = Math.random() * this.canvas.width;
+                }
+
+                if (flake.x > this.canvas.width + flake.radius) {
+                    flake.x = -flake.radius;
+                }
+
+                if (flake.x < -flake.radius) {
+                    flake.x = this.canvas.width + flake.radius;
+                }
+            }
+
+            animate() {
+                if (!this.isActive) {
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    return;
+                }
+
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                for (const flake of this.snowflakes) {
+                    this.updateSnowflake(flake);
+                    this.drawSnowflake(flake);
+                }
+
+                this.animationId = requestAnimationFrame(() => this.animate());
+            }
+
+            toggle() {
+                this.isActive = !this.isActive;
+                if (this.isActive) {
+                    this.animate();
+                } else {
+                    cancelAnimationFrame(this.animationId);
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                }
+                return this.isActive;
+            }
+
+            setActive(active) {
+                if (active !== this.isActive) {
+                    this.toggle();
+                }
+            }
+        }
+
+        // Initialize snow effect
+        const snowEffect = new SnowEffect();
+
+        // Snow toggle button
+        const snowToggle = document.querySelector('.snow-toggle');
+        const winterBanner = document.querySelector('.winter-banner');
+
+        // Check for saved snow preference
+        const savedSnowState = localStorage.getItem('snowActive');
+        if (savedSnowState === 'false') {
+            snowEffect.setActive(false);
+            snowToggle.classList.remove('active');
+            if (winterBanner) winterBanner.style.display = 'none';
+        }
+
+        snowToggle.addEventListener('click', () => {
+            const isActive = snowEffect.toggle();
+            snowToggle.classList.toggle('active', isActive);
+            localStorage.setItem('snowActive', isActive);
+            
+            if (winterBanner) {
+                winterBanner.style.display = isActive ? 'flex' : 'none';
+            }
+        });
+
+        // ============================================
+        // DARK MODE TOGGLE
+        // ============================================
         const themeToggle = document.querySelector('.theme-toggle');
         const icon = themeToggle.querySelector('i');
 
@@ -2115,7 +2374,9 @@
             }
         });
 
-        // Language switcher
+        // ============================================
+        // LANGUAGE SWITCHER
+        // ============================================
         const langSwitcher = document.querySelector('.lang-switcher');
         let currentLang = localStorage.getItem('lang') || 'en';
 
@@ -2141,12 +2402,16 @@
             setLanguage(newLang);
         });
 
-        // Role section toggle
+        // ============================================
+        // ROLE SECTION TOGGLE
+        // ============================================
         function toggleRole(element) {
             element.classList.toggle('collapsed');
         }
 
-        // Scroll to top button
+        // ============================================
+        // SCROLL TO TOP BUTTON
+        // ============================================
         const scrollTopBtn = document.querySelector('.scroll-top');
         
         window.addEventListener('scroll', () => {
@@ -2161,7 +2426,9 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Active navigation pill
+        // ============================================
+        // ACTIVE NAVIGATION PILL
+        // ============================================
         const navPills = document.querySelectorAll('.nav-pill');
         const sections = document.querySelectorAll('section');
 
@@ -2183,7 +2450,9 @@
             });
         });
 
-        // Intersection Observer for scroll animations
+        // ============================================
+        // INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
+        // ============================================
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -2205,7 +2474,9 @@
             observer.observe(el);
         });
 
-        // Smooth scroll for navigation
+        // ============================================
+        // SMOOTH SCROLL FOR NAVIGATION
+        // ============================================
         navPills.forEach(pill => {
             pill.addEventListener('click', (e) => {
                 e.preventDefault();
