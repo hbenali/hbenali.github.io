@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Houssem Ben Ali</title>
+
+    <!-- Favicon Section -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- SEO -->
+    <meta name="description" content="404 - Page not found. The page you're looking for doesn't exist.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #475569;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --accent-dark: #2563eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
+            --cyan: #06b6d4;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --gradient-start: #3b82f6;
+            --gradient-end: #8b5cf6;
+            --radius-sm: 0.375rem;
+            --radius: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            
+            /* Season Colors */
+            --season-spring: #f472b6;
+            --season-summer: #fbbf24;
+            --season-autumn: #f97316;
+            --season-winter: #60a5fa;
+        }
+
+        [data-theme="dark"] {
+            --primary: #f1f5f9;
+            --secondary: #94a3b8;
+            --accent: #60a5fa;
+            --accent-light: #93c5fd;
+            --accent-dark: #3b82f6;
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+        }
+
+        /* Season Theme Overrides */
+        [data-season="spring"] {
+            --gradient-start: #f472b6;
+            --gradient-end: #fb7185;
+        }
+
+        [data-season="summer"] {
+            --gradient-start: #fbbf24;
+            --gradient-end: #f97316;
+        }
+
+        [data-season="autumn"] {
+            --gradient-start: #f97316;
+            --gradient-end: #dc2626;
+        }
+
+        [data-season="winter"] {
+            --gradient-start: #60a5fa;
+            --gradient-end: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Season Canvas */
+        #season-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Animated Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.1), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(239, 68, 68, 0.1), transparent);
+            pointer-events: none;
+            z-index: -1;
+            transition: background 0.5s ease;
+        }
+
+        [data-season="spring"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(244, 114, 182, 0.2), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(251, 113, 133, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(167, 243, 208, 0.15), transparent);
+        }
+
+        [data-season="summer"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(251, 191, 36, 0.2), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(249, 115, 22, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(34, 197, 94, 0.1), transparent);
+        }
+
+        [data-season="autumn"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.2), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(220, 38, 38, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(161, 98, 7, 0.1), transparent);
+        }
+
+        [data-season="winter"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(96, 165, 250, 0.2), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(147, 197, 253, 0.1), transparent);
+        }
+
+        [data-theme="dark"] .bg-gradient {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(239, 68, 68, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.15), transparent),
+                radial-gradient(ellipse 50% 30% at 0% 100%, rgba(59, 130, 246, 0.1), transparent);
+        }
+
+        /* Floating Controls */
+        .controls {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .theme-toggle {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .season-toggle {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(96, 165, 250, 0.3);
+            position: relative;
+        }
+
+        .season-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .season-toggle.active {
+            animation: seasonGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes seasonGlow {
+            0%, 100% { box-shadow: var(--shadow-lg), 0 0 20px rgba(147, 197, 253, 0.4); }
+            50% { box-shadow: var(--shadow-xl), 0 0 35px rgba(147, 197, 253, 0.6); }
+        }
+
+        .season-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            min-width: 160px;
+            z-index: 1001;
+        }
+
+        .season-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .season-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text);
+            font-size: 0.85rem;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+        }
+
+        .season-option:hover {
+            background: var(--bg-secondary);
+        }
+
+        .season-option.active {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        .season-option .season-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.7rem;
+        }
+
+        .season-option[data-season="spring"] .season-icon {
+            background: linear-gradient(135deg, #f472b6, #fb7185);
+            color: white;
+        }
+
+        .season-option[data-season="summer"] .season-icon {
+            background: linear-gradient(135deg, #fbbf24, #f97316);
+            color: white;
+        }
+
+        .season-option[data-season="autumn"] .season-icon {
+            background: linear-gradient(135deg, #f97316, #dc2626);
+            color: white;
+        }
+
+        .season-option[data-season="winter"] .season-icon {
+            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+            color: white;
+        }
+
+        .season-option[data-season="none"] .season-icon {
+            background: var(--gray-400);
+            color: white;
+        }
+
+        .lang-switcher {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--accent);
+        }
+
+        [data-theme="dark"] .lang-switcher {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-light);
+            border-color: var(--accent-light);
+        }
+
+        .lang-switcher:hover {
+            transform: scale(1.1);
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Main Content */
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        /* Glitch Effect for 404 */
+        .error-code {
+            font-size: clamp(8rem, 20vw, 14rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--danger), var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glitchText 3s infinite;
+        }
+
+        .error-code::before,
+        .error-code::after {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--danger), var(--gradient-start));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .error-code::before {
+            animation: glitchBefore 3s infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+        }
+
+        .error-code::after {
+            animation: glitchAfter 3s infinite;
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+        }
+
+        @keyframes glitchText {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+            98% { transform: translate(2px, 2px); }
+        }
+
+        @keyframes glitchBefore {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(3px, 0); }
+            94% { transform: translate(-3px, 0); }
+            96% { transform: translate(3px, 0); }
+            98% { transform: translate(-3px, 0); }
+        }
+
+        @keyframes glitchAfter {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-3px, 0); }
+            94% { transform: translate(3px, 0); }
+            96% { transform: translate(-3px, 0); }
+            98% { transform: translate(3px, 0); }
+        }
+
+        .error-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .error-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Terminal Card */
+        .terminal-card {
+            background: var(--gray-900);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .terminal-header {
+            background: var(--gray-800);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ef4444; }
+        .terminal-dot.yellow { background: #fbbf24; }
+        .terminal-dot.green { background: #22c55e; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .terminal-line {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .terminal-prompt {
+            color: var(--success);
+            margin-right: 0.5rem;
+        }
+
+        .terminal-command {
+            color: #e2e8f0;
+        }
+
+        .terminal-output {
+            color: var(--gray-400);
+            padding-left: 1rem;
+            border-left: 2px solid var(--gray-700);
+            margin: 0.5rem 0;
+        }
+
+        .terminal-error {
+            color: var(--danger);
+        }
+
+        .terminal-success {
+            color: var(--success);
+        }
+
+        .terminal-warning {
+            color: var(--warning);
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: var(--success);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text);
+            border: 2px solid var(--card-border);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gradient-start);
+            color: var(--gradient-start);
+            transform: translateY(-3px);
+        }
+
+        /* Suggested Links */
+        .suggestions {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow);
+        }
+
+        .suggestions-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .suggestion-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 1px solid var(--card-border);
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .suggestion-link:hover {
+            border-color: var(--gradient-start);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .suggestion-link i {
+            font-size: 1.25rem;
+            color: var(--gradient-start);
+        }
+
+        .suggestion-link span {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Fun Facts */
+        .fun-fact {
+            margin-top: 2rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: var(--radius);
+            border-left: 4px solid var(--gradient-start);
+            text-align: left;
+        }
+
+        .fun-fact-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gradient-start);
+            margin-bottom: 0.25rem;
+        }
+
+        .fun-fact-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .error-footer {
+            margin-top: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .error-footer a {
+            color: var(--gradient-start);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .error-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+
+            .terminal-card {
+                margin: 1rem;
+            }
+
+            .terminal-body {
+                padding: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .suggestions {
+                margin: 2rem 1rem;
+            }
+
+            .controls {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .control-btn {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        /* Floating Animation for Icons */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Robot/Server Icon */
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .error-icon i {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body data-season="winter">
+    <!-- Season Canvas -->
+    <canvas id="season-canvas"></canvas>
+    
+    <div class="bg-gradient"></div>
+
+    <div class="controls">
+        <button class="control-btn theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+        <div style="position: relative;">
+            <button class="control-btn season-toggle active" aria-label="Season effects" title="Season Effects">
+                <i class="fas fa-snowflake"></i>
+            </button>
+            <div class="season-dropdown" id="season-dropdown">
+                <button class="season-option" data-season="spring">
+                    <span class="season-icon"><i class="fas fa-leaf"></i></span>
+                    <span>Spring</span>
+                </button>
+                <button class="season-option" data-season="summer">
+                    <span class="season-icon"><i class="fas fa-sun"></i></span>
+                    <span>Summer</span>
+                </button>
+                <button class="season-option" data-season="autumn">
+                    <span class="season-icon"><i class="fas fa-canadian-maple-leaf"></i></span>
+                    <span>Autumn</span>
+                </button>
+                <button class="season-option active" data-season="winter">
+                    <span class="season-icon"><i class="fas fa-snowflake"></i></span>
+                    <span>Winter</span>
+                </button>
+                <button class="season-option" data-season="none">
+                    <span class="season-icon"><i class="fas fa-ban"></i></span>
+                    <span>No Effect</span>
+                </button>
+            </div>
+        </div>
+        <button class="control-btn lang-switcher" aria-label="Switch language">FR</button>
+    </div>
+
+    <div class="error-container">
+        <!-- English Version -->
+        <div id="content-en">
+            <div class="error-icon floating-icon">
+                <i class="fas fa-server"></i>
+            </div>
+            
+            <div class="error-code">404</div>
+            
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-subtitle">Oops! Looks like this route doesn't exist in our infrastructure.</p>
+
+            <div class="terminal-card">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">devops@hbenali:~</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">curl -I https://hbenali.ovh<span id="current-path-en"></span></span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="terminal-error">HTTP/1.1 404 Not Found</span><br>
+                        <span>Server: nginx</span><br>
+                        <span>X-Powered-By: Coffee & Kubernetes</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">kubectl get page --all-namespaces | grep "$(current-url)"</span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="terminal-warning">No resources found.</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">echo "Let's go home instead!"</span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="terminal-success">Let's go home instead!</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">
+                    <i class="fas fa-home"></i>
+                    Go to Homepage
+                </a>
+                <button onclick="history.back()" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Go Back
+                </button>
+            </div>
+
+            <div class="suggestions">
+                <div class="suggestions-title">
+                    <i class="fas fa-compass"></i> Maybe you were looking for
+                </div>
+                <div class="suggestions-grid">
+                    <a href="/#experience-en" class="suggestion-link">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Experience</span>
+                    </a>
+                    <a href="/#skills-en" class="suggestion-link">
+                        <i class="fas fa-code"></i>
+                        <span>Skills</span>
+                    </a>
+                    <a href="/#projects-en" class="suggestion-link">
+                        <i class="fas fa-rocket"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="/#education-en" class="suggestion-link">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Education</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="fun-fact">
+                <div class="fun-fact-label">
+                    <i class="fas fa-lightbulb"></i> DevOps Fun Fact
+                </div>
+                <div class="fun-fact-text" id="fun-fact-en">
+                    Loading fun fact...
+                </div>
+            </div>
+
+            <div class="error-footer">
+                <p>Still lost? <a href="mailto:contact@hbenali.ovh">Contact me</a> and I'll help you find your way!</p>
+                <p style="margin-top: 0.5rem; opacity: 0.7;">
+                    © 2025 <a href="/">Houssem Ben Ali</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- French Version -->
+        <div id="content-fr" class="hidden">
+            <div class="error-icon floating-icon">
+                <i class="fas fa-server"></i>
+            </div>
+            
+            <div class="error-code">404</div>
+            
+            <h1 class="error-title">Page Non Trouvée</h1>
+            <p class="error-subtitle">Oups ! On dirait que cette route n'existe pas dans notre infrastructure.</p>
+
+            <div class="terminal-card">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">devops@hbenali:~</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">curl -I https://hbenali.ovh<span id="current-path-fr"></span></span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="terminal-error">HTTP/1.1 404 Not Found</span><br>
+                        <span>Server: nginx</span><br>
+                        <span>X-Powered-By: Café & Kubernetes</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">kubectl get page --all-namespaces | grep "$(url-actuelle)"</span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="terminal-warning">Aucune ressource trouvée.</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">echo "Retournons à l'accueil !"</span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="terminal-success">Retournons à l'accueil !</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">
+                    <i class="fas fa-home"></i>
+                    Aller à l'Accueil
+                </a>
+                <button onclick="history.back()" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour
+                </button>
+            </div>
+
+            <div class="suggestions">
+                <div class="suggestions-title">
+                    <i class="fas fa-compass"></i> Peut-être cherchiez-vous
+                </div>
+                <div class="suggestions-grid">
+                    <a href="/#experience-fr" class="suggestion-link">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Expérience</span>
+                    </a>
+                    <a href="/#skills-fr" class="suggestion-link">
+                        <i class="fas fa-code"></i>
+                        <span>Compétences</span>
+                    </a>
+                    <a href="/#projects-fr" class="suggestion-link">
+                        <i class="fas fa-rocket"></i>
+                        <span>Projets</span>
+                    </a>
+                    <a href="/#education-fr" class="suggestion-link">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Formation</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="fun-fact">
+                <div class="fun-fact-label">
+                    <i class="fas fa-lightbulb"></i> Fait Amusant DevOps
+                </div>
+                <div class="fun-fact-text" id="fun-fact-fr">
+                    Chargement du fait amusant...
+                </div>
+            </div>
+
+            <div class="error-footer">
+                <p>Toujours perdu ? <a href="mailto:contact@hbenali.ovh">Contactez-moi</a> et je vous aiderai à trouver votre chemin !</p>
+                <p style="margin-top: 0.5rem; opacity: 0.7;">
+                    © 2025 <a href="/">Houssem Ben Ali</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // FUN FACTS
+        // ============================================
+        const funFactsEN = [
+            "The HTTP 404 error code was named after a room at CERN, where the original web servers were located.",
+            "The first website ever created is still online at info.cern.ch",
+            "There are over 1.7 billion websites on the internet, but less than 200 million are active.",
+            "The average Kubernetes cluster runs about 500 pods.",
+            "Docker was originally called 'dotCloud' before being renamed in 2013.",
+            "The first version control system, SCCS, was created in 1972.",
+            "Jenkins was originally called 'Hudson' before being forked in 2011.",
+            "The term 'DevOps' was coined in 2009 at the DevOpsDays conference in Belgium.",
+            "GitLab was started in Ukraine in 2011 as an open-source project.",
+            "Ansible was named after the faster-than-light communication device from the novel 'Ender's Game'."
+        ];
+
+        const funFactsFR = [
+            "Le code d'erreur HTTP 404 a été nommé d'après une salle du CERN, où se trouvaient les premiers serveurs web.",
+            "Le premier site web jamais créé est toujours en ligne sur info.cern.ch",
+            "Il y a plus de 1,7 milliard de sites web sur internet, mais moins de 200 millions sont actifs.",
+            "Un cluster Kubernetes moyen exécute environ 500 pods.",
+            "Docker s'appelait à l'origine 'dotCloud' avant d'être renommé en 2013.",
+            "Le premier système de contrôle de version, SCCS, a été créé en 1972.",
+            "Jenkins s'appelait à l'origine 'Hudson' avant d'être forké en 2011.",
+            "Le terme 'DevOps' a été inventé en 2009 lors de la conférence DevOpsDays en Belgique.",
+            "GitLab a été lancé en Ukraine en 2011 en tant que projet open-source.",
+            "Ansible a été nommé d'après l'appareil de communication supraluminique du roman 'La Stratégie Ender'."
+        ];
+
+        function showRandomFunFact() {
+            const indexEN = Math.floor(Math.random() * funFactsEN.length);
+            const indexFR = Math.floor(Math.random() * funFactsFR.length);
+            
+            document.getElementById('fun-fact-en').textContent = funFactsEN[indexEN];
+            document.getElementById('fun-fact-fr').textContent = funFactsFR[indexFR];
+        }
+
+        showRandomFunFact();
+
+        // Show current path in terminal
+        const currentPath = window.location.pathname;
+        document.getElementById('current-path-en').textContent = currentPath;
+        document.getElementById('current-path-fr').textContent = currentPath;
+
+        // ============================================
+        // SEASONAL EFFECTS ENGINE (Same as main page)
+        // ============================================
+        class SeasonalEffects {
+            constructor() {
+                this.canvas = document.getElementById('season-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.currentSeason = 'winter';
+                this.isActive = true;
+                this.animationId = null;
+                
+                this.seasonConfig = {
+                    spring: {
+                        particleCount: 50,
+                        icon: 'fa-leaf',
+                        colors: ['#fce7f3', '#fbcfe8', '#f9a8d4', '#f472b6', '#ffffff']
+                    },
+                    summer: {
+                        particleCount: 30,
+                        icon: 'fa-sun',
+                        colors: ['#fef3c7', '#fde68a', '#fcd34d', '#fbbf24', '#ffffff']
+                    },
+                    autumn: {
+                        particleCount: 60,
+                        icon: 'fa-canadian-maple-leaf',
+                        colors: ['#fcd34d', '#f59e0b', '#ea580c', '#dc2626', '#92400e']
+                    },
+                    winter: {
+                        particleCount: 100,
+                        icon: 'fa-snowflake',
+                        colors: ['#ffffff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#dbeafe']
+                    }
+                };
+                
+                this.init();
+            }
+
+            init() {
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.createParticles();
+                this.animate();
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+
+            getCurrentSeasonByDate() {
+                const month = new Date().getMonth();
+                if (month >= 2 && month <= 4) return 'spring';
+                if (month >= 5 && month <= 7) return 'summer';
+                if (month >= 8 && month <= 10) return 'autumn';
+                return 'winter';
+            }
+
+            setSeason(season) {
+                if (season === 'auto') {
+                    season = this.getCurrentSeasonByDate();
+                }
+                
+                if (season === 'none') {
+                    this.isActive = false;
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    this.updateUI(null);
+                    return;
+                }
+                
+                this.currentSeason = season;
+                this.isActive = true;
+                this.createParticles();
+                this.updateUI(season);
+                
+                if (!this.animationId) {
+                    this.animate();
+                }
+            }
+
+            updateUI(season) {
+                document.body.setAttribute('data-season', season || 'none');
+                
+                const toggleIcon = document.querySelector('.season-toggle i');
+                if (season && this.seasonConfig[season]) {
+                    toggleIcon.className = `fas ${this.seasonConfig[season].icon}`;
+                } else {
+                    toggleIcon.className = 'fas fa-ban';
+                }
+                
+                document.querySelectorAll('.season-option').forEach(opt => {
+                    opt.classList.remove('active');
+                    if (opt.dataset.season === season) {
+                        opt.classList.add('active');
+                    }
+                });
+                
+                localStorage.setItem('selectedSeason', season || 'none');
+            }
+
+            createParticles() {
+                const config = this.seasonConfig[this.currentSeason];
+                this.particles = [];
+                
+                for (let i = 0; i < config.particleCount; i++) {
+                    this.particles.push(this.createParticle());
+                }
+            }
+
+            createParticle() {
+                const config = this.seasonConfig[this.currentSeason];
+                const colors = config.colors;
+                
+                return {
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height - this.canvas.height,
+                    radius: Math.random() * 4 + 1,
+                    speed: Math.random() * 2 + 0.5,
+                    wind: Math.random() * 0.5 - 0.25,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    opacity: Math.random() * 0.6 + 0.4,
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 2,
+                    swing: Math.random() * Math.PI * 2,
+                    swingSpeed: Math.random() * 0.02 + 0.01,
+                    swingAmplitude: Math.random() * 2 + 1
+                };
+            }
+
+            drawParticle(p) {
+                this.ctx.save();
+                this.ctx.translate(p.x, p.y);
+                this.ctx.rotate(p.rotation * Math.PI / 180);
+                this.ctx.globalAlpha = p.opacity;
+
+                const gradient = this.ctx.createRadialGradient(0, 0, 0, 0, 0, p.radius);
+                gradient.addColorStop(0, p.color);
+                gradient.addColorStop(1, 'rgba(255,255,255,0.3)');
+                
+                this.ctx.beginPath();
+                this.ctx.arc(0, 0, p.radius, 0, Math.PI * 2);
+                this.ctx.fillStyle = gradient;
+                this.ctx.fill();
+
+                this.ctx.restore();
+            }
+
+            updateParticle(p) {
+                p.swing += p.swingSpeed;
+                p.y += p.speed;
+                p.x += p.wind + Math.sin(p.swing) * p.swingAmplitude;
+                p.rotation += p.rotationSpeed;
+
+                if (p.y > this.canvas.height + p.radius * 2) {
+                    p.y = -p.radius * 2;
+                    p.x = Math.random() * this.canvas.width;
+                }
+                
+                if (p.x > this.canvas.width + p.radius * 2) p.x = -p.radius * 2;
+                if (p.x < -p.radius * 2) p.x = this.canvas.width + p.radius * 2;
+            }
+
+            animate() {
+                if (!this.isActive) {
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    this.animationId = null;
+                    return;
+                }
+
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                for (const particle of this.particles) {
+                    this.updateParticle(particle);
+                    this.drawParticle(particle);
+                }
+
+                this.animationId = requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize seasonal effects
+        const seasonalEffects = new SeasonalEffects();
+
+        // Season dropdown toggle
+        const seasonToggle = document.querySelector('.season-toggle');
+        const seasonDropdown = document.getElementById('season-dropdown');
+
+        seasonToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            seasonDropdown.classList.toggle('open');
+        });
+
+        document.addEventListener('click', () => {
+            seasonDropdown.classList.remove('open');
+        });
+
+        seasonDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        document.querySelectorAll('.season-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const season = option.dataset.season;
+                seasonalEffects.setSeason(season);
+                seasonDropdown.classList.remove('open');
+                seasonToggle.classList.toggle('active', season !== 'none');
+            });
+        });
+
+        // Load saved season preference
+        const savedSeason = localStorage.getItem('selectedSeason');
+        if (savedSeason) {
+            seasonalEffects.setSeason(savedSeason);
+            seasonToggle.classList.toggle('active', savedSeason !== 'none');
+        } else {
+            seasonalEffects.setSeason('auto');
+        }
+
+        // ============================================
+        // DARK MODE TOGGLE
+        // ============================================
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        const getPreferredTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) return savedTheme;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+
+        const setTheme = (theme) => {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeIcon.classList.replace(
+                theme === 'dark' ? 'fa-moon' : 'fa-sun',
+                theme === 'dark' ? 'fa-sun' : 'fa-moon'
+            );
+        };
+
+        setTheme(getPreferredTheme());
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // ============================================
+        // LANGUAGE SWITCHER
+        // ============================================
+        const langSwitcher = document.querySelector('.lang-switcher');
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+
+            document.getElementById('content-en').classList.toggle('hidden', lang !== 'en');
+            document.getElementById('content-fr').classList.toggle('hidden', lang !== 'fr');
+
+            langSwitcher.textContent = lang === 'en' ? 'FR' : 'EN';
+        }
+
+        setLanguage(currentLang);
+
+        langSwitcher.addEventListener('click', () => {
+            setLanguage(currentLang === 'en' ? 'fr' : 'en');
+        });
+
+        // ============================================
+        // EASTER EGG: Konami Code
+        // ============================================
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    // Easter egg activated!
+                    document.body.style.animation = 'rainbow 2s linear infinite';
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes rainbow {
+                            0% { filter: hue-rotate(0deg); }
+                            100% { filter: hue-rotate(360deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                        style.remove();
+                    }, 5000);
+                    
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        // ============================================
+        // TYPING EFFECT FOR TERMINAL (Optional Enhancement)
+        // ============================================
+        // Add typing effect to make terminal more dynamic
+        const terminalCommands = document.querySelectorAll('.terminal-command');
+        
+        function typeEffect(element, text, speed = 50) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Intersection Observer to trigger typing when visible
+        const terminalObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const commands = entry.target.querySelectorAll('.terminal-command');
+                    commands.forEach((cmd, index) => {
+                        const originalText = cmd.textContent;
+                        setTimeout(() => {
+                            typeEffect(cmd, originalText, 30);
+                        }, index * 1000);
+                    });
+                    terminalObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.terminal-card').forEach(card => {
+            terminalObserver.observe(card);
+        });
+    </script>
+</body>
+</html>
