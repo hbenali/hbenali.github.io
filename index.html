@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Houssem Ben Ali - DevOps Engineer</title>
 
     <!-- Favicon Section -->
@@ -18,7 +18,7 @@
     <meta name="description" content="Houssem Ben Ali - DevOps Engineer specializing in CI/CD, Cloud Infrastructure, Kubernetes, and Security. Based in Tunisia/France.">
     <meta name="keywords" content="DevOps, Cloud, Kubernetes, Docker, Jenkins, CI/CD, Infrastructure, Security">
     <meta name="author" content="Houssem Ben Ali">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,11 +66,11 @@
             --radius-lg: 1rem;
             --radius-xl: 1.5rem;
             
-            /* Season Colors */
-            --season-spring: #f472b6;
-            --season-summer: #fbbf24;
-            --season-autumn: #f97316;
-            --season-winter: #60a5fa;
+            /* Season Colors - GitHub Chart Colors */
+            --season-spring-chart: #f472b6;
+            --season-summer-chart: #fbbf24;
+            --season-autumn-chart: #f97316;
+            --season-winter-chart: #3b82f6;
         }
 
         [data-theme="dark"] {
@@ -110,7 +110,7 @@
         }
 
         [data-season="winter"] {
-            --gradient-start: #60a5fa;
+            --gradient-start: #3b82f6;
             --gradient-end: #8b5cf6;
         }
 
@@ -183,7 +183,7 @@
 
         [data-season="winter"] .bg-gradient {
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(96, 165, 250, 0.2), transparent),
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.2), transparent),
                 radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.15), transparent),
                 radial-gradient(ellipse 50% 30% at 0% 100%, rgba(147, 197, 253, 0.1), transparent);
         }
@@ -218,7 +218,7 @@
 
         [data-theme="dark"][data-season="winter"] .bg-gradient {
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(96, 165, 250, 0.25), transparent),
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.25), transparent),
                 radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.2), transparent),
                 radial-gradient(ellipse 50% 30% at 0% 100%, rgba(147, 197, 253, 0.15), transparent);
         }
@@ -357,7 +357,7 @@
         }
 
         .season-option[data-season="winter"] .season-icon {
-            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: white;
         }
 
@@ -526,9 +526,9 @@
         }
 
         .season-banner[data-season="winter"] {
-            background: linear-gradient(135deg, rgba(147, 197, 253, 0.2), rgba(191, 219, 254, 0.2));
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
             color: #2563eb;
-            border-color: rgba(147, 197, 253, 0.3);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         [data-theme="dark"] .season-banner[data-season="spring"] {
@@ -559,7 +559,7 @@
         }
 
         .season-banner.hidden {
-            display: none;
+            display: none !important;
         }
 
         .profile-container {
@@ -766,6 +766,7 @@
             width: auto;
             max-width: 100%;
             border-radius: var(--radius-sm);
+            transition: filter 0.3s ease;
         }
 
         .github-chart p {
@@ -1378,11 +1379,11 @@
             }
         }
     </style>
-</head>
-<body data-season="winter">
-    <!-- Season Canvas -->
+</head> 
+<body data-season="winter"> 
+    <!-- Season Canvas --> 
     <canvas id="season-canvas"></canvas>
-    
+
     <div class="bg-gradient"></div>
 
     <div class="controls">
@@ -1544,14 +1545,14 @@
 
         <div id="github-chart-banner-en" class="github-chart-container animate-in">
             <div class="github-chart">
-                <img src="https://ghchart.rshah.org/3b82f6/hbenali" alt="GitHub Contributions" 
+                <img id="github-chart-img-en" src="https://ghchart.rshah.org/3b82f6/hbenali" alt="GitHub Contributions" 
                      onerror="this.onerror=null; this.src='https://ghchart.rshah.org/hbenali'" />
                 <p><i class="fas fa-chart-bar"></i> My GitHub contributions over the last year</p>
             </div>
         </div>
         <div id="github-chart-banner-fr" class="github-chart-container animate-in hidden">
             <div class="github-chart">
-                <img src="https://ghchart.rshah.org/3b82f6/hbenali" alt="Contributions GitHub" 
+                <img id="github-chart-img-fr" src="https://ghchart.rshah.org/3b82f6/hbenali" alt="Contributions GitHub" 
                      onerror="this.onerror=null; this.src='https://ghchart.rshah.org/hbenali'" />
                 <p><i class="fas fa-chart-bar"></i> Mes contributions GitHub au cours de l'année dernière</p>
             </div>
@@ -1986,6 +1987,7 @@
                         icon: 'fa-leaf',
                         name: { en: 'Spring', fr: 'Printemps' },
                         emoji: '🌸',
+                        chartColor: 'f472b6',
                         colors: ['#fce7f3', '#fbcfe8', '#f9a8d4', '#f472b6', '#ffffff']
                     },
                     summer: {
@@ -1993,6 +1995,7 @@
                         icon: 'fa-sun',
                         name: { en: 'Summer', fr: 'Été' },
                         emoji: '☀️',
+                        chartColor: 'fbbf24',
                         colors: ['#fef3c7', '#fde68a', '#fcd34d', '#fbbf24', '#ffffff']
                     },
                     autumn: {
@@ -2000,6 +2003,7 @@
                         icon: 'fa-canadian-maple-leaf',
                         name: { en: 'Autumn', fr: 'Automne' },
                         emoji: '🍂',
+                        chartColor: 'f97316',
                         colors: ['#fcd34d', '#f59e0b', '#ea580c', '#dc2626', '#92400e']
                     },
                     winter: {
@@ -2007,6 +2011,7 @@
                         icon: 'fa-snowflake',
                         name: { en: 'Winter', fr: 'Hiver' },
                         emoji: '❄️',
+                        chartColor: '3b82f6',
                         colors: ['#ffffff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#dbeafe']
                     }
                 };
@@ -2034,6 +2039,31 @@
                 return 'winter';
             }
 
+            updateGitHubChart(season) {
+                // Get both English and French chart images
+                const chartImgEn = document.getElementById('github-chart-img-en');
+                const chartImgFr = document.getElementById('github-chart-img-fr');
+                
+                if (season === 'none' || !this.seasonConfig[season]) {
+                    // Use default color (winter) if no season
+                    const defaultColor = this.seasonConfig.winter.chartColor;
+                    if (chartImgEn) {
+                        chartImgEn.src = `https://ghchart.rshah.org/${defaultColor}/hbenali`;
+                    }
+                    if (chartImgFr) {
+                        chartImgFr.src = `https://ghchart.rshah.org/${defaultColor}/hbenali`;
+                    }
+                } else {
+                    const seasonColor = this.seasonConfig[season].chartColor;
+                    if (chartImgEn) {
+                        chartImgEn.src = `https://ghchart.rshah.org/${seasonColor}/hbenali`;
+                    }
+                    if (chartImgFr) {
+                        chartImgFr.src = `https://ghchart.rshah.org/${seasonColor}/hbenali`;
+                    }
+                }
+            }
+
             setSeason(season) {
                 if (season === 'auto') {
                     season = this.getCurrentSeasonByDate();
@@ -2043,6 +2073,7 @@
                     this.isActive = false;
                     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                     this.updateUI(null);
+                    this.updateGitHubChart(null);
                     return;
                 }
                 
@@ -2050,6 +2081,7 @@
                 this.isActive = true;
                 this.createParticles();
                 this.updateUI(season);
+                this.updateGitHubChart(season);
                 
                 if (!this.animationId) {
                     this.animate();
@@ -2572,5 +2604,5 @@
             });
         });
     </script>
-</body>
+</body> 
 </html>
