@@ -19,6 +19,10 @@
     <meta name="author" content="Houssem Ben Ali">
     <link rel="canonical" href="https://about.hbenali.ovh/">
 
+    <!-- Security (static hosting: no custom HTTP headers, so CSP/referrer are set here; X-Frame-Options/X-Content-Type-Options need a real header and aren't achievable via meta) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- Open Graph -->
     <meta property="og:type" content="profile">
     <meta property="og:title" content="Houssem Ben Ali - DevOps Engineer">
@@ -104,12 +108,16 @@
             --radius: 0.75rem;
             --radius-lg: 1rem;
             --radius-xl: 1.5rem;
-            
+
             /* Season Colors - GitHub Chart Colors */
             --season-spring-chart: #f472b6;
             --season-summer-chart: #fbbf24;
             --season-autumn-chart: #f97316;
             --season-winter-chart: #3b82f6;
+
+            /* AA-contrast text variants of the seasonal accent, for text on --bg/--card-bg */
+            --gradient-start-text: #2563eb;
+            --success-text: #047857;
         }
 
         [data-theme="dark"] {
@@ -130,28 +138,39 @@
             --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+            --gradient-start-text: #60a5fa;
+            --success-text: #10b981;
         }
 
         /* Season Theme Overrides */
         [data-season="spring"] {
             --gradient-start: #f472b6;
             --gradient-end: #fb7185;
+            --gradient-start-text: #be185d;
         }
 
         [data-season="summer"] {
             --gradient-start: #fbbf24;
             --gradient-end: #f97316;
+            --gradient-start-text: #92400e;
         }
 
         [data-season="autumn"] {
             --gradient-start: #f97316;
             --gradient-end: #dc2626;
+            --gradient-start-text: #9a3412;
         }
 
         [data-season="winter"] {
             --gradient-start: #3b82f6;
             --gradient-end: #8b5cf6;
+            --gradient-start-text: #2563eb;
         }
+
+        [data-theme="dark"][data-season="spring"] { --gradient-start-text: #f472b6; }
+        [data-theme="dark"][data-season="summer"] { --gradient-start-text: #fbbf24; }
+        [data-theme="dark"][data-season="autumn"] { --gradient-start-text: #f97316; }
+        [data-theme="dark"][data-season="winter"] { --gradient-start-text: #60a5fa; }
 
         * {
             margin: 0;
@@ -654,7 +673,7 @@
 
         .title {
             font-size: 1.35rem;
-            color: var(--gradient-start);
+            color: var(--gradient-start-text);
             font-weight: 600;
             margin-bottom: 1rem;
             display: flex;
@@ -922,7 +941,7 @@
         }
 
         .job-title {
-            color: var(--gradient-start);
+            color: var(--gradient-start-text);
             font-weight: 500;
             font-size: 1rem;
             margin-bottom: 1rem;
@@ -1206,7 +1225,7 @@
         .cert-year {
             font-size: 0.75rem;
             font-weight: 600;
-            color: var(--success);
+            color: var(--success-text);
             background: rgba(16, 185, 129, 0.1);
             padding: 0.25rem 0.5rem;
             border-radius: 0.5rem;
@@ -1239,7 +1258,7 @@
 
         .education-dates {
             font-size: 0.8rem;
-            color: var(--gradient-start);
+            color: var(--gradient-start-text);
             font-weight: 500;
             margin-bottom: 0.25rem;
         }
@@ -1451,11 +1470,11 @@
                     <span>Spring</span>
                 </button>
                 <button class="season-option" data-season="summer">
-                    <span class="season-icon"><i class="fas fa-sun"></i></span>
+                    <span class="season-icon"><i class="fas fa-umbrella-beach"></i></span>
                     <span>Summer</span>
                 </button>
                 <button class="season-option" data-season="autumn">
-                    <span class="season-icon"><i class="fas fa-canadian-maple-leaf"></i></span>
+                    <span class="season-icon"><i class="fab fa-canadian-maple-leaf"></i></span>
                     <span>Autumn</span>
                 </button>
                 <button class="season-option active" data-season="winter">
@@ -1505,12 +1524,12 @@
                 <span id="spring-text-fr" class="hidden">Mode Printemps 🌸</span>
             </div>
             <div class="season-banner hidden" data-season="summer" id="banner-summer">
-                <i class="fas fa-sun"></i>
+                <i class="fas fa-umbrella-beach"></i>
                 <span id="summer-text-en">Summer Mode ☀️</span>
                 <span id="summer-text-fr" class="hidden">Mode Été ☀️</span>
             </div>
             <div class="season-banner hidden" data-season="autumn" id="banner-autumn">
-                <i class="fas fa-canadian-maple-leaf"></i>
+                <i class="fab fa-canadian-maple-leaf"></i>
                 <span id="autumn-text-en">Autumn Mode 🍂</span>
                 <span id="autumn-text-fr" class="hidden">Mode Automne 🍂</span>
             </div>
@@ -1600,14 +1619,14 @@
 
         <div id="github-chart-banner-en" class="github-chart-container animate-in">
             <div class="github-chart">
-                <img id="github-chart-img-en" src="https://ghchart.rshah.org/3b82f6/hbenali" alt="GitHub Contributions" height="128" loading="lazy" decoding="async"
+                <img id="github-chart-img-en" src="https://ghchart.rshah.org/3b82f6/hbenali" alt="GitHub Contributions" width="663" height="104" loading="lazy" decoding="async"
                      onerror="this.onerror=null; this.src='https://ghchart.rshah.org/hbenali'" />
                 <p><i class="fas fa-chart-bar"></i> My GitHub contributions over the last year</p>
             </div>
         </div>
         <div id="github-chart-banner-fr" class="github-chart-container animate-in hidden">
             <div class="github-chart">
-                <img id="github-chart-img-fr" src="https://ghchart.rshah.org/3b82f6/hbenali" alt="Contributions GitHub" height="128" loading="lazy" decoding="async"
+                <img id="github-chart-img-fr" src="https://ghchart.rshah.org/3b82f6/hbenali" alt="Contributions GitHub" width="663" height="104" loading="lazy" decoding="async"
                      onerror="this.onerror=null; this.src='https://ghchart.rshah.org/hbenali'" />
                 <p><i class="fas fa-chart-bar"></i> Mes contributions GitHub au cours de l'année dernière</p>
             </div>
@@ -1626,7 +1645,7 @@
                 <p class="job-title">DevOps Engineer</p>
 
                 <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                    <div class="role-header" role="button" tabindex="0" onclick="toggleRole(this.parentElement)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRole(this.parentElement);}">
                         <span class="role-icon"><i class="fas fa-cogs"></i></span>
                         <span class="role-title">Software Factory</span>
                         <i class="fas fa-chevron-down role-toggle"></i>
@@ -1650,7 +1669,7 @@
                 </div>
 
                 <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                    <div class="role-header" role="button" tabindex="0" onclick="toggleRole(this.parentElement)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRole(this.parentElement);}">
                         <span class="role-icon"><i class="fas fa-cloud"></i></span>
                         <span class="role-title">Hosting & Cloud</span>
                         <i class="fas fa-chevron-down role-toggle"></i>
@@ -1672,7 +1691,7 @@
                 </div>
 
                 <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                    <div class="role-header" role="button" tabindex="0" onclick="toggleRole(this.parentElement)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRole(this.parentElement);}">
                         <span class="role-icon"><i class="fas fa-server"></i></span>
                         <span class="role-title">Infrastructure & SecOps</span>
                         <i class="fas fa-chevron-down role-toggle"></i>
@@ -1736,7 +1755,7 @@
                 <p class="job-title">Ingénieur DevOps</p>
 
                 <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                    <div class="role-header" role="button" tabindex="0" onclick="toggleRole(this.parentElement)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRole(this.parentElement);}">
                         <span class="role-icon"><i class="fas fa-cogs"></i></span>
                         <span class="role-title">Software Factory & CI/CD</span>
                         <i class="fas fa-chevron-down role-toggle"></i>
@@ -1751,7 +1770,7 @@
                 </div>
 
                 <div class="role-section">
-                    <div class="role-header" onclick="toggleRole(this.parentElement)">
+                    <div class="role-header" role="button" tabindex="0" onclick="toggleRole(this.parentElement)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRole(this.parentElement);}">
                         <span class="role-icon"><i class="fas fa-server"></i></span>
                         <span class="role-title">Infrastructure & Cloud</span>
                         <i class="fas fa-chevron-down role-toggle"></i>
@@ -2051,22 +2070,27 @@
                 this.seasonConfig = {
                     spring: {
                         particleCount: 60,
+                        iconPrefix: 'fas',
                         icon: 'fa-leaf',
                         name: { en: 'Spring', fr: 'Printemps' },
                         emoji: '🌸',
                         chartColor: 'f472b6',
-                        colors: ['#fce7f3', '#fbcfe8', '#f9a8d4', '#f472b6', '#ffffff']
+                        colors: ['#fce7f3', '#fbcfe8', '#f9a8d4', '#f472b6', '#ffffff'],
+                        colorsLight: ['#f9a8d4', '#f472b6', '#ec4899', '#db2777', '#be185d']
                     },
                     summer: {
                         particleCount: 40,
-                        icon: 'fa-sun',
+                        iconPrefix: 'fas',
+                        icon: 'fa-umbrella-beach',
                         name: { en: 'Summer', fr: 'Été' },
                         emoji: '☀️',
                         chartColor: 'fbbf24',
-                        colors: ['#fef3c7', '#fde68a', '#fcd34d', '#fbbf24', '#ffffff']
+                        colors: ['#fef3c7', '#fde68a', '#fcd34d', '#fbbf24', '#ffffff'],
+                        colorsLight: ['#fcd34d', '#fbbf24', '#f59e0b', '#ea580c', '#d97706']
                     },
                     autumn: {
                         particleCount: 80,
+                        iconPrefix: 'fab',
                         icon: 'fa-canadian-maple-leaf',
                         name: { en: 'Autumn', fr: 'Automne' },
                         emoji: '🍂',
@@ -2075,11 +2099,13 @@
                     },
                     winter: {
                         particleCount: 120,
+                        iconPrefix: 'fas',
                         icon: 'fa-snowflake',
                         name: { en: 'Winter', fr: 'Hiver' },
                         emoji: '❄️',
                         chartColor: '3b82f6',
-                        colors: ['#ffffff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#dbeafe']
+                        colors: ['#ffffff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#dbeafe'],
+                        colorsLight: ['#7dd3fc', '#38bdf8', '#0ea5e9', '#0284c7', '#075985']
                     }
                 };
                 
@@ -2177,7 +2203,7 @@
                 // Update season toggle icon
                 const toggleIcon = document.querySelector('.season-toggle i');
                 if (season && this.seasonConfig[season]) {
-                    toggleIcon.className = `fas ${this.seasonConfig[season].icon}`;
+                    toggleIcon.className = `${this.seasonConfig[season].iconPrefix} ${this.seasonConfig[season].icon}`;
                 } else {
                     toggleIcon.className = 'fas fa-ban';
                 }
@@ -2232,7 +2258,8 @@
 
             createParticle() {
                 const config = this.seasonConfig[this.currentSeason];
-                const colors = config.colors;
+                const isLight = document.body.getAttribute('data-theme') === 'light';
+                const colors = (isLight && config.colorsLight) ? config.colorsLight : config.colors;
                 
                 const base = {
                     x: Math.random() * this.canvas.width,
@@ -2585,6 +2612,7 @@
                 theme === 'dark' ? 'fa-sun' : 'fa-moon'
             );
             seasonalEffects.updateGitHubChart(seasonalEffects.currentSeason);
+            seasonalEffects.createParticles();
         };
 
         setTheme(getPreferredTheme());
