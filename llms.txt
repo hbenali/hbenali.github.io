@@ -1,6 +1,6 @@
 # Houssem Ben Ali
 
-> About/CV page for Houssem Ben Ali, a DevOps engineer specializing in CI/CD, cloud infrastructure, Kubernetes, and security, based in Tunisia/France.
+> About/CV page for Houssem Ben Ali, a DevOps and SecOps engineer specializing in CI/CD, release engineering, cloud infrastructure, and security, based in Tunisia/France.
 
 Live at https://about.hbenali.ovh. Static single-page site, available in English and French, covering experience, education, certifications, and contact info.
 
