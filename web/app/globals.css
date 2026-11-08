@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
-/* Palette: a cold ink-blue night, bone paper, one sodium-lamp glow, one status green. */
+/* Palette tokens. Dark is the default and the identity; light follows the system setting (no toggle).
+   Names keep their dark-theme roles: ink = page background, bone = body text, mist = muted text,
+   sodium = accent, verdigris = "passing". Light contrast on ink/slate: text 16/14.7, muted 6.0/5.4,
+   accent 5.5/4.9, ok 5.2/4.7. */
 @theme inline {
-  --color-ink: #0c1218;
-  --color-slate: #17212b;
-  --color-line: #263341;
-  --color-bone: #e7e1d3;
-  --color-mist: #8e9aa6;
-  --color-sodium: #e9a23b;
-  --color-verdigris: #5db7a0;
+  --color-ink: var(--c-ink);
+  --color-slate: var(--c-slate);
+  --color-line: var(--c-line);
+  --color-bone: var(--c-bone);
+  --color-mist: var(--c-mist);
+  --color-sodium: var(--c-sodium);
+  --color-verdigris: var(--c-verdigris);
 
   --font-display: var(--font-shoulders), "Arial Narrow", Impact, sans-serif;
   --font-serif: var(--font-newsreader), Georgia, serif;
@@ -16,7 +19,31 @@
 }
 
 :root {
+  --c-ink: #0c1218;
+  --c-slate: #17212b;
+  --c-line: #263341;
+  --c-bone: #e7e1d3;
+  --c-mist: #8e9aa6;
+  --c-sodium: #e9a23b;
+  --c-verdigris: #5db7a0;
+  --glow-a: rgba(233, 162, 59, 0.22);
+  --glow-b: rgba(233, 162, 59, 0.07);
   color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --c-ink: #f4efe4;
+    --c-slate: #e9e3d4;
+    --c-line: #cbc3b0;
+    --c-bone: #0c1218;
+    --c-mist: #4f5b67;
+    --c-sodium: #8a5300;
+    --c-verdigris: #1b7058;
+    --glow-a: rgba(233, 162, 59, 0.24);
+    --glow-b: rgba(233, 162, 59, 0.08);
+    color-scheme: light;
+  }
 }
 
 html {
@@ -83,8 +110,8 @@ body {
 .glow {
   background: radial-gradient(
     closest-side,
-    rgba(233, 162, 59, 0.22),
-    rgba(233, 162, 59, 0.07) 55%,
+    var(--glow-a),
+    var(--glow-b) 55%,
     transparent 100%
   );
 }

@@ -62,7 +62,13 @@ export function pageMetadata(lang: Lang): Metadata {
   };
 }
 
-export const viewport: Viewport = { themeColor: "#0c1218", colorScheme: "dark" };
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0c1218" },
+    { media: "(prefers-color-scheme: light)", color: "#f4efe4" },
+  ],
+  colorScheme: "dark light",
+};
 
 export const jsonLd = {
   "@context": "https://schema.org",
