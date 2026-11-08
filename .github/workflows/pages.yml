@@ -1,0 +1,59 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+    paths: ["web/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+# Read-only by default; only the deploy job gets the Pages permissions it needs.
+permissions:
+  contents: read
+
+# One deployment at a time; never cancel one that is already publishing.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Install dependencies
+        working-directory: web
+        run: npm ci
+      - name: Build static site
+        working-directory: web
+        run: npm run build
+      - name: Check the export
+        working-directory: web
+        run: |
+          # Fail the build if what Pages needs is missing.
+          for f in out/index.html out/fr/index.html out/404.html out/CNAME out/.nojekyll; do
+            test -e "$f" || { echo "missing $f"; exit 1; }
+          done
+          grep -q '<html lang="fr"' out/fr/index.html
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: web/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write # publish to GitHub Pages
+      id-token: write # Pages verifies the deployment source with an OIDC token
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
