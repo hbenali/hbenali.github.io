@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* Palette: a cold ink-blue night, bone paper, one sodium-lamp glow, one status green. */
+@theme inline {
+  --color-ink: #0c1218;
+  --color-slate: #17212b;
+  --color-line: #263341;
+  --color-bone: #e7e1d3;
+  --color-mist: #8e9aa6;
+  --color-sodium: #e9a23b;
+  --color-verdigris: #5db7a0;
+
+  --font-display: var(--font-shoulders), "Arial Narrow", Impact, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-ink);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-sodium);
+  color: var(--color-ink);
+}
+
+/* Keyboard focus is always visible and uses the glow colour. */
+:focus-visible {
+  outline: 2px solid var(--color-sodium);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Underline that draws in on hover/focus: a response to the pointer, not ambient motion. */
+.link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s;
+  padding-bottom: 2px;
+}
+.link:hover,
+.link:focus-visible {
+  color: var(--color-sodium);
+  background-size: 100% 2px;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+}
+
+/* Sodium glow behind the hero: the one decorative element. */
+.glow {
+  background: radial-gradient(
+    closest-side,
+    rgba(233, 162, 59, 0.22),
+    rgba(233, 162, 59, 0.07) 55%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Page transitions: the language switch is a full navigation, so use the
+   cross-document View Transitions API (a plain cross-fade where unsupported). */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation: 0.25s ease-in both vt-out;
+}
+::view-transition-new(root) {
+  animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) both vt-in;
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
