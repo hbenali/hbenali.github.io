@@ -135,12 +135,6 @@ html[lang="ar"] .display {
   line-height: 1.25;
   letter-spacing: 0;
 }
-/* The name stays in Latin capitals with the original display face. */
-html[lang="ar"] h1.display {
-  font-family: var(--font-shoulders), "Arial Narrow", Impact, sans-serif;
-  line-height: 0.86;
-  letter-spacing: -0.01em;
-}
 html[lang="ar"] .font-mono {
   line-height: 1.75;
 }
@@ -257,4 +251,14 @@ html.theme-vt::view-transition-new(root) {
   35% {
     transform: translateY(10px);
   }
+}
+
+/* The Arabic name is taller than Latin capitals: more line room so nothing is clipped by the reveal mask. */
+html[lang="ar"] h1.display {
+  font-size: clamp(4.5rem, 13vw, 12rem);
+  line-height: 1.15;
+}
+html[lang="ar"] h1.display [data-line] {
+  padding-block: 0.05em 0.3em;
+  margin-block-end: -0.2em;
 }

@@ -87,14 +87,13 @@ export function Hero({ c }: { c: Content }) {
       <h1
         id="top-title"
         className="display -ms-[0.04em] text-[clamp(5rem,17.5vw,17rem)] uppercase"
-        aria-label="Houssem Ben Ali"
+        aria-label={c.name.join(" ")}
       >
-        <span data-line className="block overflow-hidden pb-[0.04em]" aria-hidden>
-          <span className="block">Houssem</span>
-        </span>
-        <span data-line className="block overflow-hidden pb-[0.04em]" aria-hidden>
-          <span className="block">Ben Ali</span>
-        </span>
+        {c.name.map((line) => (
+          <span key={line} data-line className="block overflow-hidden pb-[0.04em]" aria-hidden>
+            <span className="block">{line}</span>
+          </span>
+        ))}
       </h1>
 
       <div className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-10">

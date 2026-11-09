@@ -15,6 +15,8 @@ export type Project = { year: string; name: string; desc: string; tech: string }
 
 export type Content = {
   htmlLang: string;
+  /** The hero name, one entry per line. */
+  name: string[];
   dir: "ltr" | "rtl";
   path: string;
   /** Language switcher entries: the other languages, in their own script. */
@@ -66,6 +68,7 @@ const skillsEn: SkillGroup[] = [
 export const content: Record<Lang, Content> = {
   en: {
     htmlLang: "en",
+    name: ["Houssem", "Ben Ali"],
     dir: "ltr",
     path: "/",
     alts: [
@@ -216,6 +219,7 @@ export const content: Record<Lang, Content> = {
   },
   fr: {
     htmlLang: "fr",
+    name: ["Houssem", "Ben Ali"],
     dir: "ltr",
     path: "/fr/",
     alts: [
@@ -357,6 +361,7 @@ export const content: Record<Lang, Content> = {
   },
   ar: {
     htmlLang: "ar",
+    name: ["حسام", "بن علي"],
     dir: "rtl",
     path: "/ar/",
     alts: [
@@ -364,7 +369,7 @@ export const content: Record<Lang, Content> = {
       { lang: "fr", path: "/fr/", name: "Français" },
     ],
     logLang: "en",
-    role: "مهندس DevOps و SecOps",
+    role: "مهندس DevOps و SecOps",
     intro:
       "أبني وأؤمّن خطوط الإنتاج التي تُسلِّم البرمجيات: التكامل والنشر المستمر (CI/CD)، وهندسة الإصدارات، والبنية التحتية السحابية، والعناصر الموقَّعة. أكثر من ثماني سنوات من الخبرة، في eXo Platform.",
     places: "تونس وفرنسا وعن بُعد",
