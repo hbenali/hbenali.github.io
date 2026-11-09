@@ -9,20 +9,27 @@ const copy = {
     description:
       "Houssem Ben Ali - DevOps & SecOps Engineer specializing in CI/CD, Release Engineering, Cloud Infrastructure, and Security. Based in Tunisia/France.",
     locale: "en_US",
-    alt: "fr_FR",
+    alt: ["fr_FR", "ar_AR"],
   },
   fr: {
     title: "Houssem Ben Ali - Ingénieur DevOps & SecOps",
     description:
       "Houssem Ben Ali - Ingénieur DevOps & SecOps spécialisé en CI/CD, release engineering, infrastructure cloud et sécurité. Basé en Tunisie/France.",
     locale: "fr_FR",
-    alt: "en_US",
+    alt: ["en_US", "ar_AR"],
+  },
+  ar: {
+    title: "حسام بن علي (Houssem Ben Ali) - مهندس DevOps و SecOps",
+    description:
+      "حسام بن علي - مهندس DevOps و SecOps متخصص في CI/CD وهندسة الإصدارات والبنية التحتية السحابية والأمان. من تونس/فرنسا.",
+    locale: "ar_AR",
+    alt: ["en_US", "fr_FR"],
   },
 } as const;
 
 export function pageMetadata(lang: Lang): Metadata {
   const c = copy[lang];
-  const url = lang === "en" ? `${SITE}/` : `${SITE}/fr/`;
+  const url = lang === "en" ? `${SITE}/` : `${SITE}/${lang}/`;
   return {
     metadataBase: new URL(SITE),
     title: c.title,
@@ -34,7 +41,7 @@ export function pageMetadata(lang: Lang): Metadata {
     manifest: "/site.webmanifest",
     alternates: {
       canonical: url,
-      languages: { en: `${SITE}/`, fr: `${SITE}/fr/`, "x-default": `${SITE}/` },
+      languages: { en: `${SITE}/`, fr: `${SITE}/fr/`, ar: `${SITE}/ar/`, "x-default": `${SITE}/` },
     },
     icons: {
       icon: [
@@ -50,7 +57,7 @@ export function pageMetadata(lang: Lang): Metadata {
       url,
       siteName: "Houssem Ben Ali",
       locale: c.locale,
-      alternateLocale: c.alt,
+      alternateLocale: [...c.alt],
       images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     },
     twitter: {

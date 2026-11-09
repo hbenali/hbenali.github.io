@@ -46,7 +46,7 @@ export function Header({ c }: { c: Content }) {
                   {n.label}
                   <span
                     aria-hidden
-                    className="absolute inset-x-2 bottom-1 h-px origin-left scale-x-0 bg-sodium transition-transform duration-500 ease-out group-aria-[current=true]:scale-x-100"
+                    className="absolute inset-x-2 bottom-1 h-px origin-left rtl:origin-right scale-x-0 bg-sodium transition-transform duration-500 ease-out group-aria-[current=true]:scale-x-100"
                   />
                 </a>
               </li>
@@ -54,15 +54,21 @@ export function Header({ c }: { c: Content }) {
           </ul>
         </nav>
 
-        <a
-          href={c.altPath}
-          hrefLang={c.altLabel.toLowerCase()}
-          lang={c.altLabel.toLowerCase()}
-          onClick={() => rememberLang(c.altLabel.toLowerCase())}
-          className="link shrink-0 text-base"
-        >
-          {c.altName}
-        </a>
+        <ul className="flex shrink-0 items-center gap-4">
+          {c.alts.map((a) => (
+            <li key={a.lang}>
+              <a
+                href={a.path}
+                hrefLang={a.lang}
+                lang={a.lang}
+                onClick={() => rememberLang(a.lang)}
+                className="link text-base"
+              >
+                {a.name}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   );

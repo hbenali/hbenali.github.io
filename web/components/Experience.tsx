@@ -26,7 +26,7 @@ function RoleItem({
           aria-expanded={open}
           aria-controls={id}
           onClick={onToggle}
-          className="group flex w-full items-center justify-between gap-6 py-4 text-left"
+          className="group flex w-full items-center justify-between gap-6 py-4 text-start"
         >
           <span className="text-xl transition-colors group-hover:text-sodium sm:text-2xl">
             {role.title}
@@ -53,7 +53,7 @@ function RoleItem({
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <ul className="max-w-[68ch] space-y-3 pb-6 text-mist [&>li]:relative [&>li]:pl-5 [&>li]:before:absolute [&>li]:before:top-[0.8em] [&>li]:before:left-0 [&>li]:before:h-px [&>li]:before:w-2.5 [&>li]:before:bg-sodium">
+            <ul className="max-w-[68ch] space-y-3 pb-6 text-mist [&>li]:relative [&>li]:ps-5 [&>li]:before:absolute [&>li]:before:top-[0.8em] [&>li]:before:start-0 [&>li]:before:h-px [&>li]:before:w-2.5 [&>li]:before:bg-sodium">
               {role.points.map((p) => (
                 <li key={p}>{p}</li>
               ))}
@@ -72,17 +72,17 @@ function RoleItem({
   );
 }
 
-function JobItem({ job, ui, first }: { job: Job; ui: Content["ui"]; first: boolean }) {
+function JobItem({ job, ui, first, comma }: { job: Job; ui: Content["ui"]; first: boolean; comma: string }) {
   const [openRole, setOpenRole] = useState<number | null>(first ? 0 : null);
   return (
-    <article className="relative pb-20 pl-8 last:pb-0 sm:pl-12">
+    <article className="relative pb-20 ps-8 last:pb-0 sm:ps-12">
       <span
         aria-hidden
-        className="absolute top-[0.9rem] left-0 h-2.5 w-2.5 -translate-x-[calc(50%-0.5px)] rounded-full bg-sodium ring-4 ring-ink"
+        className="absolute top-[0.9rem] start-0 h-2.5 w-2.5 -translate-x-[calc(50%-0.5px)] rtl:translate-x-[calc(50%-0.5px)] rounded-full bg-sodium ring-4 ring-ink"
       />
       <p className="display text-3xl text-sodium sm:text-4xl">{job.date}</p>
       <h3 className="mt-2 text-3xl text-bone sm:text-4xl">
-        {job.title}, <span className="italic">{job.company}</span>
+        {job.title}{comma} <span className="italic">{job.company}</span>
       </h3>
       <p className="mt-1 text-mist">{job.place}</p>
 
@@ -101,7 +101,7 @@ function JobItem({ job, ui, first }: { job: Job; ui: Content["ui"]; first: boole
       )}
 
       {job.points && (
-        <ul className="mt-5 max-w-[68ch] space-y-3 text-mist [&>li]:relative [&>li]:pl-5 [&>li]:before:absolute [&>li]:before:top-[0.8em] [&>li]:before:left-0 [&>li]:before:h-px [&>li]:before:w-2.5 [&>li]:before:bg-sodium">
+        <ul className="mt-5 max-w-[68ch] space-y-3 text-mist [&>li]:relative [&>li]:ps-5 [&>li]:before:absolute [&>li]:before:top-[0.8em] [&>li]:before:start-0 [&>li]:before:h-px [&>li]:before:w-2.5 [&>li]:before:bg-sodium">
           {job.points.map((p) => (
             <li key={p}>{p}</li>
           ))}
@@ -139,11 +139,11 @@ export function Experience({ c }: { c: Content }) {
 
   return (
     <div ref={rail} className="relative">
-      <div aria-hidden className="absolute top-3 bottom-0 left-0 w-px bg-line">
+      <div aria-hidden className="absolute top-3 bottom-0 start-0 w-px bg-line">
         <div ref={fill} className="h-full origin-top bg-sodium" style={{ transform: "scaleY(1)" }} />
       </div>
       {c.jobs.map((j, i) => (
-        <JobItem key={`${j.company}-${j.date}`} job={j} ui={c.ui} first={i === 0} />
+        <JobItem key={`${j.company}-${j.date}`} job={j} ui={c.ui} first={i === 0} comma={c.dir === "rtl" ? "،" : ","} />
       ))}
     </div>
   );

@@ -1,4 +1,5 @@
-export type Lang = "en" | "fr";
+export type Lang = "en" | "fr" | "ar";
+export const LANGS: Lang[] = ["en", "fr", "ar"];
 
 export type Role = { title: string; points: string[]; tags?: string[] };
 export type Job = {
@@ -14,10 +15,12 @@ export type Project = { year: string; name: string; desc: string; tech: string }
 
 export type Content = {
   htmlLang: string;
+  dir: "ltr" | "rtl";
   path: string;
-  altPath: string;
-  altLabel: string;
-  altName: string;
+  /** Language switcher entries: the other languages, in their own script. */
+  alts: { lang: Lang; path: string; name: string }[];
+  /** Language of the terminal-style release log (kept in English on the Arabic page). */
+  logLang: string;
   role: string;
   intro: string;
   places: string;
@@ -25,6 +28,8 @@ export type Content = {
   log: { stage: string; tools: string; status: string }[];
   logCommand: string;
   logDone: string;
+  languages: { label: string; text: string };
+  copyEmail: { copy: string; done: string };
   sections: {
     experience: string;
     experienceNote: string;
@@ -61,10 +66,13 @@ const skillsEn: SkillGroup[] = [
 export const content: Record<Lang, Content> = {
   en: {
     htmlLang: "en",
+    dir: "ltr",
     path: "/",
-    altPath: "/fr/",
-    altLabel: "FR",
-    altName: "Français",
+    alts: [
+      { lang: "fr", path: "/fr/", name: "Français" },
+      { lang: "ar", path: "/ar/", name: "العربية" },
+    ],
+    logLang: "en",
     role: "DevOps and SecOps engineer",
     intro:
       "I build and secure the pipelines that ship software: CI/CD, release engineering, cloud infrastructure and signed artifacts. More than eight years in, at eXo Platform.",
@@ -84,6 +92,8 @@ export const content: Record<Lang, Content> = {
     ],
     logCommand: "release --signed",
     logDone: "released and signed by hbenali",
+    languages: { label: "Languages", text: "Arabic (native), French (fluent), English (fluent)." },
+    copyEmail: { copy: "Copy address", done: "Copied" },
     sections: {
       experience: "Experience",
       experienceNote: "Newest first. Open a role to read what I did in it.",
@@ -206,10 +216,13 @@ export const content: Record<Lang, Content> = {
   },
   fr: {
     htmlLang: "fr",
+    dir: "ltr",
     path: "/fr/",
-    altPath: "/",
-    altLabel: "EN",
-    altName: "English",
+    alts: [
+      { lang: "en", path: "/", name: "English" },
+      { lang: "ar", path: "/ar/", name: "العربية" },
+    ],
+    logLang: "fr",
     role: "Ingénieur DevOps et SecOps",
     intro:
       "Je construis et sécurise les chaînes qui livrent le logiciel : CI/CD, release engineering, infrastructure cloud et artefacts signés. Plus de huit ans de métier, chez eXo Platform.",
@@ -229,6 +242,8 @@ export const content: Record<Lang, Content> = {
     ],
     logCommand: "release --signed",
     logDone: "livré et signé par hbenali",
+    languages: { label: "Langues", text: "Arabe (natif), français (courant), anglais (courant)." },
+    copyEmail: { copy: "Copier l'adresse", done: "Copié" },
     sections: {
       experience: "Expérience",
       experienceNote: "Du plus récent au plus ancien. Ouvrez un rôle pour lire ce que j'y ai fait.",
@@ -336,6 +351,165 @@ export const content: Record<Lang, Content> = {
     notFound: {
       title: "Cette page n'existe pas",
       body: "L'adresse est peut-être mal saisie, ou la page a été déplacée. Repartez de l'accueil.",
+      command: "curl -I",
+      output: "HTTP/1.1 404 Not Found",
+    },
+  },
+  ar: {
+    htmlLang: "ar",
+    dir: "rtl",
+    path: "/ar/",
+    alts: [
+      { lang: "en", path: "/", name: "English" },
+      { lang: "fr", path: "/fr/", name: "Français" },
+    ],
+    logLang: "en",
+    role: "مهندس DevOps و SecOps",
+    intro:
+      "أبني وأؤمّن خطوط الإنتاج التي تُسلِّم البرمجيات: التكامل والنشر المستمر (CI/CD)، وهندسة الإصدارات، والبنية التحتية السحابية، والعناصر الموقَّعة. أكثر من ثماني سنوات من الخبرة، في eXo Platform.",
+    places: "تونس وفرنسا وعن بُعد",
+    nav: [
+      { id: "experience", label: "الخبرة" },
+      { id: "skills", label: "المهارات" },
+      { id: "projects", label: "المشاريع" },
+      { id: "credentials", label: "المسار" },
+      { id: "contact", label: "التواصل" },
+    ],
+    log: [
+      { stage: "build", tools: "Jenkins, Maven, Nexus staging", status: "passed" },
+      { stage: "scan", tools: "CodeQL, SonarCloud, Fortify", status: "passed" },
+      { stage: "sign", tools: "Cosign, Docker Content Trust", status: "passed" },
+      { stage: "publish", tools: "Docker Hub, ghcr.io", status: "passed" },
+    ],
+    logCommand: "release --signed",
+    logDone: "released and signed by hbenali",
+    languages: { label: "اللغات", text: "العربية (لغة أم)، الفرنسية (بطلاقة)، الإنجليزية (بطلاقة)." },
+    copyEmail: { copy: "نسخ العنوان", done: "تم النسخ" },
+    sections: {
+      experience: "الخبرة",
+      experienceNote: "من الأحدث إلى الأقدم. افتح دورًا لقراءة ما أنجزته فيه.",
+      skills: "المهارات",
+      projects: "المشاريع",
+      credentials: "المسار",
+      certifications: "الشهادات",
+      education: "التكوين",
+      contact: "التواصل",
+    },
+    jobs: [
+      {
+        company: "eXo Platform",
+        date: "مارس 2020 – الآن",
+        place: "تونس، نانت، عن بُعد",
+        title: "مهندس DevOps",
+        roles: [
+          {
+            title: "مصنع البرمجيات (Software Factory)",
+            points: [
+              "إدارة Jenkins عبر مهام Seed بلغة DSL/Groovy، وإنشاء خطوط التكامل وإعداد وكلاء Jenkins ودمجهم",
+              "ترقية Sonatype Nexus و Grafana و Sonarqube و SquashTM",
+              "إعداد CI/CD لتطبيقات الجوال (Android/iOS) باستخدام Fastlane و GitHub Actions و Appaloosa Store",
+              "إضافة فحوصات أمان الشيفرة باستخدام CodeQL و SonarCloud و Fortify",
+              "بناء صور Docker مخصصة (Nginx مع HTTP3 و QUIC)",
+            ],
+            tags: ["Jenkins", "Groovy", "Nexus", "GitHub Actions", "Docker"],
+          },
+          {
+            title: "الاستضافة والسحابة",
+            points: [
+              "إنشاء الخوادم وإدارتها على Google Cloud و OVH",
+              "إدارة الإعدادات باستخدام Puppet بإصداراته 7 و6 و3.7",
+              "معالجة الأعطال: امتلاء الأقراص ونقص الذاكرة ومشاكل خدمة Docker",
+              "إضافة تكاملات خارجية: SAML2 و OpenID و LDAP/AD",
+            ],
+            tags: ["Google Cloud", "OVH", "Puppet", "Vagrant"],
+          },
+          {
+            title: "البنية التحتية و SecOps",
+            points: [
+              "إعداد الخوادم الفيزيائية مع تقسيم الأقراص عبر LVM",
+              "إعداد الخدمات: Tomcat و Nginx و Apache2 و Traefik مع ترويسات الأمان",
+              "إعداد SSL و DNS (CAA و DNSSEC) وبريد SMTP آمن",
+              "نشر ELK و InfluxDB و HAProxy والتهيئة عبر Ansible",
+              "فحص الأمان باستخدام CodeQL و SonarCloud و Acunetix",
+            ],
+            tags: ["Nginx", "Ansible", "ELK", "CodeQL"],
+          },
+          {
+            title: "الإصدارات وأدوات النشر",
+            points: [
+              "مدير إصدارات: إصدارات GA/RC/CI-CD عبر Nexus staging ومكونات Maven الإضافية؛ صور Docker موقَّعة (DCT و Cosign) منشورة على Docker Hub و ghcr.io",
+              "المساهم الرئيسي (أكثر من 500 commit منذ 2020) في ADT، الأداة الداخلية التي تنشر بيئات القبول والعروض التجريبية لـ eXo/Meeds: الترقيات والاستعادة وتوليد مخازن مفاتيح SAML عبر Keycloak ونشر AI/RAG ولوحات المتابعة",
+              "صيانة صور Docker الخاصة بـ eXo/Meeds وصور CI والإصدارات (من JDK 8 إلى 25، و Ubuntu 24.04/26.04، و Maven 3.9/4) وسكربتات workflows المشتركة",
+              "مؤلف GitHub Action توجّه إشعارات pull requests إلى تطبيق المهام في الشركة",
+            ],
+            tags: ["ADT", "Docker", "Cosign", "Nexus", "Maven"],
+          },
+          {
+            title: "الذكاء الاصطناعي التوليدي",
+            points: [
+              "استخدام يومي لمساعدات الذكاء الاصطناعي (Claude Code) لأتمتة السكربتات ومراجعة الشيفرة وتعزيز الأمان والاختبار والتوثيق وتسريعها، مع التحقق دائمًا من النتائج",
+              "إعداد نشر AI/RAG في ADT",
+            ],
+            tags: ["Claude Code", "RAG"],
+          },
+        ],
+      },
+      {
+        company: "eXo Platform",
+        date: "ديسمبر 2018 – فبراير 2020",
+        place: "تونس",
+        title: "مهندس دعم فني",
+        points: [
+          "حل المشاكل التقنية للعملاء: إعداد Tomcat/JBoss و JMX وموصلات قواعد البيانات",
+          "إنشاء أدوات سطر أوامر لفريق الدعم، وفحوصات أمان باستخدام Acunetix و Nessus",
+          "المساهمة في تطبيق إدارة تذاكر الدعم المبني بـ J2EE/AngularJS",
+        ],
+      },
+      {
+        company: "SW Consulting",
+        date: "يناير 2018 – ديسمبر 2018",
+        place: "المنستير",
+        title: "مطوّر واجهات أمامية",
+        points: ["بناء تطبيق منتدى باستخدام Angular 4 و CSS و SCSS", "إدارة المشروع عبر GitLab"],
+      },
+    ],
+    skills: [
+      { name: "البرمجة", items: skillsEn[0].items },
+      { name: "السحابة و DevOps", items: skillsEn[1].items },
+      { name: "الأمان والمراقبة", items: skillsEn[2].items },
+      { name: "الذكاء الاصطناعي", items: ["Claude Code", "نشر AI/RAG"] },
+    ],
+    projects: [
+      { year: "2026", name: "LiveboxMonitor Android", desc: "نسخة أندرويد: ويدجات وتنبيهات فورية ووضع محلي/عن بُعد", tech: "Kotlin" },
+      { year: "2025–26", name: "أدوات ويب للفحص", desc: "SSL و DKIM و SPF و DMARC و CAA و DNSSEC و BIMI و RDAP و IP", tech: "HTML/JS" },
+      { year: "2026", name: "logscrub", desc: "يُخفي الأسرار والبيانات الشخصية في السجلات", tech: "Go" },
+      { year: "2019", name: "نظام تذاكر الدعم", desc: "تطبيق متكامل (full-stack)", tech: "J2EE/VueJS" },
+      { year: "2017", name: "هيكل بشري ثلاثي الأبعاد بالواقع المعزز", desc: "تصوّر بالواقع المعزز", tech: "Matlab" },
+      { year: "2015", name: "التحقق من التجميع (Clustering)", desc: "خوارزمية لتنقيب البيانات", tech: "Java/R" },
+    ],
+    certs: [
+      { name: "مطوّر تطبيقات الجوال", issuer: "IBM MobileFirst", year: "2017" },
+      { name: "شهادة IPv6", issuer: "ENISo", year: "2015" },
+    ],
+    education: [
+      { dates: "2015 – 2017", school: "المدرسة الوطنية للمهندسين بسوسة (ENISo)", degree: "ماجستير في هندسة الاتصالات" },
+      { dates: "2012 – 2015", school: "المعهد العالي للإعلامية والرياضيات بالمنستير (ISIMM)", degree: "إجازة في الإعلامية" },
+    ],
+    contact: {
+      lead: "تريد سيرة ذاتية مفصلة، أو لديك خط تسليم يحتاج إلى إصلاح؟ راسلني.",
+      cv: "اطلب السيرة الذاتية المفصلة (بالإنجليزية)",
+      email: "contact@hbenali.ovh",
+    },
+    ui: {
+      open: "عرض التفاصيل",
+      close: "إخفاء التفاصيل",
+      skip: "انتقل إلى المحتوى",
+      home: "العودة إلى الصفحة الرئيسية",
+      back: "رجوع",
+    },
+    notFound: {
+      title: "هذه الصفحة غير موجودة",
+      body: "قد يكون العنوان خاطئًا، أو أن الصفحة نُقلت. ابدأ من الصفحة الرئيسية.",
       command: "curl -I",
       output: "HTTP/1.1 404 Not Found",
     },

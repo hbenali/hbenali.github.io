@@ -37,14 +37,13 @@ function Section({
 
 export function Portfolio({ lang }: { lang: Lang }) {
   const c = content[lang];
-  const labels = lang === "en" ? { copy: "Copy address", done: "Copied" } : { copy: "Copier l'adresse", done: "Copié" };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <a
         href="#experience"
-        className="sr-only z-50 bg-sodium px-4 py-2 text-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        className="sr-only z-50 bg-sodium px-4 py-2 text-ink focus:not-sr-only focus:fixed focus:top-3 focus:start-3"
       >
         {c.ui.skip}
       </a>
@@ -62,20 +61,20 @@ export function Portfolio({ lang }: { lang: Lang }) {
               <div key={g.name} className="grid gap-2 sm:grid-cols-[13rem_1fr] sm:gap-8">
                 <dt className="display text-3xl text-sodium">{g.name}</dt>
                 <dd>
-                  <ul className="text-2xl leading-snug text-bone sm:text-3xl [&>li]:inline [&>li:not(:last-child)]:after:text-mist [&>li:not(:last-child)]:after:content-[',_'] [&>li:last-child]:after:text-mist [&>li:last-child]:after:content-['.']">
+                  <ul className="text-2xl leading-snug text-bone sm:text-3xl [&>li]:inline csv">
                     {g.items.map((i) => (
-                      <li key={i}>{i}</li>
+                      <li key={i}>
+                        <bdi>{i}</bdi>
+                      </li>
                     ))}
                   </ul>
                 </dd>
               </div>
             ))}
             <div className="grid gap-2 sm:grid-cols-[13rem_1fr] sm:gap-8">
-              <dt className="display text-3xl text-sodium">{lang === "en" ? "Languages" : "Langues"}</dt>
+              <dt className="display text-3xl text-sodium">{c.languages.label}</dt>
               <dd className="text-2xl leading-snug text-bone sm:text-3xl">
-                {lang === "en"
-                  ? "Arabic (native), French (fluent), English (fluent)."
-                  : "Arabe (natif), français (courant), anglais (courant)."}
+                {c.languages.text}
               </dd>
             </div>
           </dl>
@@ -93,7 +92,7 @@ export function Portfolio({ lang }: { lang: Lang }) {
                   <h3 className="text-2xl text-bone sm:text-3xl">{p.name}</h3>
                   <p className="mt-1 max-w-[60ch] text-mist">{p.desc}</p>
                 </div>
-                <span className="text-mist italic sm:text-right">{p.tech}</span>
+                <span className="text-mist italic sm:text-end">{p.tech}</span>
               </li>
             ))}
           </ul>
@@ -132,12 +131,13 @@ export function Portfolio({ lang }: { lang: Lang }) {
           <p className="max-w-[40ch] text-2xl text-bone sm:text-3xl">{c.contact.lead}</p>
           <a
             href={`mailto:${c.contact.email}`}
+            dir="ltr"
             className="link display mt-10 inline-block text-[clamp(2.4rem,8vw,6.5rem)] break-all"
           >
             {c.contact.email}
           </a>
           <div className="mt-4">
-            <CopyEmail email={c.contact.email} labels={labels} />
+            <CopyEmail email={c.contact.email} labels={c.copyEmail} />
           </div>
           <ul className="mt-14 flex flex-wrap gap-x-8 gap-y-3 text-xl">
             <li>
@@ -159,7 +159,7 @@ export function Portfolio({ lang }: { lang: Lang }) {
         </Section>
       </main>
       <footer className="mx-auto max-w-[110rem] px-6 pb-12 text-mist sm:px-10">
-        <div className="border-t border-line pt-8">© 2026 Houssem Ben Ali</div>
+        <div className="border-t border-line pt-8">© 2026 {lang === "ar" ? "حسام بن علي" : "Houssem Ben Ali"}</div>
       </footer>
     </>
   );

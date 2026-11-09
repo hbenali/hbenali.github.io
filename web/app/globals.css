@@ -99,6 +99,39 @@ body {
   background-size: 100% 2px;
 }
 
+/* Inline comma-separated list; the comma follows the page language. */
+.csv > li:not(:last-child)::after {
+  content: ", ";
+  color: var(--color-mist);
+}
+.csv > li:last-child::after {
+  content: ".";
+  color: var(--color-mist);
+}
+:lang(ar) .csv > li:not(:last-child)::after {
+  content: "، ";
+}
+
+/* Arabic: its own faces, no tracking (it breaks letter joining), roomier lines, no caps. */
+html[lang="ar"] body {
+  font-family: var(--font-naskh), var(--font-newsreader), serif;
+  line-height: 1.9;
+}
+html[lang="ar"] .display {
+  font-family: var(--font-kufi), var(--font-shoulders), sans-serif;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+/* The name stays in Latin capitals with the original display face. */
+html[lang="ar"] h1.display {
+  font-family: var(--font-shoulders), "Arial Narrow", Impact, sans-serif;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+}
+html[lang="ar"] .font-mono {
+  line-height: 1.75;
+}
+
 .display {
   font-family: var(--font-display);
   font-weight: 800;

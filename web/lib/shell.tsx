@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { fontClasses } from "./fonts";
+import { arabicFontClasses, fontClasses } from "./fonts";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "@/app/globals.css";
 
@@ -10,15 +10,17 @@ export const CSP_BASE =
 
 export function RootShell({
   lang,
+  dir = "ltr",
   connect = "'self'",
   children,
 }: {
   lang: string;
+  dir?: "ltr" | "rtl";
   connect?: string;
   children: ReactNode;
 }) {
   return (
-    <html lang={lang} className={fontClasses}>
+    <html lang={lang} dir={dir} className={lang === "ar" ? arabicFontClasses : fontClasses}>
       <head>
         <meta httpEquiv="Content-Security-Policy" content={`${CSP_BASE}; connect-src ${connect}`} />
       </head>

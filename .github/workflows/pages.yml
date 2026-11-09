@@ -37,10 +37,11 @@ jobs:
         working-directory: web
         run: |
           # Fail the build if what Pages needs is missing.
-          for f in out/index.html out/fr/index.html out/404.html out/CNAME out/.nojekyll; do
+          for f in out/index.html out/fr/index.html out/ar/index.html out/404.html out/CNAME out/.nojekyll; do
             test -e "$f" || { echo "missing $f"; exit 1; }
           done
           grep -q '<html lang="fr"' out/fr/index.html
+          grep -q '<html lang="ar" dir="rtl"' out/ar/index.html
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: web/out

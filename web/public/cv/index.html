@@ -7,7 +7,7 @@
         (function () {
             const params = new URLSearchParams(window.location.search);
             const lang = params.get('lang');
-            if (lang === 'en') {
+            if (lang === 'en' || lang === 'ar') {  // the Arabic page uses the English CV
                 window.location.href = 'https://drive.google.com/file/d/1RthO2dV3IECCtpD2VRrlRqJq57uIg6ct/view';
             } else if (lang === 'fr') {
                 window.location.href = 'https://drive.google.com/file/d/1Fp4tf-_0TdTk61V5hvLiljwcudwBn5O9/view';

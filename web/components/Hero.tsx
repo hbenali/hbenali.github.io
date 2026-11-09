@@ -80,13 +80,13 @@ export function Hero({ c }: { c: Content }) {
 
       <div
         aria-hidden
-        className="glow pointer-events-none absolute -top-40 -right-40 -z-10 h-[46rem] w-[46rem] max-w-[140vw] rounded-full"
+        className="glow pointer-events-none absolute -top-40 -end-40 -z-10 h-[46rem] w-[46rem] max-w-[140vw] rounded-full"
       />
 
       <div className="mx-auto max-w-[110rem] px-6 sm:px-10">
       <h1
         id="top-title"
-        className="display -ml-[0.04em] text-[clamp(5rem,17.5vw,17rem)] uppercase"
+        className="display -ms-[0.04em] text-[clamp(5rem,17.5vw,17rem)] uppercase"
         aria-label="Houssem Ben Ali"
       >
         <span data-line className="block overflow-hidden pb-[0.04em]" aria-hidden>
@@ -111,11 +111,13 @@ export function Hero({ c }: { c: Content }) {
         </div>
 
         <div className="min-w-0 lg:col-span-6 lg:col-start-7">
-          <p className="sr-only">
+          <p className="sr-only" lang={c.logLang} dir="ltr">
             {c.log.map((l) => `${l.stage}: ${l.tools}, ${l.status}.`).join(" ")} {c.logDone}.
           </p>
           <div
             aria-hidden
+            dir="ltr"
+            lang={c.logLang}
             className="rounded-sm border border-line bg-slate/60 p-5 font-mono text-[0.8125rem] leading-7 sm:p-7 sm:text-sm"
           >
             <div>

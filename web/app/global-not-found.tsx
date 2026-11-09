@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-// The address is unknown here, so the page speaks both languages instead of guessing.
+// The address is unknown here, so the page speaks every language instead of guessing.
 export default function GlobalNotFound() {
   return (
     <RootShell lang="en">
@@ -21,11 +21,11 @@ export default function GlobalNotFound() {
           404
         </p>
 
-        <div className="grid max-w-5xl gap-12 md:grid-cols-2">
-          {(["en", "fr"] as const).map((l) => {
+        <div className="grid max-w-7xl gap-12 md:grid-cols-3">
+          {(["en", "fr", "ar"] as const).map((l) => {
             const c = content[l];
             return (
-              <div key={l} lang={l}>
+              <div key={l} lang={l} dir={c.dir}>
                 <h1 className="display text-5xl sm:text-6xl">{c.notFound.title}</h1>
                 <p className="mt-4 max-w-[36ch] text-xl text-mist">{c.notFound.body}</p>
                 <a href={c.path} className="link mt-6 inline-block text-xl">
