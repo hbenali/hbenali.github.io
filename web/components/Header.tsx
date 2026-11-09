@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Content } from "@/lib/content";
 import { rememberLang } from "./LangRedirect";
+import { LampToggle } from "./LampToggle";
 
 export function Header({ c }: { c: Content }) {
   const [active, setActive] = useState("");
@@ -54,21 +55,24 @@ export function Header({ c }: { c: Content }) {
           </ul>
         </nav>
 
-        <ul className="flex shrink-0 items-center gap-4">
-          {c.alts.map((a) => (
-            <li key={a.lang}>
-              <a
-                href={a.path}
-                hrefLang={a.lang}
-                lang={a.lang}
-                onClick={() => rememberLang(a.lang)}
-                className="link text-base"
-              >
-                {a.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex shrink-0 items-center gap-4 sm:gap-6">
+          <ul className="flex shrink-0 items-center gap-4">
+            {c.alts.map((a) => (
+              <li key={a.lang}>
+                <a
+                  href={a.path}
+                  hrefLang={a.lang}
+                  lang={a.lang}
+                  onClick={() => rememberLang(a.lang)}
+                  className="link text-base"
+                >
+                  {a.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <LampToggle labels={{ light: c.ui.light, dark: c.ui.dark }} />
+        </div>
       </div>
     </header>
   );

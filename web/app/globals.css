@@ -31,8 +31,9 @@
   color-scheme: dark;
 }
 
+/* Light theme: the system setting by default, or the lamp's explicit choice (data-theme). */
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not([data-theme="dark"]) {
     --c-ink: #f4efe4;
     --c-slate: #e9e3d4;
     --c-line: #cbc3b0;
@@ -44,6 +45,18 @@
     --glow-b: rgba(233, 162, 59, 0.08);
     color-scheme: light;
   }
+}
+:root[data-theme="light"] {
+  --c-ink: #f4efe4;
+  --c-slate: #e9e3d4;
+  --c-line: #cbc3b0;
+  --c-bone: #0c1218;
+  --c-mist: #4f5b67;
+  --c-sodium: #8a5300;
+  --c-verdigris: #1b7058;
+  --glow-a: rgba(233, 162, 59, 0.24);
+  --glow-b: rgba(233, 162, 59, 0.08);
+  color-scheme: light;
 }
 
 html {
@@ -180,5 +193,68 @@ html[lang="ar"] .font-mono {
   from {
     opacity: 0;
     transform: translateY(14px);
+  }
+}
+
+/* Theme switch: a plain cross-fade of the whole page. */
+html.theme-vt::view-transition-old(root) {
+  animation: 0.45s ease both vt-fade-out;
+}
+html.theme-vt::view-transition-new(root) {
+  animation: 0.45s ease both vt-fade-in;
+}
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Pull-cord lamp. Lit = light theme. The bulb and glow follow data-on; the swing and
+   the cord pull are one-shot animations replayed on each use. */
+.lamp-bulb {
+  fill: var(--c-line);
+  transition: fill 0.4s;
+}
+.lamp-halo,
+.lamp-cone {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.lamp[data-on="true"] .lamp-bulb {
+  fill: #ffd27a;
+}
+.lamp[data-on="true"] .lamp-halo {
+  opacity: 0.35;
+}
+.lamp[data-on="true"] .lamp-cone {
+  opacity: 1;
+}
+.lamp-swing {
+  transform-box: view-box;
+  transform-origin: 22px 0;
+  animation: lamp-swing 0.9s ease-out;
+}
+.lamp-pull {
+  animation: lamp-pull 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+@keyframes lamp-swing {
+  20% {
+    transform: rotate(-5deg);
+  }
+  45% {
+    transform: rotate(3.5deg);
+  }
+  70% {
+    transform: rotate(-1.5deg);
+  }
+}
+@keyframes lamp-pull {
+  35% {
+    transform: translateY(10px);
   }
 }

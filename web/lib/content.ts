@@ -46,7 +46,7 @@ export type Content = {
   certs: { name: string; issuer: string; year: string }[];
   education: { dates: string; school: string; degree: string }[];
   contact: { lead: string; cv: string; email: string };
-  ui: { open: string; close: string; skip: string; home: string; back: string };
+  ui: { open: string; close: string; skip: string; home: string; back: string; light: string; dark: string };
   notFound: { title: string; body: string; command: string; output: string };
 };
 
@@ -206,7 +206,7 @@ export const content: Record<Lang, Content> = {
       cv: "Request the detailed CV",
       email: "contact@hbenali.ovh",
     },
-    ui: { open: "Show details", close: "Hide details", skip: "Skip to content", home: "Go to the homepage", back: "Go back", },
+    ui: { open: "Show details", close: "Hide details", skip: "Skip to content", home: "Go to the homepage", back: "Go back", light: "Switch to light mode", dark: "Switch to dark mode" },
     notFound: {
       title: "This page does not exist",
       body: "The address may be mistyped, or the page has moved. Start again from the homepage.",
@@ -347,7 +347,7 @@ export const content: Record<Lang, Content> = {
       cv: "Demander le CV détaillé",
       email: "contact@hbenali.ovh",
     },
-    ui: { open: "Voir le détail", close: "Masquer le détail", skip: "Aller au contenu", home: "Retour à l'accueil", back: "Page précédente" },
+    ui: { open: "Voir le détail", close: "Masquer le détail", skip: "Aller au contenu", home: "Retour à l'accueil", back: "Page précédente", light: "Passer en mode clair", dark: "Passer en mode sombre" },
     notFound: {
       title: "Cette page n'existe pas",
       body: "L'adresse est peut-être mal saisie, ou la page a été déplacée. Repartez de l'accueil.",
@@ -506,6 +506,8 @@ export const content: Record<Lang, Content> = {
       skip: "انتقل إلى المحتوى",
       home: "العودة إلى الصفحة الرئيسية",
       back: "رجوع",
+      light: "التبديل إلى الوضع الفاتح",
+      dark: "التبديل إلى الوضع الداكن",
     },
     notFound: {
       title: "هذه الصفحة غير موجودة",
