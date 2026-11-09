@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Content } from "@/lib/content";
+import { rememberLang } from "./LangRedirect";
 
 export function Header({ c }: { c: Content }) {
   const [active, setActive] = useState("");
@@ -57,6 +58,7 @@ export function Header({ c }: { c: Content }) {
           href={c.altPath}
           hrefLang={c.altLabel.toLowerCase()}
           lang={c.altLabel.toLowerCase()}
+          onClick={() => rememberLang(c.altLabel.toLowerCase())}
           className="link shrink-0 text-base"
         >
           {c.altName}
